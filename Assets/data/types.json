@@ -1,0 +1,20 @@
+{
+    "types":[
+        {
+            "name": "Hufflepuff",
+            "description": "Loveable Person, Enjoys Hiking"
+        },
+        {
+            "name": "Gryffindor",
+            "description": "Brave Warrior, Enjoys Harrry potter"
+        },
+        {
+            "name": "Ravenclaw",
+            "description": "Smart Scholar, Enjoys Reading"
+        },
+        {
+            "name": "Slytherin",
+            "description": "Cunning Cool person, Enjoys Evil stuff"
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "questions": [
+        {
+            "question": "What is your strongest trait",
+            "options": [
+                {
+                    "body": "Strength",
+                    "type": "Gryffindor"
+                },
+                {
+                    "body": "Intelligence",
+                    "type": "Ravenclaw"
+                },
+                {
+                    "body": "Witt",
+                    "type": "Slytherin"
+                },
+                {
+                    "body": "Caring",
+                    "type": "Hufflepuff"
+                }
+            ]
+        },
+        {
+            "question": "Who's Your favorite Character",
+            "options": [
+                {
+                    "body": "Harry Potter",
+                    "type": "Gryffindor"
+                },
+                {
+                    "body": "Mr. Rogers",
+                    "type": "Hufflepuff"
+                },
+                {
+                    "body": "Tony Stark",
+                    "type": "Slytherin"
+                },
+                {
+                    "body": "Stu Steiner",
+                    "type": "Ravenclaw"
+                }
+            ]
+        },
+        {
+            "question": "Favorite Subject?",
+            "options": [
+                {
+                    "body": "Math",
+                    "type": "Ravenclaw"
+                },
+                {
+                    "body": "Field Exploration",
+                    "type": "Gryffindor"
+                },
+                {
+                    "body": "Science",
+                    "type": "Hufflepuff"
+                },
+                {
+                    "body": "Evil Class",
+                    "type": "Slytherin"
+                }
+            ]
+        },
+        {
+            "question": "Favorite Place?",
+            "options": [
+                {
+                    "body": "Mall",
+                    "type": "Ravenclaw"
+                },
+                {
+                    "body": "Trails",
+                    "type": "Gryffindor"
+                },
+                {
+                    "body": "School",
+                    "type": "Hufflepuff"
+                },
+                {
+                    "body": "Evil Lair",
+                    "type": "Slytherin"
+                }
+            ]
+        },
+        {
+            "question": "Favorite House?",
+            "options": [
+                {
+                    "body": "Ravenclaw",
+                    "type": "Ravenclaw"
+                },
+                {
+                    "body": "Gryffindor",
+                    "type": "Gryffindor"
+                },
+                {
+                    "body": "Hufflepuff",
+                    "type": "Hufflepuff"
+                },
+                {
+                    "body": "Slytherin",
+                    "type": "Slytherin"
+                }
+            ]
+        }
+    ]
+}
