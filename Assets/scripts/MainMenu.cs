@@ -6,26 +6,70 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject SortingQuiz;
-    public GameObject LoginScreen;
-    public GameObject DebugScreen;
-
-    public Image group1;
-    public Image group2;
 
     /*
-    Loads the Sorting Quiz page once the user states they are a new Eagle
-    */
-    public void startSortingQuiz()
+     * GameObjects that are serving as containers for each screen a user will visit before reaching main app flow;
+     */
+    public GameObject TitlePage;
+    public GameObject NewEagleScreen;
+    public GameObject SortingQuizIntroScren;
+    public GameObject ProfileScreen;
+
+    public Button EnterButton;
+
+    /*
+     * Variable that are used when creating a new user's basic profile info
+     */
+
+    public TMP_InputField nameField;
+    public Button createUserButton;
+
+    /*
+     * LoadNewEagleScreen loads in the screen for creating a new Eagle avatar. This only happens if checkPlayerData() evalulates to false
+     */
+
+    public void LoadNewEagleScreen()
     {
-        SortingQuiz.SetActive(true);
-        DebugScreen.SetActive(false);
+        NewEagleScreen.SetActive(true);
+        TitlePage.SetActive(false);
     }
 
-    public void setGroup(){
+    /*
+     * LoadProfileScreen will load in the profile page for a user when they have been found to have existing account info
+     */
+
+    public void LoadProfileScreen()
+    {
+        ProfileScreen.SetActive(true);
+        TitlePage.SetActive(false);
+    }
+
+    /*
+     * RegisterNewUser will take the infomation that the user inputs and create a player around them. 
+     */
+    public void RegisterNewPlayer()
+    {
+        PlayerManager.Instance.createNewPlayer(nameField.text);
+
+        Debug.Log(PlayerManager.Instance);
 
     }
 
+    /*
+     * On Start(), the program uses PlayerManager to check if existing player has been stored.
+     * If it has, then EnterButton onclick event will redirect to the profile page
+     * If there is none, then the EnterButton should direct them to the user creation screen
+     * It should also set up the confirm button for the createUserButton.
+     */
     void Start(){
+
+        bool playerData = PlayerManager.Instance.checkPlayerData();
+
+        if (playerData)
+            EnterButton.onClick.AddListener(() => LoadProfileScreen());
+
+        EnterButton.onClick.AddListener(() => LoadNewEagleScreen());
+        createUserButton.onClick.AddListener(() => RegisterNewPlayer());
+
     }
 }
