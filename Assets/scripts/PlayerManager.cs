@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Newtonsoft.Json;
 
 /*
  * PlayerMangager stores information regarding the player's info.
@@ -11,6 +11,25 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+
+    public class PlayerData
+    {
+        string name;
+        string house;
+        int level;
+        int coinCount;
+        int expEarned;
+
+        public PlayerData(PlayerManager p)
+        {
+            this.name = p.Name;
+            this.house = p.House;
+            this.level = p.Level;
+            this.coinCount = p.CoinCount;
+            this.expEarned = p.ExpEarned;
+        }
+    }
+
 
     /*
      * 
@@ -62,6 +81,12 @@ public class PlayerManager : MonoBehaviour
     public void ReturnExistingPlayer()
     {
         PlayerManager p = JsonUtility.FromJson<PlayerManager>(PlayerPrefs.GetString("playerInfo", "john"));
+    }
+
+    public void savePlayerInfo()
+    {
+        PlayerData data = new PlayerData(this);
+
     }
 
     // Start is called before the first frame update
