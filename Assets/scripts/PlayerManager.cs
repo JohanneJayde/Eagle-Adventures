@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using System.IO;
 
 /*
  * PlayerMangager stores information regarding the player's info.
@@ -11,28 +12,36 @@ using Newtonsoft.Json;
 
 public class PlayerManager : MonoBehaviour
 {
-
+    /*
+     * PlayerData class is used as a intermediary step between loading and storing User data onto disk
+     * It has the same fields that are used for player data storage. The reason for it existence can be found
+     * in the savePlayerData() method
+     */
     public class PlayerData
     {
-        string name;
-        string house;
-        int level;
-        int coinCount;
-        int expEarned;
+        public string name;
+        public string house;
+        public int level;
+        public int coinCount;
+        public int expEarned;
 
+        /*
+         * PlayerData EVC takes in a PlayerManger and reflects all of its properties into the fields of PlayerData 
+         */
         public PlayerData(PlayerManager p)
         {
-            this.name = p.Name;
-            this.house = p.House;
-            this.level = p.Level;
-            this.coinCount = p.CoinCount;
-            this.expEarned = p.ExpEarned;
+            name = p.Name;
+            house = p.House;
+            level = p.Level;
+            coinCount = p.CoinCount;
+            expEarned = p.ExpEarned;
         }
+
     }
 
 
     /*
-     * 
+     * Properties for the user that we want to keep track of throughout the app.
      */
 
     public string Name { get; set; }
@@ -40,6 +49,7 @@ public class PlayerManager : MonoBehaviour
     public int Level { get; set; }
     public int CoinCount { get; set; }
     public int ExpEarned { get; set; }
+
 
     /*
      * Singleton logic
@@ -51,54 +61,98 @@ public class PlayerManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                Debug.Log("hi");
+                Debug.Log("Cannot exist");
             return _instance;
         }
 
     }
 
     /*
-     * createNewPlayer creates a new playerData object with the given name and house
-     * Once the data has been created, it will be stored as a JSON file and into the PlayerPref
-     * under playerInfo key. This allows us to keep the data persistent between sessions
-     * Alternativly. we can store this into an offshore JSON file
+     * createNewPlayer sets the PlayerManager properties to default values except for name and house
+     * which can be set by the user inputs. If the user doesn't put any input, there are default values
+     * for them.
+     * Once the data has been created, it will be stored as a JSON file and saved into the persistent storage.
+     * Logic for how it works is explained in savePlayerInfo()
+     * 
      */
 
-    public void createNewPlayer(string name="Eagle Scout",string house="Explorer")
+    public void CreateNewPlayer(string name="Eagle Scout",string house="Explorer")
     {
         this.Name = name;
         this.House = house;
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
+        SavePlayerInfo();
     }
 
     /*
-     * returnExistingPlayer sets the playerData field in the PlayerManger as the data that has been found
-     * to already exist on the device.
+     * LoadExistingPlayer returns an existing player's data from playerInfo.json that is stored in the persistent data path of
+     * the device. From there, SendDataToPlayerManager() unwraps this data and sets them to the Properties of the PlayerManager instance
+     * for use in the app.
      */
 
-    public void ReturnExistingPlayer()
+    public void LoadExistingPlayer()
     {
-        PlayerManager p = JsonUtility.FromJson<PlayerManager>(PlayerPrefs.GetString("playerInfo", "john"));
+        
+        PlayerData data = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(Application.persistentDataPath + "/playerInfo.json"));
+        SendDataToPlayerManager(data);
     }
 
-    public void savePlayerInfo()
+    /*
+     * sendDataToPlayerManager takes in a PlayerData object and unwraps it's fields to send to the actual PlayerManager properties.
+     */
+
+    public void SendDataToPlayerManager(PlayerData pData)
+    {
+        this.Name = pData.name;
+        this.House = pData.house;
+        this.Level = pData.level;
+        this.CoinCount = pData.level;
+        this.ExpEarned = pData.expEarned;
+    }
+
+    /*
+     * A new PlayerData object is created and uses the PlayerManager's properties to set it's own fields.
+     * It is then serialized into a string representation of a JSON file. From there, it will be written
+     * into playerInfo.json which is stored into the persistent data path of the device.
+     * NOTE: playerInfo.json will either be created or overwritten in this method.
+     * 
+     */
+
+    public void SavePlayerInfo()
     {
         PlayerData data = new PlayerData(this);
 
+        File.WriteAllText(Application.persistentDataPath + "/playerInfo.json", JsonConvert.SerializeObject(data));
+
     }
 
-    // Start is called before the first frame update
+    /*
+     * Start checks if the player has existing data using checkPlayerData(), if it does, then we can load it using
+     * LoadExistingPlayer() and that will re-initialize all of the PlayerManager's properties
+     */
+
     void Start()
     {
-        
+        if(CheckPlayerData())
+            LoadExistingPlayer();
     }
 
-    public bool checkPlayerData()
+    /*
+     * checkPlayerData() checks for the existence of playerInfo.json in the persistent data storage.
+     * true if it exists and false if it doesn't. Alternativly, a flag can be set in PlayerPrefs
+     */
+
+    public bool CheckPlayerData()
     {
-        return this.Name != null;
+        return File.ReadAllText(Application.persistentDataPath + "/playerInfo.json") != null;
     }
+
+    /*
+     * ToString just returns the string representation of PlayerManager. This is only used for
+     * debug purposes. Overrides ToString in Object class
+     */
 
     override
     public string ToString()
@@ -108,6 +162,10 @@ public class PlayerManager : MonoBehaviour
         + "\nLevel: " + this.Level + "\nCoin Count: " + this.CoinCount
         + "\nExp Earned: " + this.ExpEarned;
     }
+
+    /*
+     * sets the instance to this.
+     */
 
     private void Awake()
     {

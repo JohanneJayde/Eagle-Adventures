@@ -49,9 +49,10 @@ public class MainMenu : MonoBehaviour
      */
     public void RegisterNewPlayer()
     {
-        PlayerManager.Instance.createNewPlayer(nameField.text);
+        PlayerManager.Instance.CreateNewPlayer(nameField.text);
 
-        Debug.Log(PlayerManager.Instance);
+        PlayerManager.Instance.LoadExistingPlayer();
+
 
     }
 
@@ -63,7 +64,7 @@ public class MainMenu : MonoBehaviour
      */
     void Start(){
 
-        bool playerData = PlayerManager.Instance.checkPlayerData();
+        bool playerData = PlayerManager.Instance.CheckPlayerData();
 
         if (playerData)
             EnterButton.onClick.AddListener(() => LoadProfileScreen());

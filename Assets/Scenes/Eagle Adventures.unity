@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10238261, g: 0.8207547, b: 0, a: 1}
+  m_Color: {r: 0.9433962, g: 0.048949808, b: 0.048949808, a: 0.74509805}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4998,6 +4998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitlePage: {fileID: 474136037}
   NewEagleScreen: {fileID: 398805127}
+  SortingQuizIntroScren: {fileID: 0}
   ProfileScreen: {fileID: 1329078662}
   EnterButton: {fileID: 669288102}
   nameField: {fileID: 1588695966}
