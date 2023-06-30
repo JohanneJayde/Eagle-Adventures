@@ -36,6 +36,15 @@ public class PlayerManager : MonoBehaviour
             coinCount = p.CoinCount;
             expEarned = p.ExpEarned;
         }
+        /*
+         * Empty contructor is needed due to how LoadExistingPlayer() is done. A PlayerData object cannot
+         * be created using the Json deserialization unless there is an empty constuctor. Without this,
+         * it will try and call the constructor with @param PlayerManager will cause NullPointerException.
+         */
+        public PlayerData()
+        {
+
+        }
 
     }
 
@@ -135,8 +144,10 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+
         if(CheckPlayerData())
-            LoadExistingPlayer();
+            PlayerManager.Instance.LoadExistingPlayer();
+
     }
 
     /*
@@ -169,6 +180,21 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(this);
+
+        DontDestroyOnLoad(this);
+    }
+
+    /*
+     * DeleteSaveData deletes all the player data on a user's device by deleting the playerInfo.json
+     * This is mostly for testing purposes like new user only features. However, a reset account
+     * feature could be added in the future
+     */
+    public void DeleteSaveData()
+    {
+        File.Delete(Application.persistentDataPath + "/playerInfo.json");
     }
 }

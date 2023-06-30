@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MainMenu : MonoBehaviour
+public class Main : MonoBehaviour
 {
 
     /*
@@ -67,7 +67,9 @@ public class MainMenu : MonoBehaviour
         bool playerData = PlayerManager.Instance.CheckPlayerData();
 
         if (playerData)
+        {
             EnterButton.onClick.AddListener(() => LoadProfileScreen());
+        }
 
         EnterButton.onClick.AddListener(() => LoadNewEagleScreen());
         createUserButton.onClick.AddListener(() => RegisterNewPlayer());
