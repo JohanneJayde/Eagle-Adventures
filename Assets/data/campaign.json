@@ -1,0 +1,29 @@
+﻿{
+    "Theme": "Academic",
+    "Quests": [
+        {
+            "ID": "academic_1",
+            "Title": "Learning Style Inventory",
+            "Description": "Take a learning styles inventory to describe how you like to learn or strengths in learning.",
+            "ShortDescription": "Identify your learning style.",
+            "CoinsReward": 50,
+            "XPReward": 10,
+            "CompletionCode": "LEARN123",
+            "LevelRequirement": 1,
+            "Theme": "Academic",
+            "IsCompleted": false
+        },
+        {
+            "ID": "academic_2",
+            "Title": "Time Management Mastery",
+            "Description": "Master time management by creating a study schedule and sticking to it for a week.",
+            "ShortDescription": "Master time management.",
+            "CoinsReward": 100,
+            "XPReward": 20,
+            "CompletionCode": "TIME789",
+            "LevelRequirement": 2,
+            "Theme": "Academic",
+            "IsCompleted": false
+        }
+    ]
+}

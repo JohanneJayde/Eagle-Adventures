@@ -1,0 +1,14 @@
+﻿{
+        {
+            "ID": "academic_1",
+            "Title": "Learning Style Inventory",
+            "Description": "Take a learning styles inventory to describe how you like to learn or strengths in learning.",
+            "ShortDescription": "Identify your learning style.",
+            "CoinsReward": 50,
+            "XPReward": 10,
+            "CompletionCode": "LEARN123",
+            "LevelRequirement": 1,
+            "Theme": "Academic",
+            "IsCompleted": false
+        }
+}

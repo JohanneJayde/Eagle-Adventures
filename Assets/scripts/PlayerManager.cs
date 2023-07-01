@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using System.Data;
 
 /*
  * PlayerMangager stores information regarding the player's info.
@@ -146,7 +147,7 @@ public class PlayerManager : MonoBehaviour
     {
 
         if(CheckPlayerData())
-            PlayerManager.Instance.LoadExistingPlayer();
+            LoadExistingPlayer();
 
     }
 
@@ -157,7 +158,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool CheckPlayerData()
     {
-        return File.ReadAllText(Application.persistentDataPath + "/playerInfo.json") != null;
+        return File.Exists(Application.persistentDataPath + "/playerInfo.json");
     }
 
     /*
@@ -191,10 +192,13 @@ public class PlayerManager : MonoBehaviour
     /*
      * DeleteSaveData deletes all the player data on a user's device by deleting the playerInfo.json
      * This is mostly for testing purposes like new user only features. However, a reset account
-     * feature could be added in the future
+     * feature could be added in the future.
+     * NOTE: PlayerPrefs are erased. Although deleting them will make it a full clear, reestarting the save data
+     * will result in them having to go through the quizzes which will overwrite the PlayerPrefs
      */
     public void DeleteSaveData()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
+        Debug.Log("Successfully deleted user player data");
     }
 }
