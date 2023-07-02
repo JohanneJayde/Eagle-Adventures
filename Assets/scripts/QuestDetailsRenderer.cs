@@ -5,12 +5,21 @@ using static QuestManager;
 using TMPro;
 using UnityEngine.UI;
 
+/*
+ * This script renders the details of a quest onto the Quest Details screen
+ */
 public class QuestDetailsRenderer : MonoBehaviour
 {
 
-    //the current quest the page is rendering
+    //the current quest the page is rendering. This has been preset from OpenQuestDetailsScreen although it may switch
     public Quest Quest { set; get; }
 
+    /*
+     * Render the info to the user. An onClick listener is added so that the user may open the canvas assignment
+     * that is needed to be completed to get code
+     * 
+     * TODO: Currently it only suppots IOS deeplinking when we need to support android DL as well.
+     */
     public void RenderDetails() {
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.LongDescription;

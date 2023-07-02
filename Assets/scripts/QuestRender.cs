@@ -5,59 +5,99 @@ using UnityEngine;
 using UnityEngine.UI;
 using static QuestManager;
 
+/*
+ * QuestRender handles rendering a set or individual Quests on the app.
+ */
+
 public class QuestRender : MonoBehaviour
 {
+    /*
+     * QuestDetailsScreen references the screen where individual Quest info will
+     * be displayed
+     */
 
-    public GameObject QuestOverviewScren;
     public GameObject QuestDetailsScreen;
 
-    // Start is called before the first frame update
+    // On start, RenderAllQuests will render the quests in the Quest Overview screen
     void Start()
     {
-        RenderAllQuests(QuestManager.Instance);
+        RenderAllQuests();
     }
 
+    /*
+     * RenderQuest takes in a string that represents a Quest ID. It will then use FetchQuestInfo to get that quest's info
+     * Using that info, a new Prefab of the "QuestTile" asset will be created and displayed on the overview page
+     */
     public void RenderQuest(string QID)
     {
         //Get the quest data based on the QID
         Quest q = QuestManager.Instance.FetchQuestInfo(QID);
 
-        /* Get the position of the second to last child in the campaign screen, we will use it's position to position the new QuestTile
-         * in the correct place
+        /*
+         * In order to render the tile correctly, we will use NewPos to store the position of the bottom most child
+         * within the overview page. This is so we can position the new tile relative to last child.
          */
-
         Vector2 NewPos;
-        Transform child = QuestOverviewScren.transform.GetChild(QuestOverviewScren.transform.childCount - 1);
+        //Get the last child as a Transform component
+        Transform child = gameObject.transform.GetChild(gameObject.transform.childCount - 1);
+        /*
+         * Get the last child's position as a Vector3 object. Because position holds 3 dimensions,
+         * we have to get Vector3 but z cord will not be used
+         */
         Vector3 childPos = child.transform.position;
 
-
-        if (QuestOverviewScren.transform.childCount == 1)
+        /*
+         * Now we must check we are rendering the first Quest. If that is the case, the positioning will be slightly different
+         * This is because we coordinates stored in childPos are the top right most. If we are rendering the first quest,
+         * then the last child will be the header which is less height than a "QuestTile" prefab. So we need to render it
+         * higher than we would if we were rendering after a Quest tile. 
+         * 
+         * NOTE: in both cases, the x coord is still used due to the header being centered
+         */
+        if (gameObject.transform.childCount == 1)
         {
+            //NewPos will set the new Tile at a position 300 below the header
             NewPos = new(childPos.x, childPos.y - 300);
             Debug.Log("Loading first Quest");
         }
 
         else
         {
-
-            NewPos = new(childPos.x, childPos.y - 650);
+            //NewPos is set 450 below preceding Quest tile
+            NewPos = new(childPos.x, childPos.y - 450);
         }
 
-        //Create a new Quest Tile
-        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), NewPos, new Quaternion(0, 0, 0, 0), QuestOverviewScren.transform);
+        /*
+         * Now that we have found the correct coordinates for the new tile, we need to load the prefab
+         * We do this using Instantiate with the thing we want is the QuestTile that is loaded using
+         * Resources.Load. It has it's position set as newPos and it's parent as the overview page
+         */
+        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), NewPos, new Quaternion(0, 0, 0, 0), gameObject.transform);
 
+        /*
+         * After instantiating the tile, populate it's predefined fields with the infomation gleamed from
+         * FetchQuestID. Along with this, we also need to make sure that it is ordered in the right fashion
+         * using SetSiblingIndex with param of the last child
+         */
         questTileTemplate.transform.GetChild(0).GetComponent<TMP_Text>().text = q.Title;
         questTileTemplate.transform.GetChild(1).GetComponent<TMP_Text>().text = q.ShortDescription;
         questTileTemplate.transform.GetChild(2).GetComponent<TMP_Text>().text = q.CoinsReward.ToString();
         questTileTemplate.transform.GetChild(3).GetComponent<TMP_Text>().text = q.LevelRequirement.ToString();
-        questTileTemplate.transform.SetSiblingIndex(QuestOverviewScren.transform.childCount - 2);
+        questTileTemplate.transform.SetSiblingIndex(gameObject.transform.childCount - 1);
+
+        /*
+         * Clicking the quest tile should bring you to a page that contains the full details of the quest
+         * and the way to actually do the quest. The tiles button component has an onClick event added to it.
+         * OpenQuestDetails takes in the found Quest and is used to render more on the details page
+         */
 
         questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
 
     }
     /*
-     * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full infomration
-     * 
+     * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
+     * This is done by first setting the details script's Quest Property to the Quest that we want to render info for.
+     * Then call RenderDetails to render the quest info on the screen and swap to the screen to show the details.
      */
 
     public void OpenQuestDetailsScreen(Quest quest)
@@ -65,23 +105,21 @@ public class QuestRender : MonoBehaviour
 
        QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().Quest = quest;
        QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails();
-       QuestOverviewScren.SetActive(false);
+       gameObject.SetActive(false);
        QuestDetailsScreen.SetActive(true);
     }
 
-
-    public void RenderAllQuests(QuestManager manager)
+    /*
+     * RenderAllQuests renders all the quests by simply getting the all the quests from QuestManager and
+     * using foreach loop with RenderQuest.
+     */
+    public void RenderAllQuests()
     {
-        foreach(var q in manager.Quests)
+        foreach(Quest quest in QuestManager.Instance.Quests)
         {
-            RenderQuest(q.QuestID);
-            Debug.Log(q.QuestID + " has been rendered");
+            RenderQuest(quest.QuestID);
+            Debug.Log(quest.QuestID + " has been rendered");
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
