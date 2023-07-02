@@ -73,11 +73,6 @@ public class QuestManager : MonoBehaviour
 
         quests = csv.GetRecords<Quest>().ToList();
 
-        foreach(var rec in quests)
-        {
-            Debug.Log(rec.QuestID);
-        }
-
     }
 
     /*
