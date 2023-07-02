@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Eagle Adventures Protype
+  companyName: Eastern Washington University
+  productName: Eagle Adventures
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -157,7 +157,7 @@ PlayerSettings:
     Android: com.DefaultCompany.com.unity.template.mobile2D
     Lumin: com.DefaultCompany.com.unity.template.mobile2D
     Standalone: com.DefaultCompany.com.unity.template.mobile2D
-    iPhone: com.DefaultCompany.com.unity.template.mobile2D
+    iPhone: com.EasternWashingtonUniversity.EagleAdventures
     tvOS: com.DefaultCompany.com.unity.template.mobile2D
   buildNumber:
     Standalone: 0
@@ -221,7 +221,8 @@ PlayerSettings:
   iOSLaunchScreenCustomStoryboardPath: 
   iOSLaunchScreeniPadCustomStoryboardPath: 
   iOSDeviceRequirements: []
-  iOSURLSchemes: []
+  iOSURLSchemes:
+  - EagleAdventures
   macOSURLSchemes: []
   iOSBackgroundModes: 0
   iOSMetalForceHardShadows: 0
@@ -805,7 +806,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 3
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1

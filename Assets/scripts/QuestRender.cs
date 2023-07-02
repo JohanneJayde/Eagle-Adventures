@@ -33,7 +33,8 @@ public class QuestRender : MonoBehaviour
 
         if (QuestOverviewScren.transform.childCount == 1)
         {
-            NewPos = new(childPos.x, Screen.currentResolution.height - 400);
+            NewPos = new(childPos.x, childPos.y - 300);
+            Debug.Log("Loading first Quest");
         }
 
         else
@@ -71,7 +72,7 @@ public class QuestRender : MonoBehaviour
 
     public void RenderAllQuests(QuestManager manager)
     {
-        foreach(var q in manager.quests)
+        foreach(var q in manager.Quests)
         {
             RenderQuest(q.QuestID);
             Debug.Log(q.QuestID + " has been rendered");
