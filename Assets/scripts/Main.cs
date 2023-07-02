@@ -70,9 +70,11 @@ public class Main : MonoBehaviour
         {
             EnterButton.onClick.AddListener(() => LoadProfileScreen());
         }
-
-        EnterButton.onClick.AddListener(() => LoadNewEagleScreen());
-        createUserButton.onClick.AddListener(() => RegisterNewPlayer());
+        else
+        {
+            EnterButton.onClick.AddListener(() => LoadNewEagleScreen());
+            createUserButton.onClick.AddListener(() => RegisterNewPlayer());
+        }
 
     }
 }

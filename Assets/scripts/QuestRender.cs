@@ -8,7 +8,8 @@ using static QuestManager;
 public class QuestRender : MonoBehaviour
 {
 
-    public GameObject homeScreen;
+    public GameObject QuestOverviewScren;
+    public GameObject QuestDetailsScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +27,11 @@ public class QuestRender : MonoBehaviour
          */
 
         Vector2 NewPos;
-        Transform child = homeScreen.transform.GetChild(homeScreen.transform.childCount - 1);
+        Transform child = QuestOverviewScren.transform.GetChild(QuestOverviewScren.transform.childCount - 1);
         Vector3 childPos = child.transform.position;
 
 
-        if (homeScreen.transform.childCount == 1)
+        if (QuestOverviewScren.transform.childCount == 1)
         {
             NewPos = new(childPos.x, Screen.currentResolution.height - 400);
         }
@@ -40,17 +41,17 @@ public class QuestRender : MonoBehaviour
 
             NewPos = new(childPos.x, childPos.y - 650);
         }
+
         //Create a new Quest Tile
-        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), NewPos, new Quaternion(0, 0, 0, 0), homeScreen.transform);
+        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), NewPos, new Quaternion(0, 0, 0, 0), QuestOverviewScren.transform);
 
         questTileTemplate.transform.GetChild(0).GetComponent<TMP_Text>().text = q.Title;
         questTileTemplate.transform.GetChild(1).GetComponent<TMP_Text>().text = q.ShortDescription;
         questTileTemplate.transform.GetChild(2).GetComponent<TMP_Text>().text = q.CoinsReward.ToString();
         questTileTemplate.transform.GetChild(3).GetComponent<TMP_Text>().text = q.LevelRequirement.ToString();
-        questTileTemplate.transform.SetSiblingIndex(homeScreen.transform.childCount - 2);
+        questTileTemplate.transform.SetSiblingIndex(QuestOverviewScren.transform.childCount - 2);
 
-
-        questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { Debug.Log(q.Title); });
+        questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
 
     }
     /*
@@ -58,9 +59,13 @@ public class QuestRender : MonoBehaviour
      * 
      */
 
-    public void LinkToQuestOverviewScreen()
+    public void OpenQuestDetailsScreen(Quest quest)
     {
 
+       QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().Quest = quest;
+       QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails();
+       QuestOverviewScren.SetActive(false);
+       QuestDetailsScreen.SetActive(true);
     }
 
 
