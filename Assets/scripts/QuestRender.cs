@@ -17,6 +17,7 @@ public class QuestRender : MonoBehaviour
      */
 
     public GameObject QuestDetailsScreen;
+    public GameObject content;
 
     // On start, RenderAllQuests will render the quests in the Quest Overview screen
     void Start()
@@ -54,25 +55,27 @@ public class QuestRender : MonoBehaviour
          * 
          * NOTE: in both cases, the x coord is still used due to the header being centered
          */
-        if (gameObject.transform.childCount == 1)
-        {
-            //NewPos will set the new Tile at a position 300 below the header
-            NewPos = new(childPos.x, childPos.y - 300);
-            Debug.Log("Loading first Quest");
-        }
+        //if (gameObject.transform.childCount == 1)
+        //{
+        //    //NewPos will set the new Tile at a position 300 below the header
+        //    NewPos = new(childPos.x, childPos.y - 300);
+        //    Debug.Log("Loading first Quest");
+        //}
 
-        else
-        {
-            //NewPos is set 450 below preceding Quest tile
-            NewPos = new(childPos.x, childPos.y - 450);
-        }
+        //else
+        //{
+        //    //NewPos is set 450 below preceding Quest tile
+        //    NewPos = new(childPos.x, childPos.y - 450);
+        //}
+
+        Vector3 newpos = content.transform.position;
 
         /*
          * Now that we have found the correct coordinates for the new tile, we need to load the prefab
          * We do this using Instantiate with the thing we want is the QuestTile that is loaded using
          * Resources.Load. It has it's position set as newPos and it's parent as the overview page
          */
-        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), NewPos, new Quaternion(0, 0, 0, 0), gameObject.transform);
+        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(newpos.x, newpos.y - 300), new Quaternion(0, 0, 0, 0), content.transform);
 
         /*
          * After instantiating the tile, populate it's predefined fields with the infomation gleamed from
@@ -83,7 +86,7 @@ public class QuestRender : MonoBehaviour
         questTileTemplate.transform.GetChild(1).GetComponent<TMP_Text>().text = q.ShortDescription;
         questTileTemplate.transform.GetChild(2).GetComponent<TMP_Text>().text = q.CoinsReward.ToString();
         questTileTemplate.transform.GetChild(3).GetComponent<TMP_Text>().text = q.LevelRequirement.ToString();
-        questTileTemplate.transform.SetSiblingIndex(gameObject.transform.childCount - 1);
+        questTileTemplate.transform.SetSiblingIndex(content.transform.childCount - 1);
 
         /*
          * Clicking the quest tile should bring you to a page that contains the full details of the quest
@@ -92,7 +95,7 @@ public class QuestRender : MonoBehaviour
          */
 
         questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
-
+        questTileTemplate.name = q.QuestID;
     }
     /*
      * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information

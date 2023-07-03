@@ -136,7 +136,7 @@ public class QuestManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        if (!File.Exists(Application.persistentDataPath + "/Quests.csv"))
+        if (File.Exists(Application.persistentDataPath + "/Quests.csv"))
         {
             Debug.Log("New Quests Loaded");
             TextAsset file = Resources.Load("Quests") as TextAsset;
