@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /*
@@ -15,9 +16,18 @@ public class ResourceLoader : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Awake()
     {
-        
+        QuestManager.Instance.LoadQuests();
+        File.WriteAllText(Application.persistentDataPath + "/playerProgress.json", "hi");
+        if (PlayerManager.Instance.CheckPlayerData())
+        {
+            PlayerManager.Instance.CreateNewPlayer();
+        }
+        else
+        {
+            PlayerManager.Instance.LoadExistingPlayer();
+        }
     }
 }

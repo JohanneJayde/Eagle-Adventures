@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     public int Level { get; set; }
     public int CoinCount { get; set; }
     public int ExpEarned { get; set; }
-
+    public Dictionary<string, bool> PlayerProgress { set; get; }
 
     /*
      * Singleton logic
@@ -93,6 +93,7 @@ public class PlayerManager : MonoBehaviour
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
+        CreateStats();
         SavePlayerInfo();
     }
 
@@ -104,9 +105,11 @@ public class PlayerManager : MonoBehaviour
 
     public void LoadExistingPlayer()
     {
-        
+
         PlayerData data = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(Application.persistentDataPath + "/playerInfo.json"));
+        PlayerProgress = JsonConvert.DeserializeObject<Dictionary<string, bool>>(File.ReadAllText(Application.persistentDataPath + "/playerProgress.json"));
         SendDataToPlayerManager(data);
+
     }
 
     /*
@@ -118,7 +121,7 @@ public class PlayerManager : MonoBehaviour
         this.Name = pData.name;
         this.House = pData.house;
         this.Level = pData.level;
-        this.CoinCount = pData.level;
+        this.CoinCount = pData.coinCount;
         this.ExpEarned = pData.expEarned;
     }
 
@@ -135,6 +138,8 @@ public class PlayerManager : MonoBehaviour
         PlayerData data = new PlayerData(this);
 
         File.WriteAllText(Application.persistentDataPath + "/playerInfo.json", JsonConvert.SerializeObject(data));
+        File.WriteAllText(Application.persistentDataPath + "/playerProgress.json", JsonConvert.SerializeObject(PlayerProgress));
+
 
     }
 
@@ -146,8 +151,6 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
 
-        if(CheckPlayerData())
-            LoadExistingPlayer();
 
     }
 
@@ -179,6 +182,17 @@ public class PlayerManager : MonoBehaviour
      * sets the instance to this.
      */
 
+    public void CreateStats()
+    {
+        PlayerProgress = new Dictionary<string, bool>();
+
+        foreach (var quest in QuestManager.Instance.Quests)
+        {
+            PlayerProgress.Add(quest.QuestID, false);
+            Debug.Log($"Quest: {quest.QuestID}");
+        }
+    }
+
     private void Awake()
     {
         if (_instance == null)
@@ -199,6 +213,8 @@ public class PlayerManager : MonoBehaviour
     public void DeleteSaveData()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
+        File.Delete(Application.persistentDataPath + "/playerProgress.json");
+        PlayerPrefs.DeleteAll();
         Debug.Log("Successfully deleted user player data");
     }
 }

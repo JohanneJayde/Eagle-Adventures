@@ -65,6 +65,8 @@ public class Main : MonoBehaviour
      */
     void Start(){
 
+        PlayerManager.Instance.DeleteSaveData();
+
         bool playerData = PlayerManager.Instance.CheckPlayerData();
 
         if (playerData)

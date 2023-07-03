@@ -4,6 +4,8 @@ using UnityEngine;
 using static QuestManager;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
 
 /*
  * This script renders the details of a quest onto the Quest Details screen
@@ -26,7 +28,24 @@ public class QuestDetailsRenderer : MonoBehaviour
         gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = Quest.CoinsReward.ToString();
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = Quest.ExpEarned.ToString();
         gameObject.transform.GetChild(4).GetComponent<Button>().onClick.AddListener(() => { Application.OpenURL(Quest.CanvasURL.ToString()); });
+        gameObject.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => SubmitCode());
+    }
 
+    private void SubmitCode()
+    {
+
+        string userInput = gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text;
+
+        if (Quest.Code.Equals(userInput))
+        {
+            Debug.Log("Correct Code");
+            PlayerProgressManager.Instance.UpdateProgress(Quest);
+        }
+        else
+        {
+
+            Debug.Log("Incorrect Code");
+        }
     }
 
 

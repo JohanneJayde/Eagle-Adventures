@@ -34,53 +34,21 @@ public class QuestRender : MonoBehaviour
         //Get the quest data based on the QID
         Quest q = QuestManager.Instance.FetchQuestInfo(QID);
 
-        /*
-         * In order to render the tile correctly, we will use NewPos to store the position of the bottom most child
-         * within the overview page. This is so we can position the new tile relative to last child.
-         */
-        Vector2 NewPos;
-        //Get the last child as a Transform component
-        Transform child = gameObject.transform.GetChild(gameObject.transform.childCount - 1);
-        /*
-         * Get the last child's position as a Vector3 object. Because position holds 3 dimensions,
-         * we have to get Vector3 but z cord will not be used
-         */
-        Vector3 childPos = child.transform.position;
-
-        /*
-         * Now we must check we are rendering the first Quest. If that is the case, the positioning will be slightly different
-         * This is because we coordinates stored in childPos are the top right most. If we are rendering the first quest,
-         * then the last child will be the header which is less height than a "QuestTile" prefab. So we need to render it
-         * higher than we would if we were rendering after a Quest tile. 
-         * 
-         * NOTE: in both cases, the x coord is still used due to the header being centered
-         */
-        //if (gameObject.transform.childCount == 1)
-        //{
-        //    //NewPos will set the new Tile at a position 300 below the header
-        //    NewPos = new(childPos.x, childPos.y - 300);
-        //    Debug.Log("Loading first Quest");
-        //}
-
-        //else
-        //{
-        //    //NewPos is set 450 below preceding Quest tile
-        //    NewPos = new(childPos.x, childPos.y - 450);
-        //}
-
-        Vector3 newpos = content.transform.position;
 
         /*
          * Now that we have found the correct coordinates for the new tile, we need to load the prefab
          * We do this using Instantiate with the thing we want is the QuestTile that is loaded using
-         * Resources.Load. It has it's position set as newPos and it's parent as the overview page
+         * Resources.Load. Because we have content size fitter on the scroll area, we need not worry about the
+         * position of where we place the tile, only that it's parent is the content container
          */
-        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(newpos.x, newpos.y - 300), new Quaternion(0, 0, 0, 0), content.transform);
+        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(0,0), new Quaternion(0, 0, 0, 0), content.transform);
 
         /*
          * After instantiating the tile, populate it's predefined fields with the infomation gleamed from
          * FetchQuestID. Along with this, we also need to make sure that it is ordered in the right fashion
          * using SetSiblingIndex with param of the last child
+         * 
+         * THIS SECTION COULD BE ADDED TO AN EXTERNAL SCRIPT AND ATTCHED TO THE PREFAB OF QUEST TILE
          */
         questTileTemplate.transform.GetChild(0).GetComponent<TMP_Text>().text = q.Title;
         questTileTemplate.transform.GetChild(1).GetComponent<TMP_Text>().text = q.ShortDescription;
@@ -93,6 +61,7 @@ public class QuestRender : MonoBehaviour
          * and the way to actually do the quest. The tiles button component has an onClick event added to it.
          * OpenQuestDetails takes in the found Quest and is used to render more on the details page
          */
+
 
         questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
         questTileTemplate.name = q.QuestID;

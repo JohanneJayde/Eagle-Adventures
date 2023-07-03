@@ -127,6 +127,11 @@ public class QuestManager : MonoBehaviour
      * Quest.CSV is static when it will eventually become dynamic in later builds.
      */
 
+    private void Start()
+    {
+        LoadQuests();
+    }
+
     private void Awake()
     {
         if (_instance == null)
@@ -145,6 +150,5 @@ public class QuestManager : MonoBehaviour
 
         }
 
-        LoadQuests();
     }
 }
