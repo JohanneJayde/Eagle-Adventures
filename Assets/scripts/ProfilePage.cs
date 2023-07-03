@@ -11,12 +11,6 @@ public class ProfilePage : MonoBehaviour
     public GameObject questPage;
     public GameObject profilePage;
     
-    public Image personalityTile;
-    public Image campaignTile1;
-    public Image campaignTile2;
-    public Image campaignTile3;
-    public Image campaignTile4;
-
     public TMP_Text personalityType;
     public TMP_Text personalityDescription;
 
@@ -29,9 +23,4 @@ public class ProfilePage : MonoBehaviour
         personalityDescription.text += PlayerPrefs.GetString("typeDesc", "nanna");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
