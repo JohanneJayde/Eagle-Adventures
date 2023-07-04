@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,13 +19,8 @@ public class QuestRender : MonoBehaviour
     public GameObject QuestDetailsScreen;
     public GameObject content;
 
+    [SerializeField]
     public List<GameObject> QuestTiles = new List<GameObject>();
-
-    // On start, RenderAllQuests will render the quests in the Quest Overview screen
-    void Start()
-    {
-        RenderAllQuests();
-    }
 
     /*
      * RenderQuest takes in a string that represents a Quest ID. It will then use FetchQuestInfo to get that quest's info
@@ -66,8 +62,9 @@ public class QuestRender : MonoBehaviour
         /*
          * Add tile to list of tiles that will be filtered later on
          */
-
         QuestTiles.Add(QuestTile);
+
+        Debug.Log("Count: " + QuestTiles.Count);
     }
     /*
      * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
@@ -78,10 +75,37 @@ public class QuestRender : MonoBehaviour
     public void OpenQuestDetailsScreen(Quest quest)
     {
 
-       QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().Quest = quest;
-       QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails();
+  
+       QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails(quest);
+       QuestDetailsScreen.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => { UnlockQuests(); });
        gameObject.SetActive(false);
        QuestDetailsScreen.SetActive(true);
+    }
+
+    public void UnlockQuests()
+    {
+
+        Debug.Log("Time to Unlock Quests");
+        Debug.Log("Level: " + PlayerManager.Instance.Level);
+
+
+        foreach(GameObject qest in QuestTiles)
+        {
+            Debug.Log("Level Req: " + qest.GetComponent<QuestTileRender>().Quest);
+        }
+
+        var quests =
+            from q in QuestTiles
+            where q.GetComponent<QuestTileRender>().Quest.LevelRequirement == PlayerManager.Instance.Level
+            select q;
+
+        Debug.Log("Quest Filtered: " + quests.Count());
+
+        foreach(GameObject quest in quests)
+        {
+            Debug.Log("Unlocked: " + quest.GetComponent<QuestTileRender>().Quest.QuestID);
+            quest.GetComponent<QuestTileRender>().Unlock();
+        }
     }
 
     /*
@@ -95,6 +119,12 @@ public class QuestRender : MonoBehaviour
             RenderQuest(quest.QuestID);
             Debug.Log(quest.QuestID + " has been rendered");
         }
+    }
+
+    // On start, RenderAllQuests will render the quests in the Quest Overview screen
+    void Start()
+    {
+        RenderAllQuests();
     }
 
 }

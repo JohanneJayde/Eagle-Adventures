@@ -21,12 +21,29 @@ public class QuestDetailsRenderer : MonoBehaviour
      * 
      * TODO: Currently it only suppots IOS deeplinking when we need to support android DL as well.
      */
-    public void RenderDetails() {
+    public void RenderDetails(Quest quest) {
+        Quest = quest;
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.LongDescription;
         gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = Quest.CoinsReward.ToString();
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = Quest.ExpEarned.ToString();
         gameObject.transform.GetChild(4).GetComponent<Button>().onClick.AddListener(() => { Application.OpenURL(Quest.CanvasURL.ToString()); });
+
+        if (isCompleted(Quest))
+        {
+            gameObject.transform.GetChild(6).GetComponent<Button>().enabled = false;
+            gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
+            gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = Quest.Code;
+
+        }
+        else
+        {
+                gameObject.transform.GetChild(6).GetComponent<Button>().enabled = true;
+                gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = true;
+                gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = "";
+
+         }
+
         gameObject.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => SubmitCode());
     }
 
@@ -38,6 +55,9 @@ public class QuestDetailsRenderer : MonoBehaviour
         if (Quest.Code.Equals(userInput))
         {
             Debug.Log("Correct Code");
+            gameObject.transform.GetChild(6).GetComponent<Button>().enabled = false;
+            gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
+
             PlayerProgressManager.Instance.UpdateProgress(Quest);
         }
         else
@@ -45,6 +65,12 @@ public class QuestDetailsRenderer : MonoBehaviour
 
             Debug.Log("Incorrect Code");
         }
+
+    }
+
+    public bool isCompleted(Quest quest)
+    {
+        return PlayerManager.Instance.PlayerProgress[quest.QuestID];
     }
 
 

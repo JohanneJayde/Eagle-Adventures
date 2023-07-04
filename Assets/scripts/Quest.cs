@@ -36,7 +36,7 @@ public class Quest
     override
     public string ToString()
     {
-        return $"QuestID : {QuestID} ";
+        return $"QuestID : {QuestID} Title : {Title} Level Requirement : {LevelRequirement}";
     }
 
     /*

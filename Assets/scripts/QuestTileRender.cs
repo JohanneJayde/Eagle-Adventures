@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class QuestTileRender : MonoBehaviour
 {
-
     public Quest Quest { get; set; }
-
 
     public void Render(Quest q){
         Quest = q;
@@ -41,8 +39,6 @@ public class QuestTileRender : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Quest = new Quest();
     }
 
     // Update is called once per frame

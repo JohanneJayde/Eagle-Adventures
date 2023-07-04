@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,10 @@ public class PlayerProgressManager : MonoBehaviour
 {
 
 
+    delegate void UpdateHUD();
+
     Dictionary<int, int> LevelSteps = new Dictionary<int, int>();
  
-    
-
 /*
  * Singleton logic
  */
@@ -33,19 +34,13 @@ public class PlayerProgressManager : MonoBehaviour
     public void UpdateProgress(Quest quest)
     {
 
-
         PlayerManager.Instance.ExpEarned += quest.ExpEarned;
         PlayerManager.Instance.CoinCount += quest.CoinsReward;
         PlayerManager.Instance.PlayerProgress[quest.QuestID] = true;
         CheckLevel(PlayerManager.Instance.ExpEarned);
         Debug.Log(PlayerManager.Instance);
 
-
-
         PlayerManager.Instance.SavePlayerInfo();
-
-        
-
 
         Debug.Log("Player Info Updated");
 
@@ -73,13 +68,10 @@ public class PlayerProgressManager : MonoBehaviour
         LevelSteps.Add(4, 600);
 
 
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void Awake()
     {
