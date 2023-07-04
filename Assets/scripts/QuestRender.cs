@@ -19,7 +19,6 @@ public class QuestRender : MonoBehaviour
     public GameObject QuestDetailsScreen;
     public GameObject content;
 
-    [SerializeField]
     public List<GameObject> QuestTiles = new List<GameObject>();
 
     /*
@@ -64,7 +63,6 @@ public class QuestRender : MonoBehaviour
          */
         QuestTiles.Add(QuestTile);
 
-        Debug.Log("Count: " + QuestTiles.Count);
     }
     /*
      * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
@@ -87,12 +85,6 @@ public class QuestRender : MonoBehaviour
 
         Debug.Log("Time to Unlock Quests");
         Debug.Log("Level: " + PlayerManager.Instance.Level);
-
-
-        foreach(GameObject qest in QuestTiles)
-        {
-            Debug.Log("Level Req: " + qest.GetComponent<QuestTileRender>().Quest);
-        }
 
         var quests =
             from q in QuestTiles

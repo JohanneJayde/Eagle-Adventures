@@ -6752,7 +6752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Current Level:'
+  m_text: 'Current Level: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8450,7 +8450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitlePage: {fileID: 474136037}
   NewEagleScreen: {fileID: 398805127}
-  SortingQuizIntroScren: {fileID: 0}
+  SortingQuizIntroScren: {fileID: 835498895}
   ProfileScreen: {fileID: 1329078662}
   EnterButton: {fileID: 669288102}
   nameField: {fileID: 1588695966}
@@ -9085,6 +9085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cae35c57aaa84f1b9c650e9677809a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCard: {fileID: 1629443487}
 --- !u!1 &1953338118
 GameObject:
   m_ObjectHideFlags: 0

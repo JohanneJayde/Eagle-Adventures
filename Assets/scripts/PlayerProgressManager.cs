@@ -11,9 +11,9 @@ public class PlayerProgressManager : MonoBehaviour
 {
 
 
-    delegate void UpdateHUD();
+    public GameObject PlayerCard;
 
-    Dictionary<int, int> LevelSteps = new Dictionary<int, int>();
+    readonly Dictionary<int, int> LevelSteps = new Dictionary<int, int>();
  
 /*
  * Singleton logic
@@ -38,8 +38,7 @@ public class PlayerProgressManager : MonoBehaviour
         PlayerManager.Instance.CoinCount += quest.CoinsReward;
         PlayerManager.Instance.PlayerProgress[quest.QuestID] = true;
         CheckLevel(PlayerManager.Instance.ExpEarned);
-        Debug.Log(PlayerManager.Instance);
-
+        PlayerCard.GetComponent<PlayerCard>().RenderCard();
         PlayerManager.Instance.SavePlayerInfo();
 
         Debug.Log("Player Info Updated");
@@ -47,8 +46,8 @@ public class PlayerProgressManager : MonoBehaviour
     }
 
     public void CheckLevel(int totalXP)
-    {
-        if(totalXP >= LevelSteps[PlayerManager.Instance.Level + 1])
+    {if(totalXP >= LevelSteps[PlayerManager.Instance.Level + 1])
+        
         {
             PlayerManager.Instance.Level++;
             Debug.Log("LEVEL UP!");
@@ -66,9 +65,6 @@ public class PlayerProgressManager : MonoBehaviour
         LevelSteps.Add(2, 150);
         LevelSteps.Add(3, 300);
         LevelSteps.Add(4, 600);
-
-
-
 
     }
 

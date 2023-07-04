@@ -92,13 +92,17 @@ public class QuestManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        if (File.Exists(Application.persistentDataPath + "/Quests.csv"))
+        if (!File.Exists(Application.persistentDataPath + "/Quests.csv"))
         {
             Debug.Log("New Quests Loaded");
             TextAsset file = Resources.Load("Quests") as TextAsset;
 
             File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
 
+        }
+        else
+        {
+            Debug.Log("Quests have already been copied");
         }
 
     }

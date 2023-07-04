@@ -31,7 +31,11 @@ public class Main : MonoBehaviour
 
     public void LoadNewEagleScreen()
     {
+        Debug.Log("Load Onboarding Screen");
         NewEagleScreen.SetActive(true);
+
+        createUserButton.onClick.AddListener(() => RegisterNewPlayer());
+
         TitlePage.SetActive(false);
     }
 
@@ -52,9 +56,23 @@ public class Main : MonoBehaviour
     {
         PlayerManager.Instance.CreateNewPlayer(nameField.text);
 
-        PlayerManager.Instance.LoadExistingPlayer();
+    }
 
+    public void LoadNextScreen()
+    {
+        bool playerData = PlayerManager.Instance.CheckPlayerData();
 
+        if (playerData)
+        {
+            Debug.Log("Player Found");
+            PlayerManager.Instance.LoadExistingPlayer();
+            LoadProfileScreen();
+        }
+        else
+        {
+            Debug.Log("No Player Found");
+            LoadNewEagleScreen();
+        }
     }
 
     /*
@@ -65,19 +83,7 @@ public class Main : MonoBehaviour
      */
     void Start(){
 
-        PlayerManager.Instance.DeleteSaveData();
-
-        bool playerData = PlayerManager.Instance.CheckPlayerData();
-
-        if (playerData)
-        {
-            EnterButton.onClick.AddListener(() => LoadProfileScreen());
-        }
-        else
-        {
-            EnterButton.onClick.AddListener(() => LoadNewEagleScreen());
-            createUserButton.onClick.AddListener(() => RegisterNewPlayer());
-        }
+        EnterButton.onClick.AddListener(() => LoadNextScreen());
 
     }
 }

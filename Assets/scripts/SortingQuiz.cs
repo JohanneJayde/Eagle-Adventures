@@ -20,7 +20,7 @@ public class SortingQuiz : MonoBehaviour
     {
         public Question[] questions;
 
-        public int count()
+        public int Count()
         {
             return questions.Length;
         }
@@ -114,7 +114,7 @@ public class SortingQuiz : MonoBehaviour
     getTopType() returns the user's top type. This is the type of person the user based on answer the quiz. It takes in a Dictionary
     and returns the Key associated with the highest Value.
     */
-    public string getTopType(Dictionary<string, int> typeCounter)
+    public string GetTopType(Dictionary<string, int> typeCounter)
     {
         int topValue = 0;
         string topType = "";
@@ -137,12 +137,12 @@ public class SortingQuiz : MonoBehaviour
     After Object creation, count() is used to find the number of questions in the JSON file.
     Also calls ReadTypes to read in the types, the user can be sorted into.
     */
-    public void readJsons()
+    public void ReadJsons()
     {
         questionSet = JsonUtility.FromJson<QuestionSet>(questionsJson.text);
         typeSet = JsonUtility.FromJson<TypeSet>(typesJson.text);
 
-        questionCount = questionSet.count();
+        questionCount = questionSet.Count();
         readTypes(questionSet.questions[0].options);
     }
 
@@ -165,7 +165,7 @@ public class SortingQuiz : MonoBehaviour
     */
     public void setUserType()
     {
-        string type = getTopType(typeCounter);
+        string type = GetTopType(typeCounter);
         Type typeInfo = getTypeInfo(type);
 
         PlayerPrefs.SetString("type", typeInfo.name);
@@ -244,7 +244,7 @@ public class SortingQuiz : MonoBehaviour
     public void TallyType(Button button)
     {
         TMP_Text questionType = button.GetComponentInChildren<TMP_Text>();
-        string type = findType(questionType.text);
+        string type = FindType(questionType.text);
         typeCounter[type] = typeCounter[type] + 1;
         readNextQuestion();
     }
@@ -252,7 +252,7 @@ public class SortingQuiz : MonoBehaviour
     /*
     findType() finds the type given a option in string form
     */
-    public string findType(string optionBody)
+    public string FindType(string optionBody)
     {
         Question curQuest = getCurQuestion();
         Option[] curOptions = curQuest.options;
@@ -275,7 +275,7 @@ public class SortingQuiz : MonoBehaviour
     */
     void Start()
     {
-        readJsons();
+        ReadJsons();
         curQuestion = 0;
         readCurQuestion(curQuestion);
 
