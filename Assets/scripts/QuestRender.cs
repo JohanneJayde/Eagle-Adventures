@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static QuestManager;
 
 /*
  * QuestRender handles rendering a set or individual Quests on the app.
@@ -18,6 +17,8 @@ public class QuestRender : MonoBehaviour
 
     public GameObject QuestDetailsScreen;
     public GameObject content;
+
+    public List<GameObject> QuestTiles = new List<GameObject>();
 
     // On start, RenderAllQuests will render the quests in the Quest Overview screen
     void Start()
@@ -41,20 +42,18 @@ public class QuestRender : MonoBehaviour
          * Resources.Load. Because we have content size fitter on the scroll area, we need not worry about the
          * position of where we place the tile, only that it's parent is the content container
          */
-        GameObject questTileTemplate = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(0,0), new Quaternion(0, 0, 0, 0), content.transform);
+         GameObject QuestTile = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(0,0), new Quaternion(0, 0, 0, 0), content.transform);
 
         /*
          * After instantiating the tile, populate it's predefined fields with the infomation gleamed from
          * FetchQuestID. Along with this, we also need to make sure that it is ordered in the right fashion
          * using SetSiblingIndex with param of the last child
          * 
-         * THIS SECTION COULD BE ADDED TO AN EXTERNAL SCRIPT AND ATTCHED TO THE PREFAB OF QUEST TILE
+         * The displaying of the infomation found from FetchQuestID is done using the attached script's Render method
          */
-        questTileTemplate.transform.GetChild(0).GetComponent<TMP_Text>().text = q.Title;
-        questTileTemplate.transform.GetChild(1).GetComponent<TMP_Text>().text = q.ShortDescription;
-        questTileTemplate.transform.GetChild(2).GetComponent<TMP_Text>().text = q.CoinsReward.ToString();
-        questTileTemplate.transform.GetChild(3).GetComponent<TMP_Text>().text = q.LevelRequirement.ToString();
-        questTileTemplate.transform.SetSiblingIndex(content.transform.childCount - 1);
+        QuestTile.GetComponent<QuestTileRender>().Render(q);
+        QuestTile.transform.SetSiblingIndex(content.transform.childCount - 1);
+
 
         /*
          * Clicking the quest tile should bring you to a page that contains the full details of the quest
@@ -62,9 +61,13 @@ public class QuestRender : MonoBehaviour
          * OpenQuestDetails takes in the found Quest and is used to render more on the details page
          */
 
+        QuestTile.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
 
-        questTileTemplate.GetComponent<Button>().onClick.AddListener(() => { OpenQuestDetailsScreen(q); });
-        questTileTemplate.name = q.QuestID;
+        /*
+         * Add tile to list of tiles that will be filtered later on
+         */
+
+        QuestTiles.Add(QuestTile);
     }
     /*
      * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information

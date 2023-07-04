@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static QuestManager;
-
 
 /*
  * TODO: This is going to be used to track player progress
@@ -41,6 +39,7 @@ public class PlayerProgressManager : MonoBehaviour
         PlayerManager.Instance.PlayerProgress[quest.QuestID] = true;
         CheckLevel(PlayerManager.Instance.ExpEarned);
         Debug.Log(PlayerManager.Instance);
+
 
 
         PlayerManager.Instance.SavePlayerInfo();
