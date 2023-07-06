@@ -39,7 +39,6 @@ public class QuestTile : MonoBehaviour
 
     public void Unlock()
     {
-        Debug.Log("Unlocking... " + Quest.Title);
         gameObject.GetComponent<Button>().enabled = true;
         gameObject.GetComponent<Image>().color = Color.cyan;
 
@@ -59,8 +58,7 @@ public class QuestTile : MonoBehaviour
     public void RenderDetails()
     {
 
-
-        QuestScreen.GetComponent<QuestScreen>().RenderDetails(Quest);
+        QuestScreen.GetComponent<QuestScreen>().SetScreenDetails(Quest);
         QuestScreen.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => { Unlock(); });
         QuestScreen.SetActive(true);
     }

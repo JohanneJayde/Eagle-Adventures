@@ -29,6 +29,8 @@ public class QuestManager : MonoBehaviour
     public GameObject QuestDetailsScreen;
     public IEnumerable<Quest> Quests { get; set; }
     public List<GameObject> QuestTiles { get; set; }
+    public List<GameObject> LockedQuests { get; set; }
+
 
     /*
      * Singleton logic
@@ -64,13 +66,16 @@ public class QuestManager : MonoBehaviour
 
     }
 
-
     public GameObject CreateTile(Quest quest)
     {
         GameObject QuestTile = Instantiate((GameObject)Resources.Load("Prefabs/QuestTile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0));
         QuestTile.GetComponent<QuestTile>().Quest = quest;
         QuestTile.GetComponent<QuestTile>().Render();
-        QuestTile.GetComponent<QuestTile>().QuestDetailsScreen = QuestDetailsScreen;
+        if(QuestTile.GetComponent<QuestTile>().IsLocked)
+        {
+            LockedQuests.Add(QuestTile);
+        }
+        QuestTile.GetComponent<QuestTile>().QuestScreen = QuestDetailsScreen;
 
         return QuestTile;
     }
@@ -90,32 +95,29 @@ public class QuestManager : MonoBehaviour
         return QTiles;
     }
 
+    /*
+     * Contain a list of locked Quests. That way you do not have to constantly iterate over the unlocked quest t
+     * 
+     */
+    
     public void UnlockQuests()
     {
 
-        Debug.Log("Time to Unlock Quests");
-        Debug.Log("Level: " + PlayerManager.Instance.Level);
-
-        var quests =
-            from q in QuestTiles
-            where q.GetComponent<QuestTile>().Quest.LevelRequirement == PlayerManager.Instance.Level
-            && q.GetComponent<QuestTile>().IsLocked == true
-            select q;
-
-        Debug.Log("Quest Filtered: " + quests.Count());
-
-        foreach (GameObject quest in quests)
+        foreach (GameObject quest in from q in LockedQuests.ToList()
+                                 where q.GetComponent<QuestTile>().Quest.LevelRequirement == PlayerManager.Instance.Level
+                                 select q)
         {
-            Debug.Log("Unlocked: " + quest.GetComponent<QuestTile>().Quest.QuestID);
-            quest.GetComponent<QuestTile>().Unlock();
+           quest.GetComponent<QuestTile>().Unlock();
+           LockedQuests.Remove(quest);
         }
+
     }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
      * information for rendering purposes
      * 
-     * It is using LING Single() method is used to return single Quest that satisfies the Function
+     * It is using LINQ Single() method is used to return single Quest that satisfies the Function
      * A Lamda Expression is used in place of Function
      */
     public Quest FetchQuestInfo(string QuestID)
@@ -132,6 +134,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        LockedQuests = new();
         LoadQuests();
     }
 

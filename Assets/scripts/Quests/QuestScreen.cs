@@ -24,7 +24,7 @@ public class QuestScreen : MonoBehaviour
      * 
      * TODO: Currently it only suppots IOS deeplinking when we need to support android DL as well.
      */
-    public void RenderDetails(Quest quest) {
+    public void SetScreenDetails(Quest quest) {
         Quest = quest;
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.LongDescription;
@@ -69,7 +69,6 @@ public class QuestScreen : MonoBehaviour
             gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
 
             PlayerProgressManager.Instance.UpdateProgress(Quest);
-          //  OverviewScreen.GetComponent<QuestRender>().updateTiles();
         }
         else
         {
