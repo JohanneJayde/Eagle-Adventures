@@ -50,13 +50,11 @@ public class QuestRender : MonoBehaviour
         RenderAllQuests();
     }
 
-    //public void updateTiles()
-    //{
-    //    foreach (GameObject quest in QuestTiles)
-    //    {
-
-    //        quest.GetComponent<QuestTileRender>().Render();
-    //    }
-    //}
+    public void Filter()
+    {
+        foreach(GameObject quest in QuestTiles.Where((q) => q.GetComponent<QuestTileRender>().Quest.LevelRequirement != 3)){
+            quest.SetActive(false);
+        }
+    }
 
 }
