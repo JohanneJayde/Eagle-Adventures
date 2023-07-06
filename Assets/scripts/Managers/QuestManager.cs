@@ -67,10 +67,10 @@ public class QuestManager : MonoBehaviour
 
     public GameObject CreateTile(Quest quest)
     {
-        GameObject QuestTile = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0));
-        QuestTile.GetComponent<QuestTileRender>().Quest = quest;
-        QuestTile.GetComponent<QuestTileRender>().Render();
-        QuestTile.GetComponent<QuestTileRender>().QuestDetailsScreen = QuestDetailsScreen;
+        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Prefabs/QuestTile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0));
+        QuestTile.GetComponent<QuestTile>().Quest = quest;
+        QuestTile.GetComponent<QuestTile>().Render();
+        QuestTile.GetComponent<QuestTile>().QuestDetailsScreen = QuestDetailsScreen;
 
         return QuestTile;
     }
@@ -98,16 +98,16 @@ public class QuestManager : MonoBehaviour
 
         var quests =
             from q in QuestTiles
-            where q.GetComponent<QuestTileRender>().Quest.LevelRequirement == PlayerManager.Instance.Level
-            && q.GetComponent<QuestTileRender>().IsLocked == true
+            where q.GetComponent<QuestTile>().Quest.LevelRequirement == PlayerManager.Instance.Level
+            && q.GetComponent<QuestTile>().IsLocked == true
             select q;
 
         Debug.Log("Quest Filtered: " + quests.Count());
 
         foreach (GameObject quest in quests)
         {
-            Debug.Log("Unlocked: " + quest.GetComponent<QuestTileRender>().Quest.QuestID);
-            quest.GetComponent<QuestTileRender>().Unlock();
+            Debug.Log("Unlocked: " + quest.GetComponent<QuestTile>().Quest.QuestID);
+            quest.GetComponent<QuestTile>().Unlock();
         }
     }
 
@@ -145,7 +145,7 @@ public class QuestManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
 
-            TextAsset file = Resources.Load("Quests") as TextAsset;
+            TextAsset file = Resources.Load("Data/Quests") as TextAsset;
             File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
 
     }

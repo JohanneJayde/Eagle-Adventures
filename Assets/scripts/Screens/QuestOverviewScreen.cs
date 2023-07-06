@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
  * QuestRender handles rendering a set or individual Quests on the app.
  */
 
-public class QuestRender : MonoBehaviour
+public class OverviewScreen : MonoBehaviour
 {
     /*
      * QuestDetailsScreen references the screen where individual Quest info will
@@ -80,7 +80,7 @@ public class QuestRender : MonoBehaviour
 
         foreach (GameObject Quest in QuestTiles)
         {
-            if (Quest.GetComponent<QuestTileRender>().Quest.Title.
+            if (Quest.GetComponent<QuestTile>().Quest.Title.
                 StartsWith(title, StringComparison.CurrentCultureIgnoreCase))
             {
                 Quest.SetActive(true);

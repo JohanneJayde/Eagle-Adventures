@@ -9,7 +9,7 @@ using System;
 /*
  * This script renders the details of a quest onto the Quest Details screen
  */
-public class QuestDetailsRenderer : MonoBehaviour
+public class QuestScreen : MonoBehaviour
 {
 
     public GameObject OverviewScreen;

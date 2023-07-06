@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 
+
+/*
+ * PLEASE FOR THE LOVE OF GOD FIX THIS, THIS CODE IS SLOPPY LOOOOOL
+ * 
+ */
+
 public class Main : MonoBehaviour
 {
 

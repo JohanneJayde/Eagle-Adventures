@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class QuestTileRender : MonoBehaviour
+public class QuestTile : MonoBehaviour
 {
 
 
@@ -12,9 +12,7 @@ public class QuestTileRender : MonoBehaviour
 
     public bool IsLocked { get; set;}
 
-    
-
-    public GameObject QuestDetailsScreen;
+    public GameObject QuestScreen;
 
     public void Render() {
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
@@ -62,11 +60,10 @@ public class QuestTileRender : MonoBehaviour
     {
 
 
-        QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails(Quest);
-        QuestDetailsScreen.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => { Unlock(); });
-        QuestDetailsScreen.SetActive(true);
+        QuestScreen.GetComponent<QuestScreen>().RenderDetails(Quest);
+        QuestScreen.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => { Unlock(); });
+        QuestScreen.SetActive(true);
     }
-
 
 
     public void Attached()

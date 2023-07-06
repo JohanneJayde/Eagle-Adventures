@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class ProfilePage : MonoBehaviour
+public class ProfileScreen : MonoBehaviour
 {
     
     public GameObject questPage;
