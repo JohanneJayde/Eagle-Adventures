@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * TODO: This is going to be used to track player progress
@@ -10,11 +11,7 @@ using UnityEngine;
 public class PlayerProgressManager : MonoBehaviour
 {
 
-
-    public GameObject PlayerCard;
-
-    readonly Dictionary<int, int> LevelSteps = new Dictionary<int, int>();
- 
+    public UnityEvent UpdateRenders;
 /*
  * Singleton logic
  */
@@ -31,40 +28,24 @@ public class PlayerProgressManager : MonoBehaviour
 
     }
 
+    //OBSERVER PATTERN, ADD Abtract void UpdateUI method
+    //Subscribe playercard, stats, and quest renders
+
     public void UpdateProgress(Quest quest)
     {
 
-        PlayerManager.Instance.ExpEarned += quest.ExpEarned;
-        PlayerManager.Instance.CoinCount += quest.CoinsReward;
-        PlayerManager.Instance.PlayerProgress[quest.QuestID] = true;
-        CheckLevel(PlayerManager.Instance.ExpEarned);
-        PlayerCard.GetComponent<PlayerCard>().RenderCard();
-        PlayerManager.Instance.SavePlayerInfo();
-
+        PlayerManager.Instance.UpdateStats(quest);
+        UpdateRenders?.Invoke();
         Debug.Log("Player Info Updated");
 
     }
 
-    public void CheckLevel(int totalXP)
-    {if(totalXP >= LevelSteps[PlayerManager.Instance.Level + 1])
-        
-        {
-            PlayerManager.Instance.Level++;
-            Debug.Log("LEVEL UP!");
-        }
-        else
-        {
-            Debug.Log("Not yet!");
-        }
-    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        LevelSteps.Add(1, 50);
-        LevelSteps.Add(2, 150);
-        LevelSteps.Add(3, 300);
-        LevelSteps.Add(4, 600);
+
 
     }
 

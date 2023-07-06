@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using FileHelpers;
+using UnityEngine.Events;
 
 
 /*
@@ -19,11 +20,15 @@ using FileHelpers;
 
 public class QuestManager : MonoBehaviour
 {
+
     /*
      * Quests Property stores all the quests in the CSV file. It is of type IEnumerable to support LINQ operations
      * and for preformance reasons
      */
+
+    public GameObject QuestDetailsScreen;
     public IEnumerable<Quest> Quests { get; set; }
+    public List<GameObject> QuestTiles { get; set; }
 
     /*
      * Singleton logic
@@ -54,9 +59,56 @@ public class QuestManager : MonoBehaviour
     {
 
         var engine = new FileHelperEngine<Quest>();
-
         Quests = engine.ReadFileAsList(Application.persistentDataPath + "/Quests.csv").ToList();
+        QuestTiles = CreateTiles(Quests);
 
+    }
+
+
+    public GameObject CreateTile(Quest quest)
+    {
+        GameObject QuestTile = Instantiate((GameObject)Resources.Load("QuestTile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0));
+        QuestTile.GetComponent<QuestTileRender>().Quest = quest;
+        QuestTile.GetComponent<QuestTileRender>().Render();
+        QuestTile.GetComponent<QuestTileRender>().QuestDetailsScreen = QuestDetailsScreen;
+
+        return QuestTile;
+    }
+
+    public List<GameObject> CreateTiles(IEnumerable<Quest> Quests)
+    {
+
+        List<GameObject> QTiles = new List<GameObject>().ToList();
+
+        foreach (Quest quest in Quests)
+        {
+          
+            QTiles.Add(CreateTile(quest));
+
+        }
+
+        return QTiles;
+    }
+
+    public void UnlockQuests()
+    {
+
+        Debug.Log("Time to Unlock Quests");
+        Debug.Log("Level: " + PlayerManager.Instance.Level);
+
+        var quests =
+            from q in QuestTiles
+            where q.GetComponent<QuestTileRender>().Quest.LevelRequirement == PlayerManager.Instance.Level
+            && q.GetComponent<QuestTileRender>().IsLocked == true
+            select q;
+
+        Debug.Log("Quest Filtered: " + quests.Count());
+
+        foreach (GameObject quest in quests)
+        {
+            Debug.Log("Unlocked: " + quest.GetComponent<QuestTileRender>().Quest.QuestID);
+            quest.GetComponent<QuestTileRender>().Unlock();
+        }
     }
 
     /*
@@ -92,18 +144,9 @@ public class QuestManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        if (!File.Exists(Application.persistentDataPath + "/Quests.csv"))
-        {
-            Debug.Log("New Quests Loaded");
+
             TextAsset file = Resources.Load("Quests") as TextAsset;
-
             File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
-
-        }
-        else
-        {
-            Debug.Log("Quests have already been copied");
-        }
 
     }
 }

@@ -12,8 +12,11 @@ using System;
 public class QuestDetailsRenderer : MonoBehaviour
 {
 
+    public GameObject OverviewScreen;
+
     //the current quest the page is rendering. This has been preset from OpenQuestDetailsScreen although it may switch
     public Quest Quest { set; get; }
+
 
     /*
      * Render the info to the user. An onClick listener is added so that the user may open the canvas assignment
@@ -29,22 +32,29 @@ public class QuestDetailsRenderer : MonoBehaviour
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = Quest.ExpEarned.ToString();
         gameObject.transform.GetChild(4).GetComponent<Button>().onClick.AddListener(() => { Application.OpenURL(Quest.CanvasURL.ToString()); });
 
-        if (isCompleted(Quest))
-        {
-            gameObject.transform.GetChild(6).GetComponent<Button>().enabled = false;
-            gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
-            gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = Quest.Code;
-
-        }
+        if (IsCompleted(Quest))
+            Complete();
         else
         {
-                gameObject.transform.GetChild(6).GetComponent<Button>().enabled = true;
-                gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = true;
-                gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = "";
-
-         }
+            Incomplete();
+        }
 
         gameObject.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => SubmitCode());
+    }
+
+    public void Complete()
+    {
+        gameObject.transform.GetChild(6).GetComponent<Button>().enabled = false;
+        gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
+        gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = Quest.Code;
+
+    }
+
+    public void Incomplete()
+    {
+        gameObject.transform.GetChild(6).GetComponent<Button>().enabled = true;
+        gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = true;
+        gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().text = "";
     }
 
     private void SubmitCode()
@@ -59,6 +69,7 @@ public class QuestDetailsRenderer : MonoBehaviour
             gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
 
             PlayerProgressManager.Instance.UpdateProgress(Quest);
+          //  OverviewScreen.GetComponent<QuestRender>().updateTiles();
         }
         else
         {
@@ -68,7 +79,7 @@ public class QuestDetailsRenderer : MonoBehaviour
 
     }
 
-    public bool isCompleted(Quest quest)
+    public bool IsCompleted(Quest quest)
     {
         return PlayerManager.Instance.PlayerProgress[quest.QuestID];
     }

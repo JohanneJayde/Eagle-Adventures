@@ -6,27 +6,65 @@ using UnityEngine.UI;
 
 public class QuestTileRender : MonoBehaviour
 {
+
+
     public Quest Quest { get; set; }
 
-    public void Render(Quest q){
-        Quest = q;
+    public bool IsLocked { get; set;}
+
+    
+
+    public GameObject QuestDetailsScreen;
+
+    public void Render() {
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.ShortDescription;
-        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text += Quest.CoinsReward.ToString();
-        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text += Quest.LevelRequirement.ToString();
+        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "Coins: " + Quest.CoinsReward.ToString();
+        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "Level Requirement: " + Quest.LevelRequirement.ToString();
         gameObject.name = Quest.Title;
+        gameObject.GetComponent<Button>().onClick.AddListener(() => RenderDetails());
 
-        if(PlayerManager.Instance.Level < q.LevelRequirement)
+        if(PlayerManager.Instance.Level >= Quest.LevelRequirement)
         {
-            gameObject.GetComponent<Button>().enabled = false;
+            IsLocked = false;
+            Unlock();
         }
+        else
+        {
+            IsLocked = true;
+
+            Lock();
+        }
+
 
     }
 
     public void Unlock()
     {
+        Debug.Log("Unlocking... " + Quest.Title);
         gameObject.GetComponent<Button>().enabled = true;
+        gameObject.GetComponent<Image>().color = Color.cyan;
 
+    }
+
+    public void Lock(){
+        gameObject.GetComponent<Button>().enabled = false;
+        gameObject.GetComponent<Image>().color = Color.green;
+    }
+
+    /*
+* Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
+* This is done by first setting the details script's Quest Property to the Quest that we want to render info for.
+* Then call RenderDetails to render the quest info on the screen and swap to the screen to show the details.
+*/
+
+    public void RenderDetails()
+    {
+
+
+        QuestDetailsScreen.GetComponent<QuestDetailsRenderer>().RenderDetails(Quest);
+        QuestDetailsScreen.transform.GetChild(6).GetComponent<Button>().onClick.AddListener(() => { Unlock(); });
+        QuestDetailsScreen.SetActive(true);
     }
 
 

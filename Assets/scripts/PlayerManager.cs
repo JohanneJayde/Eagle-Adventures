@@ -150,7 +150,13 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        if(CheckPlayerData())
+        {
+            Debug.Log("Player Loaded");
+            LoadExistingPlayer();
+            Debug.Log(PlayerManager.Instance);
 
+        }
 
     }
 
@@ -189,7 +195,6 @@ public class PlayerManager : MonoBehaviour
         foreach (var quest in QuestManager.Instance.Quests)
         {
             PlayerProgress.Add(quest.QuestID, false);
-            Debug.Log($"Quest: {quest.QuestID}");
         }
     }
 
@@ -214,7 +219,32 @@ public class PlayerManager : MonoBehaviour
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
         File.Delete(Application.persistentDataPath + "/playerProgress.json");
+
         PlayerPrefs.DeleteAll();
         Debug.Log("Successfully deleted user player data");
+    }
+
+    public void UpdateStats(Quest quest)
+    {
+        Instance.ExpEarned += quest.ExpEarned;
+        Instance.CoinCount += quest.CoinsReward;
+        CheckLevel(PlayerManager.Instance.ExpEarned);
+        Instance.PlayerProgress[quest.QuestID] = true;
+        PlayerManager.Instance.SavePlayerInfo();
+
+    }
+
+    public void CheckLevel(int totalXP)
+    {
+        if (totalXP >= LevelData.Levels[Instance.Level + 1])
+
+        {
+            Instance.Level++;
+            Debug.Log("LEVEL UP!");
+        }
+        else
+        {
+            Debug.Log("Not yet!");
+        }
     }
 }

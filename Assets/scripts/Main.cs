@@ -65,7 +65,7 @@ public class Main : MonoBehaviour
         if (playerData)
         {
             Debug.Log("Player Found");
-            PlayerManager.Instance.LoadExistingPlayer();
+            Debug.Log(PlayerManager.Instance);
             LoadProfileScreen();
         }
         else
