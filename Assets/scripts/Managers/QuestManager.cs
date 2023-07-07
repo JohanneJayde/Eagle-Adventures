@@ -101,6 +101,7 @@ public class QuestManager : MonoBehaviour
         foreach (GameObject QuestTile in QuestTiles)
         {
             GameObject NewCopyGB = Instantiate(QuestTile);
+
             NewCopy.Add(NewCopyGB);
         }
 

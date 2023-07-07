@@ -39,7 +39,8 @@ public class OverviewScreen : MonoBehaviour
 
         foreach (GameObject quest in QuestManager.Instance.QuestTiles)
         {
-            quest.transform.SetParent(content.transform);
+
+            quest.transform.SetParent(content.transform, false);
             quest.transform.SetSiblingIndex(content.transform.childCount - 1);
 
             QuestTiles.Add(quest);
