@@ -36,6 +36,8 @@ public class OverviewScreen : MonoBehaviour
      */
     public void RenderAllQuests()
     {
+
+        
         foreach (GameObject quest in QuestManager.Instance.QuestTiles)
         {
             quest.transform.SetParent(content.transform);
@@ -45,6 +47,20 @@ public class OverviewScreen : MonoBehaviour
 
         }
     }
+
+
+
+//FIX ISSUE with NOT BEING ABLE TO HAVE MUTLIPEL COPIES OF QUEST LIST
+        // QuestTiles = QuestManager.Instance.CompleteCopy();
+
+        // foreach (GameObject quest in QuestTiles)
+        // {
+        //     quest.transform.SetParent(content.transform);
+        //     quest.transform.SetSiblingIndex(content.transform.childCount - 1);
+
+        // //    QuestTiles.Add(quest);
+
+        // }    
 
 
     // On start, RenderAllQuests will render the quests in the Quest Overview screen

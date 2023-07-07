@@ -40,13 +40,24 @@ public class QuestTile : MonoBehaviour
     public void Unlock()
     {
         gameObject.GetComponent<Button>().enabled = true;
-        gameObject.GetComponent<Image>().color = Color.cyan;
+        gameObject.GetComponent<Image>().color = new Color32(255,189,189,255);
+
+        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
+        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().color = Color.black;
+        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().color = Color.black;
+        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().color = Color.black;
 
     }
 
-    public void Lock(){
+    public void Lock()
+    {
         gameObject.GetComponent<Button>().enabled = false;
-        gameObject.GetComponent<Image>().color = Color.green;
+        gameObject.GetComponent<Image>().color = new Color32(255,97,97,255);
+
+        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
+        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().color = Color.white;
+        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().color = Color.white;
+        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().color = Color.white;
     }
 
     /*

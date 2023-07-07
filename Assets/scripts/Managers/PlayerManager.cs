@@ -220,6 +220,7 @@ public class PlayerManager : MonoBehaviour
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
         File.Delete(Application.persistentDataPath + "/playerProgress.json");
 
+
         PlayerPrefs.DeleteAll();
         Debug.Log("Successfully deleted user player data");
     }

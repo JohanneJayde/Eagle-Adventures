@@ -95,6 +95,19 @@ public class QuestManager : MonoBehaviour
         return QTiles;
     }
 
+        public List<GameObject> CompleteCopy(){
+                List<GameObject> NewCopy = new List<GameObject>().ToList();
+
+        foreach (GameObject QuestTile in QuestTiles)
+        {
+            GameObject NewCopyGB = Instantiate(QuestTile);
+            NewCopy.Add(NewCopyGB);
+        }
+
+        return NewCopy;
+    }
+
+
     /*
      * Contain a list of locked Quests. That way you do not have to constantly iterate over the unlocked quest t
      * 
