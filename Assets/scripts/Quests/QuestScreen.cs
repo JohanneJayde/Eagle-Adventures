@@ -13,6 +13,7 @@ public class QuestScreen : MonoBehaviour
 {
 
     public GameObject OverviewScreen;
+    public GameObject PopUpWindow;
 
     //the current quest the page is rendering. This has been preset from OpenQuestDetailsScreen although it may switch
     public Quest Quest { set; get; }
@@ -72,6 +73,10 @@ public class QuestScreen : MonoBehaviour
             gameObject.transform.GetChild(5).GetComponent<TMP_InputField>().enabled = false;
 
             PlayerProgressManager.Instance.UpdateProgress(Quest);
+
+            PopUpWindow.SetActive(true);
+            PopUpWindow.GetComponent<RewardsPopUp>().PopUp(Quest);
+
         }
         else
         {
