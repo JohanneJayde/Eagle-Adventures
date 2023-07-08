@@ -13,10 +13,11 @@ public class LevelData : MonoBehaviour
      * be granted
      */
     public static Dictionary<int, int> Levels = new Dictionary<int, int> {
-        {1,50 },
-        {2, 100 },
-        {3, 150 },
-        {4, 200 },
-        {5, 250 } };
+        {0,0},
+        {1,100 },
+        {2, 250 },
+        {3, 400 },
+        {4, 450 },
+        {5, 1000 } };
 
 }
