@@ -35,6 +35,9 @@ public class QuestTileSupllier : MonoBehaviour
 
     public void ApplyEvents(GameObject tile){
         tile.GetComponent<Button>().onClick.AddListener(() => RenderDetails(tile.GetComponent<QuestTile>().Quest));
+
+        PlayerManager.Instance.onLevelUp.AddListener(tile.GetComponent<QuestTile>().Render);
+
     }
 
     public List<GameObject> CreateTiles(IEnumerable<Quest> Quests)

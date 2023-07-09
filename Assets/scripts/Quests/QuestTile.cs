@@ -32,6 +32,8 @@ public class QuestTile : MonoBehaviour
             Lock();
         }
 
+        Debug.Log($"Quest {Quest.QuestID} has been updated");
+
 
     }
 

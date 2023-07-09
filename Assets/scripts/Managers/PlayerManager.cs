@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 using System.Data;
+using UnityEngine.Events;
 
 /*
  * PlayerMangager stores information regarding the player's info.
@@ -60,6 +61,8 @@ public class PlayerManager : MonoBehaviour
     public int CoinCount { get; set; }
     public int ExpEarned { get; set; }
     public Dictionary<string, bool> PlayerProgress { set; get; }
+
+    public UnityEvent onLevelUp;
 
     /*
      * Singleton logic
@@ -248,6 +251,8 @@ public class PlayerManager : MonoBehaviour
 
     public void LevelUp(){
             Instance.Level++;
+            onLevelUp?.Invoke();
+
             Debug.Log("LEVEL UP!");
     }
 }

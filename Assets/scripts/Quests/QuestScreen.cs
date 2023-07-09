@@ -86,6 +86,10 @@ public class QuestScreen : MonoBehaviour
 
     }
 
+    public void checkMe(){
+        Debug.Log("Listening..");
+    }
+
     public bool IsCompleted(Quest quest)
     {
         return PlayerManager.Instance.PlayerProgress[quest.QuestID];
