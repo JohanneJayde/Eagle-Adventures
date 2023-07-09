@@ -229,23 +229,25 @@ public class PlayerManager : MonoBehaviour
     {
         Instance.ExpEarned += quest.ExpEarned;
         Instance.CoinCount += quest.CoinsReward;
-        CheckLevel(PlayerManager.Instance.ExpEarned);
+
+        if(CheckLevel(PlayerManager.Instance.ExpEarned)){
+            LevelUp();
+        }
         Instance.PlayerProgress[quest.QuestID] = true;
-        PlayerManager.Instance.SavePlayerInfo();
+        Instance.SavePlayerInfo();
 
     }
 
-    public void CheckLevel(int totalXP)
+    public bool CheckLevel(int totalXP)
     {
         if (totalXP >= LevelData.Levels[Instance.Level + 1])
+            return true;
+        
+        return false;
+    }
 
-        {
+    public void LevelUp(){
             Instance.Level++;
             Debug.Log("LEVEL UP!");
-        }
-        else
-        {
-            Debug.Log("Not yet!");
-        }
     }
 }

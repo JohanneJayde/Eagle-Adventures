@@ -18,20 +18,32 @@ using UnityEngine.Events;
  * @Nuget: FileHelpers
  */
 
+
+
+
 public class QuestManager : MonoBehaviour
 {
+
+
+    // public class test{
+    //     public int Num {get; set;}
+    //     public string Word {get; set;}
+        
+    // }
 
     /*
      * Quests Property stores all the quests in the CSV file. It is of type IEnumerable to support LINQ operations
      * and for preformance reasons
      */
 
-    public GameObject QuestDetailsScreen;
-    public IEnumerable<Quest> Quests { get; set; }
-    public List<GameObject> QuestTiles { get; set; }
-    public List<GameObject> LockedQuests { get; set; }
+    public List<Quest> Quests { get; set; }
+    public IEnumerable<Quest> LockedQuests { get; set; }
+    public IEnumerable<Quest> QuestsToUnlcok { get; set; }
 
+    public QuestTileSupllier Supplier;
 
+    public GameObject QuestScreen;
+   
     /*
      * Singleton logic
      */
@@ -62,68 +74,27 @@ public class QuestManager : MonoBehaviour
 
         var engine = new FileHelperEngine<Quest>();
         Quests = engine.ReadFileAsList(Application.persistentDataPath + "/Quests.csv").ToList();
-        QuestTiles = CreateTiles(Quests);
 
     }
-
-    public GameObject CreateTile(Quest quest)
-    {
-        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Prefabs/QuestTile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0));
-        QuestTile.GetComponent<QuestTile>().Quest = quest;
-        QuestTile.GetComponent<QuestTile>().Render();
-        if(QuestTile.GetComponent<QuestTile>().IsLocked)
-        {
-            LockedQuests.Add(QuestTile);
-        }
-        QuestTile.GetComponent<QuestTile>().QuestScreen = QuestDetailsScreen;
-
-        return QuestTile;
-    }
-
-    public List<GameObject> CreateTiles(IEnumerable<Quest> Quests)
-    {
-
-        List<GameObject> QTiles = new List<GameObject>().ToList();
-
-        foreach (Quest quest in Quests)
-        {
-          
-            QTiles.Add(CreateTile(quest));
-
-        }
-
-        return QTiles;
-    }
-
-        public List<GameObject> CompleteCopy(){
-                List<GameObject> NewCopy = new List<GameObject>().ToList();
-
-        foreach (GameObject QuestTile in QuestTiles)
-        {
-            GameObject NewCopyGB = Instantiate(QuestTile);
-
-            NewCopy.Add(NewCopyGB);
-        }
-
-        return NewCopy;
-    }
-
 
     /*
      * Contain a list of locked Quests. That way you do not have to constantly iterate over the unlocked quest t
      * 
      */
-    
-    public void UnlockQuests()
+    public void SetLockedQuest()
     {
 
-        foreach (GameObject quest in from q in LockedQuests.ToList()
-                                 where q.GetComponent<QuestTile>().Quest.LevelRequirement == PlayerManager.Instance.Level
-                                 select q)
-        {
-           quest.GetComponent<QuestTile>().Unlock();
-           LockedQuests.Remove(quest);
-        }
+        LockedQuests = from quest in Quests
+                       where PlayerManager.Instance.PlayerProgress[quest.QuestID] == false
+                       select quest;
+
+    }    
+    public void UpdateLockedQuest()
+    {
+
+        QuestsToUnlcok = from quest in LockedQuests
+                         where quest.LevelRequirement == PlayerManager.Instance.Level
+                         select quest;
 
     }
 
@@ -148,8 +119,24 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        LockedQuests = new();
+
+        LockedQuests = new List<Quest>();
+        QuestsToUnlcok = new List<Quest>();
+        Supplier = new QuestTileSupllier();
+        Supplier.QuestScreen = QuestScreen;
+
         LoadQuests();
+        SetLockedQuest();
+
+        // List<int> numbers = new List<int>{3,4,5};
+        // List<string> letters = new List<string>{"A","B","C"};
+        
+        // List<test> tests = numbers.Zip(letters, (number, letter) => {return new test{Num = number, Word = letter};}).ToList();
+    
+        // foreach(test testers in tests ){
+        //     Debug.Log(testers.Num + " " + testers.Word );
+        // }
+
     }
 
     private void Awake()
@@ -161,9 +148,8 @@ public class QuestManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-
-            TextAsset file = Resources.Load("Data/Quests") as TextAsset;
-            File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
+        TextAsset file = Resources.Load("Data/Quests") as TextAsset;
+        File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
 
     }
 }
