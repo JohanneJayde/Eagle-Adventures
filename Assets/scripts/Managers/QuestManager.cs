@@ -137,8 +137,6 @@ public class QuestManager : MonoBehaviour
             QuestLevelSet.Add(key, new List<Quest>());
         }
 
-        Supplier = new QuestTileSupllier();
-        
         LoadQuests();
         CreateQuestSet();
 

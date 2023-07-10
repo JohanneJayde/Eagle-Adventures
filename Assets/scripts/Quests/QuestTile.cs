@@ -10,16 +10,15 @@ public class QuestTile : MonoBehaviour
 
     public Quest Quest { get; set; }
     public GameObject QuestScreen;
-    public void Render() {
+    public void SetQuest(Quest q) {
+        Quest = q;
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.ShortDescription;
         gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "Coins: " + Quest.CoinsReward.ToString();
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "Level Requirement: " + Quest.LevelRequirement.ToString();
         gameObject.name = Quest.Title;
 
-        PlayerManager.Instance.onLevelUp.AddListener(gameObject.GetComponent<QuestTile>().SetLockStatus);
         gameObject.GetComponent<Button>().onClick.AddListener(() => RenderDetails(Quest));
-
 
         SetLockStatus();
 
@@ -27,6 +26,7 @@ public class QuestTile : MonoBehaviour
 
     public void Unlock()
     {
+
         gameObject.GetComponent<Button>().enabled = true;
         gameObject.GetComponent<Image>().color = new Color32(255,189,189,255);
 
@@ -39,6 +39,9 @@ public class QuestTile : MonoBehaviour
 
     public void Lock()
     {
+
+        PlayerManager.Instance.onLevelUp.AddListener(gameObject.GetComponent<QuestTile>().SetLockStatus);
+
         gameObject.GetComponent<Button>().enabled = false;
         gameObject.GetComponent<Image>().color = new Color32(255,97,97,255);
 

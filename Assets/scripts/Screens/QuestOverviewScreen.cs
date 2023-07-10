@@ -21,50 +21,25 @@ public class OverviewScreen : MonoBehaviour
 
     public GameObject content;
     public TMP_InputField SearchBar;
-
     public List<GameObject> QuestTiles = new List<GameObject>();
+    public QuestTileSupllier Supplier {get; set;}
 
-    /*
-     * RenderQuest takes in a string that represents a Quest ID. It will then use FetchQuestInfo to get that quest's info
-     * Using that info, a new Prefab of the "QuestTile" asset will be created and displayed on the overview page
-     */
-
-
-    /*
-     * RenderAllQuests renders all the quests by simply getting the all the quests from QuestManager and
-     * using foreach loop with RenderQuest.
-     */
-    public void RenderAllQuests()
-    {
-
-        QuestTiles = QuestManager.Instance.Supplier.CreateAllTiles();
-
-        foreach(GameObject q in QuestTiles){
-            q.transform.SetParent(content.transform, false);
-        }
-
-    }
-
-
-    // On start, RenderAllQuests will render the quests in the Quest Overview screen
     void Start()
     {
-       ClearFilter();
-       RenderAllQuests();
-       SearchBar.onValueChanged.AddListener(delegate { SearchByTitle(); });
-
+        Supplier = new QuestTileSupllier(content);
+        ClearFilter();
+        Supplier.CreateAllTiles();
+        SearchBar.onValueChanged.AddListener(delegate { SearchByTitle(); });
     }
 
 
     public void ClearFilter()
     {
 
-        
         foreach (GameObject questTile in QuestTiles.Where((qt) => qt.activeSelf == false))
         {
             questTile.SetActive(true);
         }
-
 
     }
 
