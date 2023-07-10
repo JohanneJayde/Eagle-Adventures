@@ -222,7 +222,7 @@ public class PlayerManager : MonoBehaviour
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
         File.Delete(Application.persistentDataPath + "/playerProgress.json");
-
+        CreateNewPlayer();
 
         PlayerPrefs.DeleteAll();
         Debug.Log("Successfully deleted user player data");
@@ -234,7 +234,7 @@ public class PlayerManager : MonoBehaviour
         Instance.CoinCount += quest.CoinsReward;
 
         if(CheckLevel(PlayerManager.Instance.ExpEarned)){
-            LevelUp();
+            SetLevel(Instance.Level + 1);
         }
         Instance.PlayerProgress[quest.QuestID] = true;
         Instance.SavePlayerInfo();
@@ -249,8 +249,8 @@ public class PlayerManager : MonoBehaviour
         return false;
     }
 
-    public void LevelUp(){
-            Instance.Level++;
+    public void SetLevel(int level){
+            Instance.Level = level;
             onLevelUp?.Invoke();
 
             Debug.Log("LEVEL UP!");

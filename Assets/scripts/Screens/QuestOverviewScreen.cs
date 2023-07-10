@@ -45,18 +45,6 @@ public class OverviewScreen : MonoBehaviour
 
     }
 
-//FIX ISSUE with NOT BEING ABLE TO HAVE MUTLIPEL COPIES OF QUEST LIST
-        // QuestTiles = QuestManager.Instance.CompleteCopy();
-
-        // foreach (GameObject quest in QuestTiles)
-        // {
-        //     quest.transform.SetParent(content.transform);
-        //     quest.transform.SetSiblingIndex(content.transform.childCount - 1);
-
-        // //    QuestTiles.Add(quest);
-
-        // }    
-
 
     // On start, RenderAllQuests will render the quests in the Quest Overview screen
     void Start()
@@ -74,6 +62,8 @@ public class OverviewScreen : MonoBehaviour
         {
             questTile.SetActive(true);
         }
+
+        QuestTiles.OrderBy(q => q.GetComponent<QuestTile>().Quest.Title);
 
     }
 

@@ -30,9 +30,7 @@ public class QuestManager : MonoBehaviour
      */
 
     public List<Quest> Quests { get; set; }
-    public IEnumerable<Quest> QuestsToUnlcok { get; set; }
-
-
+    public IEnumerable<Quest> QuestsToUnlock { get; set; }
 
     /*
         QuestLevelSet organizes the quests into lists by level. This comes in handle when it comes to
@@ -99,14 +97,12 @@ public class QuestManager : MonoBehaviour
      * 
      */
  
-    // public void UpdateLockedQuest()
-    // {
+    public void UpdateLockedQuest()
+    {
 
-    //     QuestsToUnlcok = from quest in LockedQuests
-    //                      where quest.LevelRequirement == PlayerManager.Instance.Level
-    //                      select quest;
+        QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
 
-    // }
+    }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
@@ -128,15 +124,13 @@ public class QuestManager : MonoBehaviour
 
         }
 
-
-
     }
 
 
     private void Start()
     {
 
-        QuestsToUnlcok = new List<Quest>();
+        QuestsToUnlock = new List<Quest>();
         QuestLevelSet = new Dictionary<int, List<Quest>>();
 
         foreach(int key in LevelData.Levels.Keys){
@@ -148,6 +142,8 @@ public class QuestManager : MonoBehaviour
 
         LoadQuests();
         CreateQuestSet();
+
+        QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
     }
 
     /*

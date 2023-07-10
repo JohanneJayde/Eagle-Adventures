@@ -10,9 +10,6 @@ public class QuestTile : MonoBehaviour
 
     public Quest Quest { get; set; }
 
-    public bool IsLocked { get; set;}
-
-
     public void Render() {
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.ShortDescription;
@@ -20,20 +17,7 @@ public class QuestTile : MonoBehaviour
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "Level Requirement: " + Quest.LevelRequirement.ToString();
         gameObject.name = Quest.Title;
 
-        if(PlayerManager.Instance.Level >= Quest.LevelRequirement)
-        {
-            IsLocked = false;
-            Unlock();
-        }
-        else
-        {
-            IsLocked = true;
-
-            Lock();
-        }
-
-        Debug.Log($"Quest {Quest.QuestID} has been updated");
-
+        SetLockStatus();
 
     }
 
@@ -58,6 +42,18 @@ public class QuestTile : MonoBehaviour
         gameObject.transform.GetChild(1).GetComponent<TMP_Text>().color = Color.white;
         gameObject.transform.GetChild(2).GetComponent<TMP_Text>().color = Color.white;
         gameObject.transform.GetChild(3).GetComponent<TMP_Text>().color = Color.white;
+    }
+
+    public void SetLockStatus(){
+        if(PlayerManager.Instance.Level >= Quest.LevelRequirement)
+        {
+            Unlock();
+        }
+        else
+        {
+            Lock();
+        }
+
     }
 
 

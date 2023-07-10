@@ -28,9 +28,7 @@ public class PlayerProgressManager : MonoBehaviour
 
     }
 
-    //OBSERVER PATTERN, ADD Abtract void UpdateUI method
-    //Subscribe playercard, stats, and quest renders
-
+ 
     public void UpdateProgress(Quest quest)
     {
 
