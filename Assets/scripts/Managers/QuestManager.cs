@@ -138,8 +138,7 @@ public class QuestManager : MonoBehaviour
         }
 
         Supplier = new QuestTileSupllier();
-        Supplier.QuestScreen = QuestScreen;
-
+        
         LoadQuests();
         CreateQuestSet();
 

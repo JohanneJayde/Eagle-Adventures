@@ -58,14 +58,20 @@ public class OverviewScreen : MonoBehaviour
 
     public void ClearFilter()
     {
+
+        
         foreach (GameObject questTile in QuestTiles.Where((qt) => qt.activeSelf == false))
         {
             questTile.SetActive(true);
         }
 
-        QuestTiles.OrderBy(q => q.GetComponent<QuestTile>().Quest.Title);
 
     }
+
+
+    /*
+     * Make it so that QuestTile Render method invokes an update statement which changes what the screen displays
+     */
 
     public void SearchByTitle()
     {

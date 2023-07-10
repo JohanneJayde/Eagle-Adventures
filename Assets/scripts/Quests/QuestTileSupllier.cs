@@ -16,17 +16,6 @@ using UnityEngine.UI;
  *
  */
 
- /*
-  * Possible improvements: 
-  * A constructor may be added to specify the Quest Screen so someone can change where the quest tiles open
-  * instead of having to set the QuestScreen Property.
-  * 
-  * There is a stipulation in Unity that you cannot attach a GameObject to a Prefab. This causes problems
-  * as the QuestTileSupplier need not know the QuestScreen itself as it's the Quest Tiles job to open it up
-  * However, since this cannot happen, the QuestScreen reference lives here. This could be beneficial as it allows
-  * Quest Tiles to open up different Screens depending on what the programmer needs. 
-  */ 
-
 //QuestTileFitler needs to be built in order to filter and sort quests
 //This will be a seperate object class that takes in a list of Quests and can filter them and return them
 //A key factor is being able to sort them not only within a regular list but to display them as filtered.
@@ -35,8 +24,6 @@ using UnityEngine.UI;
 public class QuestTileSupllier : MonoBehaviour
 {
 
-    //Holds a reference to Quest Screen that the quest tile can open to display it's information
-    public GameObject QuestScreen;
 
     /*
     Keep a dictionary holding lists of game object quest tiles based on level,
@@ -72,19 +59,13 @@ public class QuestTileSupllier : MonoBehaviour
     }
 
     /*
-     * ApplyListener adds in events a Gameobject, more specifically, a quest tile.
-     * It gets the button component of the quest tile and adds an onClick event to open the details screen
-     * It will send in it's Quest property to display it's info onto the screen if it's clicked
-     * It will also make the SetLockStatus method of the QuestTile component in the tile fire if OnLevelUp
-     * UnityEvent is invoked. This is important as this makes all tiles observe the level up so they update
-     * themselves at the correct time.
+     * ApplyListener adds the GameObject as a subscriber to the OnLevelUp event from the PlayerManager.
+     * This means it will unlock itself if the player level reaches it's level requirement.
      *
-     * NOTES: There may be no need to have the Quest be a property of QuestScren. This will be either be changed
+     * NOTES: There may be no need to have the Quest be a property of QuestScreen. This will be either be changed
      * or not after review
      */
     public void ApplyEvents(GameObject tile){
-
-        tile.GetComponent<Button>().onClick.AddListener(() => RenderDetails(tile.GetComponent<QuestTile>().Quest));
         PlayerManager.Instance.onLevelUp.AddListener(tile.GetComponent<QuestTile>().SetLockStatus);
 
     }
@@ -131,16 +112,6 @@ public class QuestTileSupllier : MonoBehaviour
         return QTiles;
     }
 
-    /*
-    * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
-    * This is done by first setting the details script's Quest Property to the Quest that we want to render info for.
-    * It calls SetScreenDetails on the QuestScren to display it's info and activates the screen to show off the info.
-    */
-    public void RenderDetails(Quest quest)
-    {
 
-        QuestScreen.GetComponent<QuestScreen>().SetScreenDetails(quest);
-        QuestScreen.SetActive(true);
-    }
 
 }
