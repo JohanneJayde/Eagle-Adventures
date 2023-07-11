@@ -6,41 +6,32 @@ using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-
-
 /*
  * QuestTileSuuplier supplies quest tiles to the any part of the app requests. 
  * It does this loading in a prefab for the quest tile and attaching a Quest
  * to it. The Prefab has an attached script called QuestTile which has a method called
- * Render. Render will set up the Quest Tile so it displays the right info and also
+ * SetQuest. SetQuest will set up the Quest Tile so it displays the right info and also
  * has its functionality ready.
  */
 
-//QuestTileFitler needs to be built in order to filter and sort quests
-//This will be a seperate object class that takes in a list of Quests and can filter them and return them
-//A key factor is being able to sort them not only within a regular list but to display them as filtered.
-//This involves actually changing the Siblings of each GameObject to reflect the sorted order of the list.
-
-public class QuestTileSupllier : MonoBehaviour
+public class QuestTileSupplier : MonoBehaviour
 {
 
     /*
     Keep a dictionary holding lists of game object quest tiles based on level,
     on level up, call render on the level that the player has reached to unlock them
     then each time it will incremenet
-    */
 
-    /*
-     *TileLevelSet stores all quest tiles active in the app. It will be used to update their info if they need
-     * need to be unlocked after a player levels up
-     */
-    public Dictionary<int, List<GameObject>> TileLevelSet {get; set;}
+    This may add overhead if QuestManager manages the list
+    */
 
     //This is parent GameObject where quests will be attached to.
     public GameObject Parent {get; set;}
 
-    public QuestTileSupllier(GameObject parent){
+    public QuestTileSupplier(GameObject parent){
+
         Parent = parent;
+
     }
 
     /*
@@ -82,9 +73,8 @@ public class QuestTileSupllier : MonoBehaviour
     }
 
     /* 
-     *CreateAllTiles creates a List of Quest Tiles GameObjects for Quests registered within the QuestManager
+     * CreateAllTiles creates a List of Quest Tiles GameObjects for Quests registered within the QuestManager
      * This is handy when for when there is a need to create a view of all the quests within a screen
-     *
      */
     public List<GameObject> CreateAllTiles()
     {

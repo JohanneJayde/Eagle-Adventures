@@ -18,9 +18,6 @@ using UnityEngine.Events;
  * @Nuget: FileHelpers
  */
 
-
-
-
 public class QuestManager : MonoBehaviour
 {
 
@@ -54,8 +51,6 @@ public class QuestManager : MonoBehaviour
 
     */
     public Dictionary<int, List<Quest>> QuestLevelSet {get; set;}
-
-    public QuestTileSupllier Supplier;
 
     public GameObject QuestScreen;
    
@@ -97,12 +92,12 @@ public class QuestManager : MonoBehaviour
      * 
      */
  
-    public void UpdateLockedQuest()
-    {
+    // public void UpdateLockedQuest()
+    // {
 
-        QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
+    //     QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
 
-    }
+    // }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
@@ -116,31 +111,37 @@ public class QuestManager : MonoBehaviour
         return (Quest)Quests.Single((quest) => quest.QuestID.Equals(QuestID));
     }
 
-    public void CreateQuestSet(){
+    // public void CreateQuestSet(){
         
-        foreach(Quest quest in Quests){
-            QuestLevelSet[quest.LevelRequirement].Add(quest);
-            Debug.Log($"KEY: {quest.LevelRequirement} - QuestID: {quest.QuestID}");
+    //     foreach(Quest quest in Quests){
+    //         QuestLevelSet[quest.LevelRequirement].Add(quest);
+    //         Debug.Log($"KEY: {quest.LevelRequirement} - QuestID: {quest.QuestID}");
 
-        }
+    //     }
 
-    }
+    // }
 
+
+    
 
     private void Start()
     {
 
-        QuestsToUnlock = new List<Quest>();
-        QuestLevelSet = new Dictionary<int, List<Quest>>();
+        GoogleSheetsImporter google = new GoogleSheetsImporter();
 
-        foreach(int key in LevelData.Levels.Keys){
-            QuestLevelSet.Add(key, new List<Quest>());
-        }
+        google.LoadSheet();
+
+     //   QuestsToUnlock = new List<Quest>();
+   //     QuestLevelSet = new Dictionary<int, List<Quest>>();
+
+        // foreach(int key in LevelData.Levels.Keys){
+        //     QuestLevelSet.Add(key, new List<Quest>());
+        // }
 
         LoadQuests();
-        CreateQuestSet();
+      //  CreateQuestSet();
 
-        QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
+     //   QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
     }
 
     /*

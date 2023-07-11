@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 /*
- * QuestRender handles rendering a set or individual Quests on the app.
+ * OverviewScreen is the logic for the overview screen that allows users to search and filter quests based on conditions
+ * A user will also be able to launch a quest from this screen.
  */
 
 public class OverviewScreen : MonoBehaviour
@@ -22,31 +22,24 @@ public class OverviewScreen : MonoBehaviour
     public GameObject content;
     public TMP_InputField SearchBar;
     public List<GameObject> QuestTiles = new List<GameObject>();
-    public QuestTileSupllier Supplier {get; set;}
-
-    void Start()
-    {
-        Supplier = new QuestTileSupllier(content);
-        ClearFilter();
-        Supplier.CreateAllTiles();
-        SearchBar.onValueChanged.AddListener(delegate { SearchByTitle(); });
-    }
-
+    public QuestTileSupplier Supplier {get; set;}
 
     public void ClearFilter()
     {
 
-        foreach (GameObject questTile in QuestTiles.Where((qt) => qt.activeSelf == false))
-        {
-            questTile.SetActive(true);
-        }
+        content.transform.DetachChildren();
+
+        List<GameObject> Quests = QuestTiles.OrderBy(q => q.GetComponent<QuestTile>().Quest.Title).ToList();
+
+        Quests.ForEach((quest)
+         => {quest.transform.SetParent(content.transform);}
+         );
+
+        //Implement own quicksort, to fix issue with not sorting in place
+
+        //Seperate Tile Sorter and Tile Filter to avoid issues with filter and sorter conflicting
 
     }
-
-
-    /*
-     * Make it so that QuestTile Render method invokes an update statement which changes what the screen displays
-     */
 
     public void SearchByTitle()
     {
@@ -73,5 +66,10 @@ public class OverviewScreen : MonoBehaviour
             }
         }
     }
-
+    void Start()
+    {
+        Supplier = new QuestTileSupplier(content);
+        QuestTiles = Supplier.CreateAllTiles();
+        SearchBar.onValueChanged.AddListener(delegate { SearchByTitle(); });
+    }
 }

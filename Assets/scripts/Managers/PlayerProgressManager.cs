@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 /*
  * TODO: This is going to be used to track player progress
+ *
+ * Due to how the program has been evolving, this script may be removed in favor of directly hooking it up
+ * it will depend on how much the PlayerManager script changes when dynamic quests are added.
  */
 
 public class PlayerProgressManager : MonoBehaviour
@@ -28,14 +31,13 @@ public class PlayerProgressManager : MonoBehaviour
 
     }
 
- 
+
     public void UpdateProgress(Quest quest)
     {
 
         PlayerManager.Instance.UpdateStats(quest);
-        UpdateRenders?.Invoke();
         Debug.Log("Player Info Updated");
-
+  
     }
 
 
@@ -43,7 +45,6 @@ public class PlayerProgressManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
 
     }
 

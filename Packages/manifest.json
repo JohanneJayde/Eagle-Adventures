@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cathei.bakingsheet": "https://github.com/cathei/BakingSheet.git?path=UnityProject/Packages/com.cathei.bakingsheet#v4.1.1",
     "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.feature.2d": "1.0.0",
