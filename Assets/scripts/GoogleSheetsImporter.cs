@@ -1,58 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cathei.BakingSheet;
-using Cathei.BakingSheet.Internal;
-using Cathei.BakingSheet.Unity;
 using System.IO;
-using Microsoft.Extensions.Logging;
-using System.Runtime;
+using System.Threading.Tasks;
+using Google.Apis.Sheets.v4;
+using Google.Apis.Auth.OAuth2;
 
-public class GoogleSheetsImporter : MonoBehaviour
+/*
+ * GoogleSheet Importer is used to get Quest data our Google Sheet
+ */
+public class GoogleSheetsImporter
 {
+    public SheetsService service {get; set;}
+    static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
+    static readonly string ApplicationName = "Eagle Adventures";
+    static readonly string sheetsID = "1JGQ2pWLYkvCAEFNawKA_PuXusBr2_FTwPLH44mz7jcw";
+    static readonly string sheetName = "QuestSheet";
 
-    public class SheetContainer : SheetContainerBase{
+   public GoogleCredential credentialsInfo;
 
-        public SheetContainer(Microsoft.Extensions.Logging.ILogger logger) : base(UnityLogger.Default) {}
-        public QuestSheet QuestSheet {get; set;}
+    public void SetService(){
 
+        using (var streamReader = new FileStream(Application.streamingAssetsPath + "/eagle-adventures-15cf32510c1b.json", FileMode.Open, FileAccess.Read)){
+            credentialsInfo = GoogleCredential.FromStream(streamReader)
+            .CreateScoped(Scopes);
+        }
+
+        service = new SheetsService(new Google.Apis.Services.BaseClientService.Initializer(){
+            HttpClientInitializer = credentialsInfo,
+            ApplicationName = ApplicationName
+
+        });
     }
 
-    public class QuestSheet : Sheet<QuestSheet.Row>
-    {
-        public class Row : SheetRow 
+    public void ReadSheet(){
+
+        var range = $"{sheetName}!A1:J100";
+        var request = service.Spreadsheets.Values
+        .Get(sheetsID, range);
+
+        var response = request.Execute();
+        var values = response.Values;
+
+        if(values != null && values.Count > 0)
         {
-            public string Address {get; set;}
+            foreach(var row in values){
+                Debug.Log(row[1]);
+            }
         }
-    }
-
-
-    string sheetID = "1JGQ2pWLYkvCAEFNawKA_PuXusBr2_FTwPLH44mz7jcw";
-    string sheetID2 = "1Faa3a2OZPeCnI7HKim9xn9rOcqQtzy2kXtCVtYkrcsw";
-    string creds;
-
-
-    // Start is called before the first frame update
-    public async void LoadSheet(){
-
-        SheetContainer container = new SheetContainer(UnityLogger.Default);
-        creds = File.ReadAllText("Assets/data/eagle-adventures-15cf32510c1b.json");
-        var googleConverter = new GoogleSheetConverter(sheetID, creds);
-        
-        Debug.Log("Awaiting...");
-        await container.Bake(googleConverter);
-
-        for(int i = 0; i < container.QuestSheet.Count; i++){
-            Debug.Log($"Title: {container.QuestSheet[i].Address}");
+        else{
+            Debug.Log("NO DATA FOUND");
         }
-
-
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

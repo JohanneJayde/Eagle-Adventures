@@ -30,6 +30,9 @@ public class Quest
     public string Theme { get; set; }
     public string CanvasURL { get; set; }
 
+    public Quest(){
+    }
+
     /*
      * ToString just used for debugging puroses
      */
@@ -49,5 +52,6 @@ public class Quest
             nameof(QuestID) + ", " +
             nameof(Title);
     }
+
 
 }
