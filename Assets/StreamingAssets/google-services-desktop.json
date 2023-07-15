@@ -1,0 +1,37 @@
+{
+  "project_info": {
+    "project_number": "95245569657",
+    "firebase_url": "https://eagle-adventures-147f1-default-rtdb.firebaseio.com",
+    "project_id": "eagle-adventures-147f1",
+    "storage_bucket": "eagle-adventures-147f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95245569657:ios:ecd794b4fbab9f28adcea8",
+        "android_client_info": {
+          "package_name": "com.EasternWashingtonUniversity.ios.EagleAdventures"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtr3USQKvctM9ggKwcYPrTXuk_aE4afCk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95245569657-cmsa0vb975261oprcjphgjbtpk9s13ie.apps.googleusercontent.com"
+        }
+      ]
+    }
+  ],
+  "configuration_version": "1"
+}

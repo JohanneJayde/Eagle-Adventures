@@ -70,3 +70,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Firebase Windows, Linux, and MacOS files
+/[Aa]ssets/Firebase/Plugins/x86_64
+
+#Firebase Google Service info
+GoogleService-Info.plist
+
+
+
