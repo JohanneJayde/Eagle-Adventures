@@ -60,7 +60,6 @@ public class QuestManager : MonoBehaviour
         var engine = new FileHelperEngine<Quest>();
         Quests = engine.ReadFileAsList(Application.persistentDataPath + "/Quests.csv").ToList();
 
-
     }
 
 
@@ -81,9 +80,9 @@ public class QuestManager : MonoBehaviour
 
       LoadQuests();
 
-    GoogleSheetsImporter importer = new GoogleSheetsImporter();
-        importer.SetService();
-        importer.ReadSheet();
+    // GoogleSheetsImporter importer = new GoogleSheetsImporter();
+    //     importer.SetService();
+    //     importer.ReadSheet();
     }
 
     /*
