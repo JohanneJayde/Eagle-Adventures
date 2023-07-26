@@ -16,8 +16,7 @@ public class FirebaseTester {
     public void TestConnection(){
 
     reference
-        .Child("1JGQ2pWLYkvCAEFNawKA_PuXusBr2_FTwPLH44mz7jcw")
-        .Child("QuestSheet")
+        .Child("Quests")
         .GetValueAsync().ContinueWithOnMainThread(task => {
         if (task.IsFaulted) {
             Debug.Log("failed");
