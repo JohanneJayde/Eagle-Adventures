@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 2295616402821421556}
   - component: {fileID: 5915932116821282008}
   m_Layer: 0
-  m_Name: Scanvager Hunt Template
+  m_Name: Physical Code Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 4989977541082505391}
   - component: {fileID: 5165296298250189990}
   m_Layer: 0
-  m_Name: Scavenger Hunt
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -992,7 +992,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -520.99, y: 529}
-  m_SizeDelta: {x: 643.1166, y: 125.43}
+  m_SizeDelta: {x: 1083.5, y: 125.43}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1178647775714026774
 MonoBehaviour:
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -389.50452, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

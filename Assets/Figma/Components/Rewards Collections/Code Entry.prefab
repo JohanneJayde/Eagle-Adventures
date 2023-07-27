@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 2517194375592652673}
   - component: {fileID: 4669898168602788751}
   m_Layer: 0
-  m_Name: Special Code
+  m_Name: Code Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
