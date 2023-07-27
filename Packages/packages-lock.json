@@ -7,6 +7,16 @@
       "dependencies": {},
       "hash": "f9fb82dbaa73fd209d6565775b57ee6268645ea2"
     },
+    "com.simonoliver.unityfigma": {
+      "version": "https://github.com/simonoliver/UnityFigmaBridge.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.1-preview.1",
+        "com.unity.textmeshpro": "2.0.1"
+      },
+      "hash": "318d39d54531dce92966bb240789f1ad5fe51ce7"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
@@ -202,6 +212,13 @@
       "dependencies": {
         "com.unity.modules.androidjni": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.profiling.core": {
