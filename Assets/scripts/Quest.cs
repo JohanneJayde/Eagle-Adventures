@@ -5,7 +5,7 @@ using UnityEngine;
 public class Quest
 {
 
-
+public string QuestID {get;}
 public string Code {get;}
 public string Description {get;}
 public string Directions {get;}

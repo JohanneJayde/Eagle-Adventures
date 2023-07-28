@@ -79,9 +79,9 @@ public class QuestManager : MonoBehaviour
     {
 
       LoadQuests();
-      FirebaseTester firebase = new FirebaseTester();
+    //  FirebaseTester firebase = new FirebaseTester();
 
-      firebase.TestConnection();
+     // firebase.TestConnection();
 
     // GoogleSheetsImporter importer = new GoogleSheetsImporter();
     //     importer.SetService();
