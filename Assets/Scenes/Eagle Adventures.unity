@@ -15827,6 +15827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Summer Bridge Group Confirmation
       objectReference: {fileID: 0}
+    - target: {fileID: 7854282351221016439, guid: 73bf1fe6c07464ff6a6ae53914b46855, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
