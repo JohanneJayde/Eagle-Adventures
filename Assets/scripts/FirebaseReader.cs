@@ -6,12 +6,13 @@ using Firebase.Database;
 using Firebase.Extensions;
 using System.Threading.Tasks;
 /*
-* Firebase is a testing script used to test out Firebase functionality within our app. This will be deleted when the properly
-* scripts for manipulating has been cretaed.
+ * FirebaseReader is used to read from the firebase realtime database. It has been set up to
+ * read from the "quest" branch. It will uses a FirebaseConverter to deseralize the data into
+ * quest objects for use in the app.
 */
 public class FirebaseReader : MonoBehaviour {
 
-
+    public GameObject titleScreen;
 
     public void GetQuestData(){
 
@@ -31,12 +32,18 @@ public class FirebaseReader : MonoBehaviour {
 
             FirebaseConverter<Quest> converter = new FirebaseConverter<Quest>();
             
-            foreach(DataSnapshot quest in snapshot.Children){
-                Quest quests = converter.convertData(quest);
-                Debug.Log(quests);
+            List<Quest> quests = converter.Deserialize(snapshot);
+
+            gameObject.SetActive(false);
+            titleScreen.SetActive(true);
+            QuestManager.Instance.LoadQuests(quests);
 
 
+            foreach(var quest in quests){
+                Debug.Log(quest.Title);
             }
+            
+
         }
         });
     }

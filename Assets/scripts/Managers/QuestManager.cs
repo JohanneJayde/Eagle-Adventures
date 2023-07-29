@@ -54,12 +54,9 @@ public class QuestManager : MonoBehaviour
      * persistent data path instead of from the Assets/Data directory or from the Assets/Resources folder
      */
 
-    public void LoadQuests()
+    public void LoadQuests(List<Quest> quests)
     {
-
-        var engine = new FileHelperEngine<Quest>();
-        Quests = engine.ReadFileAsList(Application.persistentDataPath + "/Quests.csv").ToList();
-
+        this.Quests = quests;
     }
 
 
