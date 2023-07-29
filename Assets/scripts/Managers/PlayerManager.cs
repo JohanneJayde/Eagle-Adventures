@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
-        CreateStats();
+      //  CreateStats();
         SavePlayerInfo();
     }
 
@@ -192,15 +192,15 @@ public class PlayerManager : MonoBehaviour
      * It reads QuestManager's master list of Quests to ensure that it will always be up to datae.
      * NOTE: This logic will change when Quest reading becomes dynamic. 
      */
-    public void CreateStats()
-    {
-        PlayerProgress = new Dictionary<string, bool>();
+    // public void CreateStats()
+    // {
+    //     PlayerProgress = new Dictionary<string, bool>();
 
-        foreach (var quest in QuestManager.Instance.Quests)
-        {
-            PlayerProgress.Add(quest.QuestID, false);
-        }
-    }
+    //     foreach (var quest in QuestManager.Instance.Quests)
+    //     {
+    //         PlayerProgress.Add(quest.QuestID, false);
+    //     }
+    // }
     /*
      * sets the instance to this.
      */
@@ -241,20 +241,20 @@ public class PlayerManager : MonoBehaviour
      * Updates PlayerProgres to make the Quest key's value true
      * Saves the updated stats to disk so won't be lost if app is closed
      */
-    public void UpdateStats(Quest quest)
-    {
-        ExpEarned += quest.ExpEarned;
-        CoinCount += quest.CoinsReward;
+    // public void UpdateStats(Quest quest)
+    // {
+    //     ExpEarned += quest.ExpEarned;
+    //     CoinCount += quest.CoinsReward;
 
-        if(CheckLevel(ExpEarned)){
-            SetLevel(Level + 1);
-        }
-        PlayerProgress[quest.QuestID] = true;
-        SavePlayerInfo();
+    //     if(CheckLevel(ExpEarned)){
+    //         SetLevel(Level + 1);
+    //     }
+    //     PlayerProgress[quest.QuestID] = true;
+    //     SavePlayerInfo();
 
-        onStatUpdate?.Invoke();
+    //     onStatUpdate?.Invoke();
 
-    }
+    // }
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */

@@ -35,7 +35,7 @@ public class PlayerProgressManager : MonoBehaviour
     public void UpdateProgress(Quest quest)
     {
 
-        PlayerManager.Instance.UpdateStats(quest);
+        //PlayerManager.Instance.UpdateStats(quest);
         Debug.Log("Player Info Updated");
   
     }

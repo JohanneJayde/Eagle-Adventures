@@ -78,7 +78,7 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
 
-      LoadQuests();
+      //LoadQuests();
     //  FirebaseTester firebase = new FirebaseTester();
 
      // firebase.TestConnection();
