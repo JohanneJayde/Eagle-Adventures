@@ -16,9 +16,7 @@ public class FirebaseReader : MonoBehaviour {
 
     public void GetQuestData(){
 
-        DataSnapshot curData = null;
-
-        DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+    DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
 
     reference
         .Child("Quests")

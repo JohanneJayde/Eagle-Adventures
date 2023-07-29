@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
-      //  CreateStats();
+        CreateStats();
         SavePlayerInfo();
     }
 
@@ -192,15 +192,15 @@ public class PlayerManager : MonoBehaviour
      * It reads QuestManager's master list of Quests to ensure that it will always be up to datae.
      * NOTE: This logic will change when Quest reading becomes dynamic. 
      */
-    // public void CreateStats()
-    // {
-    //     PlayerProgress = new Dictionary<string, bool>();
+    public void CreateStats()
+    {
+        PlayerProgress = new Dictionary<string, bool>();
 
-    //     foreach (var quest in QuestManager.Instance.Quests)
-    //     {
-    //         PlayerProgress.Add(quest.QuestID, false);
-    //     }
-    // }
+        foreach (var quest in QuestManager.Instance.Quests)
+        {
+            PlayerProgress.Add(quest.QuestID, false);
+        }
+    }
     /*
      * sets the instance to this.
      */
@@ -258,13 +258,13 @@ public class PlayerManager : MonoBehaviour
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */
-    public bool CheckLevel(int totalXP)
-    {
-        if (totalXP >= LevelData.Levels[Instance.Level + 1])
-            return true;
+    // public bool CheckLevel(int totalXP)
+    // {
+    //     if (totalXP >= LevelData.Levels[Instance.Level + 1])
+    //         return true;
         
-        return false;
-    }
+    //     return false;
+    // }
     /*
      * Setlevel sets the Player's level to the level specified by the level param. It will also invoke the onLevelUp event which notifies all the subscribers
      * to run.

@@ -59,6 +59,15 @@ public class QuestManager : MonoBehaviour
         this.Quests = quests;
     }
 
+    public void SetRewards(){
+
+        Quests.ForEach(quest => {
+                quest.CoinRewards = GameData.Rewards[quest.Level].Coins;
+                quest.ExpRewards = GameData.Rewards[quest.Level].Exp;
+
+        });
+
+    }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
