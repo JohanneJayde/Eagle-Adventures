@@ -4,9 +4,15 @@ using UnityEngine;
 using System;
 using Firebase.Database;
 
-public class FirebaseConverter<T> where T : new(){
+public class FirebaseConverter{
 
-        public T DeserializeObject(DataSnapshot row){
+        /// <summary>
+        /// Given a type, convert the DataSnapShot to it
+        /// </summary>
+        /// <param name="row">row represents a snapshot</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Returns the DataSnapshot as type T</returns>
+        public static T DeserializeObject<T>(DataSnapshot row) where T : class, new(){
 
             T data = new T();
 
@@ -18,7 +24,7 @@ public class FirebaseConverter<T> where T : new(){
                 else{
                     int num;
                     if(int.TryParse(Convert.ToString(row.Child(props.Name).Value), out num) && props.Name != "TimeCompletion"){
-                        props.SetValue(data, Convert.ToInt32(num), null);
+                        props.SetValue(data, num, null);
                     }
                     else{
                        props.SetValue(data, row.Child(props.Name).Value, null);
@@ -29,12 +35,12 @@ public class FirebaseConverter<T> where T : new(){
             return data;
         }
 
-        public List<T> Deserialize(DataSnapshot data){
+        public static List<T> Deserialize<T>(DataSnapshot data) where T : class, new(){
 
             List<T> serializedList = new List<T>();
 
             foreach(DataSnapshot obj in data.Children){
-                 serializedList.Add(DeserializeObject(obj));
+                 serializedList.Add(DeserializeObject<T>(obj));
             }
 
             return serializedList;

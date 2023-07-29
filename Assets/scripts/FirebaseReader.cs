@@ -27,15 +27,12 @@ public class FirebaseReader : MonoBehaviour {
         }
         else if (task.IsCompleted) {
             DataSnapshot snapshot = task.Result;
-
-            FirebaseConverter<Quest> converter = new FirebaseConverter<Quest>();
             
-            List<Quest> quests = converter.Deserialize(snapshot);
+            List<Quest> quests = FirebaseConverter.Deserialize<Quest>(snapshot);
 
             gameObject.SetActive(false);
             titleScreen.SetActive(true);
             QuestManager.Instance.LoadQuests(quests);
-
 
             foreach(var quest in quests){
                 Debug.Log(quest.Title);
