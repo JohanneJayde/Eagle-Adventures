@@ -17,7 +17,7 @@ public class LevelData : MonoBehaviour
         {1,100 },
         {2, 250 },
         {3, 400 },
-        {4, 450 },
+        {4, 500 },
         {5, 1000 } };
 
 }

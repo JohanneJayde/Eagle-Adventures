@@ -4,23 +4,36 @@ using UnityEngine;
 using System;
 
 using Firebase.Database;
-public class FirebaseConverter<T>{
+public class FirebaseConverter<T> where T : new(){
 
     IEnumerable<T> SerializedData;
 
-        public void convertData(DataSnapshot row){
+        public T convertData(DataSnapshot row){
 
-            foreach(var props in typeof(T).GetProperties()){
+            T data = new T();
+
+            foreach(var props in data.GetType().GetProperties()){
                 if(props.Name == "QuestID"){
-                    Debug.Log(props.Name);
-                    Debug.Log(row.Key);
+                    props.SetValue(data, row.Key, null);
+
                 }
                 
-                else{Debug.Log(props.Name);
-                Debug.Log(row.Child(props.Name).Value);
+                else{
+                    int num;
+                    if(int.TryParse(Convert.ToString(row.Child(props.Name).Value), out num) && props.Name != "TimeCompletion"){
+                        props.SetValue(data, Convert.ToInt32(num), null);
+                        
+                    }
+                    else{
+
+                   props.SetValue(data, row.Child(props.Name).Value, null);
+                    }
+       
+
                 }
             }
 
+            return data;
 
         }
 

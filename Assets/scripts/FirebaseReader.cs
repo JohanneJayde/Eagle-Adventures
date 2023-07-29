@@ -5,59 +5,48 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using System.Threading.Tasks;
-
 /*
 * Firebase is a testing script used to test out Firebase functionality within our app. This will be deleted when the properly
 * scripts for manipulating has been cretaed.
 */
-public class FirebaseReader {
+public class FirebaseReader : MonoBehaviour {
 
-   DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-    public string Branch {get; set;}
 
-    public DataSnapshot Data {get; set;}
+    public void GetQuestData(){
 
-    public DataSnapshot returnBranchData(){
-        return Data;
-    }
+        DataSnapshot curData = null;
 
-    // public Task<DataSnapshot> retriveBranchData(){
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-    //     DataSnapshot branchData = null; 
+    reference
+        .Child("Quests")
+        .GetValueAsync().ContinueWithOnMainThread(task => {
+        if (task.IsFaulted) {
+            Debug.Log("failed");
 
-    //     reference
-    //     .Child(Branch)
-    //     .GetValueAsync().ContinueWithOnMainThread(task => {
-    //     if (task.IsFaulted) {
-    //         Debug.Log("failed");
+        }
+        else if (task.IsCompleted) {
+            DataSnapshot snapshot = task.Result;
 
-    //     }
-    //     else if (task.IsCompleted) {
-    //         branchData = task.Result;
+            FirebaseConverter<Quest> converter = new FirebaseConverter<Quest>();
+            
+            foreach(DataSnapshot quest in snapshot.Children){
+                Quest quests = converter.convertData(quest);
+                Debug.Log(quests);
 
-    //     }
-    //     }
-    //     return branchData;
-
-    // }
-
-    // public async void setData(){
-    //     Data = await retriveBranchData();
-    // }
-
-    public void printData(){
-        foreach(DataSnapshot quest in Data.Children){
-                Debug.Log(quest.Key);
-
-                foreach(DataSnapshot prop in quest.Children){
-                    Debug.Log(prop.Key + ": " + prop.Value);
-                }
 
             }
+        }
+        });
+    }
+
+    void Start(){
+        GetQuestData();
+    }
+
+    void Awake(){
+
     }
 
 }
-
-
-
