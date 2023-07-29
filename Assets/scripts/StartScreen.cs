@@ -7,6 +7,9 @@ public class StartScreen : MonoBehaviour
     // Start is called before the first frame update
 
     public Button StartButton;
+    public GameObject NewPlayerScreen;
+
+    public GameObject ProfileScreen;
 
     void Start()
     {
@@ -14,15 +17,19 @@ public class StartScreen : MonoBehaviour
         QuestManager.Instance.SetRewards();
         StartButton = gameObject.GetComponentInChildren<Button>();
 
-        StartButton.onClick.AddListener(() => {Debug.Log("Working");});
 
-        // QuestManager.Instance.Quests.ForEach( quest =>
-        //     Debug.Log(quest.CoinRewards + " " + quest.ExpRewards)
-        // );
-    }
+        if(PlayerManager.Instance.CheckPlayerData()){
+            StartButton.onClick.AddListener(() => {ProfileScreen.SetActive(true);});
+        }
+        else{
+            StartButton.onClick.AddListener(() => {NewPlayerScreen.SetActive(true);});
+        }
 
-    public void check(){
-        Debug.Log("HI");
+            StartButton.onClick.AddListener(() => {gameObject.SetActive(false);});
+
+
+
+
     }
 
     // Update is called once per frame

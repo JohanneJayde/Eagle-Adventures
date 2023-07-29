@@ -7,11 +7,11 @@ using Firebase.Database;
 public class FirebaseConverter{
 
         /// <summary>
-        /// Given a type, convert the DataSnapShot to it
+        /// Given a type, convert the DataSnaphot to it
         /// </summary>
         /// <param name="row">row represents a snapshot</param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>Returns the DataSnapshot as type T</returns>
+        /// <typeparam name="T">Type you want the param to be deserialized to</typeparam>
+        /// <returns>DataSnapshot as type T</returns>
         public static T DeserializeObject<T>(DataSnapshot row) where T : class, new(){
 
             T data = new T();

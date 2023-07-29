@@ -18,32 +18,38 @@ using TMPro;
 
 public class PlayerCard : MonoBehaviour
 {
+
+    public TMP_Text CurrentLevel;
+    public Image LevelBar;
+    public TMP_Text CoinCount;
+    public TMP_Text Name;
+
     /*
      * This function should be invoked when update events happen
      */
     public void RenderCard()
     {
-        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "Hello, " +  PlayerManager.Instance.Name;
-        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "Level: " + PlayerManager.Instance.Level.ToString();
-        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "Coin Count: " + PlayerManager.Instance.CoinCount.ToString();
-    //    SetLevelBar(PlayerManager.Instance.Level);
+
+
+        Name.text = "Hello, " + PlayerManager.Instance.Name;
+        CoinCount.text = PlayerManager.Instance.CoinCount.ToString();
+        CurrentLevel.text = "Level " + PlayerManager.Instance.Level.ToString();
+        SetLevelBar(PlayerManager.Instance.Level);
     }
 
 
-    // public void SetLevelBar(int level){
-    //     Debug.Log(PlayerManager.Instance);
-    //     int localExpRange = LevelData.Levels[level + 1] - LevelData.Levels[level];
-    //     Debug.Log($"Local XP Range: {localExpRange} ");
+    public void SetLevelBar(int level){
+        Debug.Log(PlayerManager.Instance);
+        int localExpRange = GameData.PlayerLevels[level + 1] - GameData.PlayerLevels[level];
+        Debug.Log($"Local XP Range: {localExpRange} ");
 
-    //     float normalizedPlayerExp = 
-    //     ((float)(PlayerManager.Instance.ExpEarned - LevelData.Levels[level] ) / (localExpRange));
-    //     Debug.Log($"Normalized Player EXP: {normalizedPlayerExp} ");
+        float normalizedPlayerExp = 
+        ((float)(PlayerManager.Instance.ExpEarned - GameData.PlayerLevels[level] ) / (localExpRange));
+        Debug.Log($"Normalized Player EXP: {normalizedPlayerExp} ");
 
-    //     GameObject innerLevelBar = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject;
+        LevelBar.fillAmount = normalizedPlayerExp;
 
-    //     innerLevelBar.GetComponent<Image>().fillAmount = normalizedPlayerExp;
-
-    // }
+    }
 
     //On Start, it should display the stats the user
     private void Start()
