@@ -165,6 +165,7 @@ MonoBehaviour:
   title: {fileID: 7257284786683596482}
   tagline: {fileID: 6584840926617523890}
   description: {fileID: 4415030808769651920}
+  StartButton: {fileID: 358542961053144692}
 --- !u!1 &995024933333065435
 GameObject:
   m_ObjectHideFlags: 0

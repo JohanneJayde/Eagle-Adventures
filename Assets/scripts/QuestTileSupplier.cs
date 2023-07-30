@@ -25,9 +25,9 @@ public class QuestTileSupplier : MonoBehaviour
 
     public static GameObject CreateTile(Quest quest, GameObject parent)
     {
-        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Quest Tile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0)) as GameObject;
-        QuestTile.transform.SetParent(parent.transform, false);
-        QuestTile.GetComponent<QuestTile>().RenderTile(quest);
+        GameObject QuestTile = SetTileDetails(quest, parent);
+  
+        OpenDetailsScreen(QuestTile);
 
         return QuestTile;
     }
@@ -74,6 +74,27 @@ public class QuestTileSupplier : MonoBehaviour
         return QTiles;
     }
 
+    public static GameObject SetLinkToDetails(Quest quest){
+        return QuestDetailsConstructor.getQuestScreen(quest);
+    }
 
+    public static GameObject SetTileDetails(Quest quest, GameObject parent){
+        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Quest Tile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0)) as GameObject;
+        QuestTile.transform.SetParent(parent.transform, false);
+        QuestTile.GetComponent<QuestTile>().RenderTile(quest);
+        return QuestTile;
+    }
+
+    public static void OpenDetailsScreen(GameObject tile){
+
+        tile.GetComponent<QuestTile>().StartButton.onClick.AddListener(
+            () =>
+            {
+                GameObject detailScreen = SetLinkToDetails(tile.GetComponent<QuestTile>().Quest);
+                detailScreen.transform.SetParent(tile.transform.root, false);
+            }
+        );
+
+    }
 
 }

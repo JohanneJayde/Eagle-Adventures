@@ -19,7 +19,10 @@ public class StartScreen : MonoBehaviour
 
 
         if(PlayerManager.Instance.CheckPlayerData()){
-            StartButton.onClick.AddListener(() => {ProfileScreen.SetActive(true);});
+            StartButton.onClick.AddListener(() => {
+                ProfileScreen.SetActive(true);
+                PlayerManager.Instance.LoadExistingPlayer();
+            });
         }
         else{
             StartButton.onClick.AddListener(() => {NewPlayerScreen.SetActive(true);});

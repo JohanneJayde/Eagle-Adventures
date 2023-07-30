@@ -12,6 +12,8 @@ public class QuestTile : MonoBehaviour
     public TMP_Text tagline;
     public TMP_Text description;
 
+    public Button StartButton;
+
 
     public void RenderTile(Quest quest){
         Quest = quest;

@@ -84,14 +84,6 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
 
-      //LoadQuests();
-    //  FirebaseTester firebase = new FirebaseTester();
-
-     // firebase.TestConnection();
-
-    // GoogleSheetsImporter importer = new GoogleSheetsImporter();
-    //     importer.SetService();
-    //     importer.ReadSheet();
     }
 
     /*
