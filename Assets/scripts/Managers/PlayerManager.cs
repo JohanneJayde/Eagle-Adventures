@@ -120,36 +120,36 @@ public class PlayerManager : MonoBehaviour
      */
     public void LoadExistingPlayer()
     {
+
         PlayerData data = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(Application.persistentDataPath + "/playerInfo.json"));
         PlayerProgress = JsonConvert.DeserializeObject<Dictionary<string, bool>>(File.ReadAllText(Application.persistentDataPath + "/playerProgress.json"));
-        PlayerProgress = UpdateQuests(PlayerProgress);
         SendDataToPlayerManager(data);
+        Debug.Log(PlayerManager.Instance);
     }
 
 
     /*
      * Updates the new Quest if it doesn't exist within the existing quests 
      */
-    public Dictionary<string, bool> UpdateQuests(Dictionary<string, bool> progress){
+    public void UpdateQuests(){
         List<Quest> newQuests = QuestManager.Instance.Quests.Where(quest =>
             {
-            return progress.ContainsKey(quest.QuestID) == false;
+            return PlayerProgress.ContainsKey(quest.QuestID) == false;
             }
         ).ToList();
 
         if(newQuests.Count == 0){
             Debug.Log("No New Quests Found");
 
-            return progress;
+            return;
         }
 
         newQuests.ForEach(quest => {
             Debug.Log("New Quest Found: " + quest.QuestID);
-            progress.Add(quest.QuestID, false);
+            PlayerProgress.Add(quest.QuestID, false);
         });
 
         SavePlayerInfo();
-        return progress;
 
     }
 
@@ -186,7 +186,13 @@ public class PlayerManager : MonoBehaviour
      */
     void Start()
     {
-
+        if(CheckPlayerData()){
+            LoadExistingPlayer();
+            Debug.Log("Player Loaded");
+        }
+        else{
+            Debug.Log("Player Data not loaded");
+        }
     }
 
     /*
