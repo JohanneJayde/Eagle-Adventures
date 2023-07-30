@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     public class PlayerData
     {
         public string name;
-        public string house;
+        public string group;
         public int level;
         public int coinCount;
         public int expEarned;
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         public PlayerData(PlayerManager p)
         {
             name = p.Name;
-            house = p.House;
+            group = p.Group;
             level = p.Level;
             coinCount = p.CoinCount;
             expEarned = p.ExpEarned;
@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour
      */
 
     public string Name { get; set; }
-    public string House { get; set; }
+    public string Group { get; set; }
     public int Level { get; set; }
     public int CoinCount { get; set; }
     public int ExpEarned { get; set; }
@@ -93,7 +93,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     /*
-     * createNewPlayer sets the PlayerManager properties to default values except for name and house
+     * createNewPlayer sets the PlayerManager properties to default values except for name and group
      * which can be set by the user inputs. If the user doesn't put any input, there are default values
      * for them.
      * Once the data has been created, it will be stored as a JSON file and saved into the persistent storage.
@@ -101,10 +101,10 @@ public class PlayerManager : MonoBehaviour
      * 
      * Also calls CreateStats() which loads in the user's quest progress
      */
-    public void CreateNewPlayer(string name="Eagle Scout",string house="Explorer")
+    public void CreateNewPlayer(string name="Eagle Scout",string group="A")
     {
         this.Name = name;
-        this.House = house;
+        this.Group = group;
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
@@ -130,7 +130,7 @@ public class PlayerManager : MonoBehaviour
     public void SendDataToPlayerManager(PlayerData pData)
     {
         this.Name = pData.name;
-        this.House = pData.house;
+        this.Group = pData.group;
         this.Level = pData.level;
         this.CoinCount = pData.coinCount;
         this.ExpEarned = pData.expEarned;
@@ -182,7 +182,7 @@ public class PlayerManager : MonoBehaviour
     public string ToString()
     {
 
-        return "Name: " + this.Name + "\nHouse: " + this.House
+        return "Name: " + this.Name + "\nGroup: " + this.Group
         + "\nLevel: " + this.Level + "\nCoin Count: " + this.CoinCount
         + "\nExp Earned: " + this.ExpEarned;
     }
@@ -224,7 +224,7 @@ public class PlayerManager : MonoBehaviour
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
         File.Delete(Application.persistentDataPath + "/playerProgress.json");
         Name = null;
-        House = null;
+        Group = null;
         Level = 0;
         CoinCount = 0;
         ExpEarned = 0;

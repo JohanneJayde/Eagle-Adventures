@@ -738,6 +738,7 @@ MonoBehaviour:
   LevelBar: {fileID: 1521784059748831872}
   CoinCount: {fileID: 948431405277957552}
   Name: {fileID: 358393131386637718}
+  Group: {fileID: 1235476221717722445}
 --- !u!1 &3479782835879367049
 GameObject:
   m_ObjectHideFlags: 0

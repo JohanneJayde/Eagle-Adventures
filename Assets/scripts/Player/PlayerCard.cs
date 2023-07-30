@@ -23,6 +23,7 @@ public class PlayerCard : MonoBehaviour
     public Image LevelBar;
     public TMP_Text CoinCount;
     public TMP_Text Name;
+    public TMP_Text Group;
 
     /*
      * This function should be invoked when update events happen
@@ -34,6 +35,7 @@ public class PlayerCard : MonoBehaviour
         Name.text = "Hello, " + PlayerManager.Instance.Name;
         CoinCount.text = PlayerManager.Instance.CoinCount.ToString();
         CurrentLevel.text = "Level " + PlayerManager.Instance.Level.ToString();
+        Group.text = PlayerManager.Instance.Group.ToString();
         SetLevelBar(PlayerManager.Instance.Level);
     }
 

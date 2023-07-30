@@ -7,13 +7,21 @@ public class QuestScreen : MonoBehaviour
 {
 
     public List<Quest> Quests;
-
+    public GameObject Tiles;
 
     // Start is called before the first frame update
     void Start()
     {
+        RenderQuestTiles();
+
+    }
+
+    public void RenderQuestTiles(){
         foreach(var quest in Quests){
-            Debug.Log(quest.Title);
+            GameObject tile = Instantiate(Resources.Load("Quest Tile"),Tiles.transform, false) as GameObject;
+            tile.name = quest.Title;
+            tile.GetComponent<QuestTile>().RenderTile(quest);
+
         }
     }
 
