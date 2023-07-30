@@ -31,7 +31,6 @@ public class PlayerCard : MonoBehaviour
     public void RenderCard()
     {
 
-
         Name.text = "Hello, " + PlayerManager.Instance.Name;
         CoinCount.text = PlayerManager.Instance.CoinCount.ToString();
         CurrentLevel.text = "Level " + PlayerManager.Instance.Level.ToString();

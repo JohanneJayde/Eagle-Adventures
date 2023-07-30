@@ -6,6 +6,7 @@ using System.Linq;
 public class QuestScreen : MonoBehaviour
 {
 
+
     public List<Quest> Quests;
     public GameObject Tiles;
 
@@ -17,12 +18,7 @@ public class QuestScreen : MonoBehaviour
     }
 
     public void RenderQuestTiles(){
-        foreach(var quest in Quests){
-            GameObject tile = Instantiate(Resources.Load("Quest Tile"),Tiles.transform, false) as GameObject;
-            tile.name = quest.Title;
-            tile.GetComponent<QuestTile>().RenderTile(quest);
-
-        }
+        QuestTileSupplier.CreateTiles(Quests, Tiles);
     }
 
     // Update is called once per frame
