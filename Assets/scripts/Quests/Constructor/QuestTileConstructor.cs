@@ -14,7 +14,7 @@ using UnityEngine.UI;
  * has its functionality ready.
  */
 
-public class QuestTileSupplier : MonoBehaviour
+public class QuestTileConstructor : MonoBehaviour
 {
 
     /*
@@ -23,11 +23,11 @@ public class QuestTileSupplier : MonoBehaviour
      *
      */
 
-    public static GameObject CreateTile(Quest quest, GameObject parent)
+    public static GameObject GetTile(Quest quest, GameObject parent)
     {
         GameObject QuestTile = SetTileDetails(quest, parent);
   
-        OpenDetailsScreen(QuestTile);
+     //   OpenDetailsScreen(QuestTile);
 
         return QuestTile;
     }
@@ -47,7 +47,7 @@ public class QuestTileSupplier : MonoBehaviour
 
         foreach (Quest quest in Quests)
         {
-            QTiles.Add(CreateTile(quest, parent));
+            QTiles.Add(GetTile(quest, parent));
         }
 
         return QTiles;
@@ -64,15 +64,11 @@ public class QuestTileSupplier : MonoBehaviour
 
         foreach (Quest quest in QuestManager.Instance.Quests)
         {
-            QTiles.Add(CreateTile(quest, parent));
+            QTiles.Add(GetTile(quest, parent));
 
         }
 
         return QTiles;
-    }
-
-    public static GameObject SetLinkToDetails(Quest quest){
-        return QuestDetailsConstructor.getQuestScreen(quest);
     }
 
     public static GameObject SetTileDetails(Quest quest, GameObject parent){
@@ -80,18 +76,6 @@ public class QuestTileSupplier : MonoBehaviour
         QuestTile.transform.SetParent(parent.transform, false);
         QuestTile.GetComponent<QuestTile>().RenderTile(quest);
         return QuestTile;
-    }
-
-    public static void OpenDetailsScreen(GameObject tile){
-
-        tile.GetComponent<QuestTile>().StartButton.onClick.AddListener(
-            () =>
-            {
-                GameObject detailScreen = SetLinkToDetails(tile.GetComponent<QuestTile>().Quest);
-                detailScreen.transform.SetParent(tile.transform.root, false);
-            }
-        );
-
     }
 
 }

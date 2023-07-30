@@ -502,6 +502,7 @@ GameObject:
   - component: {fileID: 5915932116821282008}
   - component: {fileID: 18048629991692506}
   - component: {fileID: 7059513144383983349}
+  - component: {fileID: 2901087223201446052}
   m_Layer: 0
   m_Name: Canvas Completed Intro
   m_TagString: Untagged
@@ -669,6 +670,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReturnToProfileButton: {fileID: 2449835092788793978}
   scrollview: {fileID: 0}
+--- !u!114 &2901087223201446052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652582475716526958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a8bdc852d644abab442bf88410c9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReturnToProfileButton: {fileID: 2449835092788793978}
 --- !u!1 &4013748263294195581
 GameObject:
   m_ObjectHideFlags: 0

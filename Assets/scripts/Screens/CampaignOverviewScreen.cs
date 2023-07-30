@@ -18,6 +18,7 @@ public class CampaignOverviewScreen : MonoBehaviour
             child.gameObject.GetComponentInChildren<Button>().onClick.AddListener(
                 () => 
                 {
+                    Debug.Log("Campaign Theme: " + child.gameObject.name);
                     QuestScreen.GetComponent<QuestScreen>().SetQuests(child.gameObject.name);
 
                     QuestScreen.SetActive(true);

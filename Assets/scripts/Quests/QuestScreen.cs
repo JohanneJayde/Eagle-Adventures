@@ -13,12 +13,11 @@ public class QuestScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RenderQuestTiles();
 
     }
 
     public void RenderQuestTiles(){
-        QuestTileSupplier.CreateTiles(Quests, Tiles);
+        QuestConstructor.ConstructQuests(Quests, Tiles);
     }
 
     // Update is called once per frame
@@ -28,7 +27,23 @@ public class QuestScreen : MonoBehaviour
     }
 
     public void SetQuests(string campaign){
-        Quests = QuestManager.Instance.Quests.Where((quest) => {return quest.Session == campaign;}).ToList();
+
+        ClearTiles(Tiles);
+
+        Quests = QuestManager.Instance.Quests.Where((quest) => {
+        Debug.Log("Session: " + quest.Session + ", campaign: " + campaign);
+
+        return quest.Session == campaign;
+        }).ToList();
+
+        RenderQuestTiles();
+
+    }
+
+    public void ClearTiles(GameObject tiles){
+         foreach (Transform child in tiles.transform) {
+                Destroy(child.gameObject);
+            }
     }
 
 }

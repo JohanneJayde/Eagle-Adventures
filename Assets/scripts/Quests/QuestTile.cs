@@ -27,19 +27,17 @@ public class QuestTile : MonoBehaviour
             description.text = Quest.Description;
 
         }
-
-
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public void SetLinkToIntro(GameObject introScreen){
+        StartButton.onClick.AddListener(
+            () =>
+            {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+                Instantiate(introScreen, gameObject.transform.root, false);
+                introScreen.SetActive(true);
+            }
+        );
     }
 
 }

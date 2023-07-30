@@ -18,15 +18,15 @@ public class QuestIntroScreen : MonoBehaviour
         Title.text = quest.Title;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void SetLinktoDirections(GameObject directions){
+        DirectionsScreenButton.onClick.AddListener
+        ( 
+        ()=> 
+            {
+                gameObject.SetActive(false);
+                directions.SetActive(true); 
+            }
+        );
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
