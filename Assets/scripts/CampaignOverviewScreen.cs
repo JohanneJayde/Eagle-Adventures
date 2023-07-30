@@ -8,8 +8,8 @@ public class CampaignOverviewScreen : MonoBehaviour
 {
 
     public GameObject Tiles;
-
     public TMP_InputField SearchBar;
+    public GameObject QuestScreen;
 
     void Start()
     {
@@ -18,7 +18,11 @@ public class CampaignOverviewScreen : MonoBehaviour
             child.gameObject.GetComponentInChildren<Button>().onClick.AddListener(
                 () => 
                 {
-                    Debug.Log("HI");
+                    QuestScreen.GetComponent<QuestScreen>().SetQuests(child.gameObject.name);
+
+                    QuestScreen.SetActive(true);
+
+                    gameObject.SetActive(false);
                 }
             );
         }
