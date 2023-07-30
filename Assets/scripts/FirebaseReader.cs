@@ -34,11 +34,6 @@ public class FirebaseReader : MonoBehaviour {
             titleScreen.SetActive(true);
             QuestManager.Instance.LoadQuests(quests);
 
-            foreach(var quest in quests){
-                Debug.Log(quest.Title);
-            }
-            
-
         }
         });
     }

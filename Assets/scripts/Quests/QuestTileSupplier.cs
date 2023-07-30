@@ -47,9 +47,7 @@ public class QuestTileSupplier : MonoBehaviour
 
         foreach (Quest quest in Quests)
         {
-          
             QTiles.Add(CreateTile(quest, parent));
-
         }
 
         return QTiles;
@@ -66,7 +64,6 @@ public class QuestTileSupplier : MonoBehaviour
 
         foreach (Quest quest in QuestManager.Instance.Quests)
         {
-          
             QTiles.Add(CreateTile(quest, parent));
 
         }
@@ -79,7 +76,7 @@ public class QuestTileSupplier : MonoBehaviour
     }
 
     public static GameObject SetTileDetails(Quest quest, GameObject parent){
-        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Quest Tile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0)) as GameObject;
+        GameObject QuestTile = Instantiate((GameObject)Resources.Load("Prefabs/Components/Quest Tile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0)) as GameObject;
         QuestTile.transform.SetParent(parent.transform, false);
         QuestTile.GetComponent<QuestTile>().RenderTile(quest);
         return QuestTile;
