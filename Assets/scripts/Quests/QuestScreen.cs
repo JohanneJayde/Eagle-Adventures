@@ -31,7 +31,6 @@ public class QuestScreen : MonoBehaviour
         ClearTiles(Tiles);
 
         Quests = QuestManager.Instance.Quests.Where((quest) => {
-        Debug.Log("Session: " + quest.Session + ", campaign: " + campaign);
 
         return quest.Session == campaign;
         }).ToList();
