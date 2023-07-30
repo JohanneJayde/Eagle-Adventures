@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void SwapScreen (GameObject screen){
         screen.SetActive(true);
-        ProfileScreen.SetActive(false);
+        //ProfileScreen.SetActive(false);
     }
 
     // Start is called before the first frame update
