@@ -9,7 +9,7 @@ public class CanvasDirections : QuestDirectionsScreen
 
     public override void HandlePress()
     {
-        throw new System.NotImplementedException();
+        RewardsScreenConstructor.OpenCodeEntry(gameObject);
     }
 
 

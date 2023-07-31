@@ -8,7 +8,7 @@ public class PhysicalCodeDirections : QuestDirectionsScreen
 
     public override void HandlePress()
     {
-        throw new System.NotImplementedException();
+        RewardsScreenConstructor.OpenCodeEntry(gameObject);
     }
 
 
