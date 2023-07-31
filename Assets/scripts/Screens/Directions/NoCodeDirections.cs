@@ -7,9 +7,22 @@ using UnityEngine.UI;
 public class NoCodeDirections : QuestDirectionsScreen
 {
 
+
+    public override void RenderDirections(Quest quest){
+
+        base.RenderDirections(quest);
+
+        if(PlayerManager.Instance.PlayerProgress[quest.QuestID]){
+            SendScreen.enabled = false;
+        }
+
+    }
+
+
     public override void HandlePress()
     {
-        throw new System.NotImplementedException();
+            RewardsScreenConstructor.ChestFoundChain(gameObject);
+            Destroy(gameObject);
     }
 
 

@@ -25,16 +25,6 @@ public class ShortAnswerDirections : QuestDirectionsScreen
             QuestionInput.text = quest.ShortAnswer;
         }
 
-        else{
-
-            SendScreen.onClick.AddListener(
-                () => 
-                {
-                    Debug.Log("Hi");
-                }
-            );
-        }
-
     }
 
     public override void HandlePress()
