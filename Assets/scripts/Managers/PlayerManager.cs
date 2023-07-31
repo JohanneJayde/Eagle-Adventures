@@ -271,30 +271,30 @@ public class PlayerManager : MonoBehaviour
      * Updates PlayerProgres to make the Quest key's value true
      * Saves the updated stats to disk so won't be lost if app is closed
      */
-    // public void UpdateStats(Quest quest)
-    // {
-    //     ExpEarned += quest.ExpEarned;
-    //     CoinCount += quest.CoinsReward;
+    public void UpdateStats(Quest quest)
+    {
+        ExpEarned += quest.ExpRewards;
+        CoinCount += quest.CoinRewards;
 
-    //     if(CheckLevel(ExpEarned)){
-    //         SetLevel(Level + 1);
-    //     }
-    //     PlayerProgress[quest.QuestID] = true;
-    //     SavePlayerInfo();
+        if(CheckLevel(ExpEarned)){
+            SetLevel(Level + 1);
+        }
+        PlayerProgress[quest.QuestID] = true;
+        SavePlayerInfo();
 
-    //     onStatUpdate?.Invoke();
+        onStatUpdate?.Invoke();
 
-    // }
+    }
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */
-    // public bool CheckLevel(int totalXP)
-    // {
-    //     if (totalXP >= LevelData.Levels[Instance.Level + 1])
-    //         return true;
+    public bool CheckLevel(int totalXP)
+    {
+        if (totalXP >= GameData.PlayerLevels[Instance.Level + 1])
+            return true;
         
-    //     return false;
-    // }
+        return false;
+    }
     /*
      * Setlevel sets the Player's level to the level specified by the level param. It will also invoke the onLevelUp event which notifies all the subscribers
      * to run.

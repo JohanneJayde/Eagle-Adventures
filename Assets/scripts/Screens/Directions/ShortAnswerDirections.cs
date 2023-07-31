@@ -29,9 +29,10 @@ public class ShortAnswerDirections : QuestDirectionsScreen
 
     public override void HandlePress()
     {
-
         if(CheckAnswer()){
             Status.text = "Correct Answer!";
+            RewardsScreenConstructor.ChestFoundChain(gameObject);
+            Destroy(gameObject);
         }
         else{
             Status.text = "Sorry! That answer was incorrect!";

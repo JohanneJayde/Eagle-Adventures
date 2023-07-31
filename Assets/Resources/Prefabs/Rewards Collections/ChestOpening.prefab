@@ -103,8 +103,9 @@ GameObject:
   - component: {fileID: 2508153835100679630}
   - component: {fileID: 6599009324852525321}
   - component: {fileID: 4590710457741886176}
+  - component: {fileID: -7806381471757123703}
   m_Layer: 0
-  m_Name: Chest Opening
+  m_Name: ChestOpening
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +237,18 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
+--- !u!114 &-7806381471757123703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925812068632849046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c62f67afcf143f1a2eed572f0ccca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6334258370734449938
 GameObject:
   m_ObjectHideFlags: 0

@@ -1395,7 +1395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0007324219, y: -253.01196}
+  m_AnchoredPosition: {x: 0.0007324219, y: -253.0122}
   m_SizeDelta: {x: 1125.6, y: 1755.4962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124038135
@@ -2318,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.2518, y: -367.21036}
+  m_AnchoredPosition: {x: 259.2517, y: -367.20996}
   m_SizeDelta: {x: 325.532, y: 317.9788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304683030
@@ -15453,6 +15453,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1534621817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4709895315431954459, guid: 5f4dfa4b9174c466c9d321f0d67a3eef, type: 3}
+  m_PrefabInstance: {fileID: 1996120808619367670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5b94170a1f54d0b93ca30961b81965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545691120
 GameObject:
   m_ObjectHideFlags: 0
@@ -16667,9 +16678,9 @@ MonoBehaviour:
   onStatUpdate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1534621817}
         m_TargetAssemblyTypeName: PlayerCard, Assembly-CSharp
-        m_MethodName: RenderCard
+        m_MethodName: UpdateCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19287,7 +19298,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateRenders:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1534621817}
+        m_TargetAssemblyTypeName: PlayerCard, Assembly-CSharp
+        m_MethodName: UpdateCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1902916390
 GameObject:
   m_ObjectHideFlags: 0

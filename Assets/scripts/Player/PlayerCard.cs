@@ -32,9 +32,16 @@ public class PlayerCard : MonoBehaviour
     {
 
         Name.text = "Hello, " + PlayerManager.Instance.Name;
+        Group.text = PlayerManager.Instance.Group.ToString();
+
         CoinCount.text = PlayerManager.Instance.CoinCount.ToString();
         CurrentLevel.text = "Level " + PlayerManager.Instance.Level.ToString();
-        Group.text = PlayerManager.Instance.Group.ToString();
+        SetLevelBar(PlayerManager.Instance.Level);
+    }
+
+    public void UpdateCard(){
+        CoinCount.text = PlayerManager.Instance.CoinCount.ToString();
+        CurrentLevel.text = "Level " + PlayerManager.Instance.Level.ToString();
         SetLevelBar(PlayerManager.Instance.Level);
     }
 
