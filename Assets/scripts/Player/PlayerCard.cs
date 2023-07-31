@@ -25,6 +25,8 @@ public class PlayerCard : MonoBehaviour
     public TMP_Text Name;
     public TMP_Text Group;
 
+    public Button CanvasButton;
+
     /*
      * This function should be invoked when update events happen
      */
@@ -59,10 +61,20 @@ public class PlayerCard : MonoBehaviour
 
     }
 
+    public void OpenCanvasCourse(){
+        Application.OpenURL("https://canvas.ewu.edu/courses/1675928");
+    }
+
     //On Start, it should display the stats the user
     private void Start()
     {
         RenderCard();
+        CanvasButton.onClick.AddListener(
+            () => 
+            {
+                OpenCanvasCourse();
+            }
+        );
     }
 
 }
