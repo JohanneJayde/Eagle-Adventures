@@ -8,7 +8,6 @@ public class QuestIntroConstructor : MonoBehaviour
     public static GameObject GetIntroScreen(Quest quest){
     
         GameObject screen = Resources.Load("Prefabs/Quest Screens/Intro/"+ quest.Type+ " Intro") as GameObject;
-        screen.GetComponent<QuestIntroScreen>().RenderQuest(quest);
 
         return screen;
 
@@ -21,11 +20,16 @@ public class QuestIntroConstructor : MonoBehaviour
                 Quest questToRender = tile.GetComponent<QuestTile>().Quest;
 
                 GameObject IntroScreen = Instantiate(QuestIntroConstructor.GetIntroScreen(questToRender), tile.transform.root, false);
-                IntroScreen.name = questToRender.Title + " Intro";
+                SetInfo(questToRender, IntroScreen);
                 IntroScreen.SetActive(true);
 
                 return IntroScreen;
 
+    }
+
+    public static void SetInfo(Quest quest, GameObject screen){
+        screen.GetComponent<QuestIntroScreen>().RenderQuest(quest);
+        screen.name = quest.Title + " Intro";
     }
 
 

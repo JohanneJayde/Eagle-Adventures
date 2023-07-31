@@ -8,9 +8,7 @@ public class QuestDirectionsConstructor : MonoBehaviour
     public static GameObject GetDirectionsScreen(Quest quest){
     
         GameObject screen = Resources.Load("Prefabs/Quest Screens/Directions/"+ quest.Type + " Directions") as GameObject;
-
-        screen.GetComponent<QuestDirectionsScreen>().RenderDirections(quest);
-
+        
         return screen;
 
     }
@@ -20,10 +18,16 @@ public class QuestDirectionsConstructor : MonoBehaviour
             Quest questToRender = tile.GetComponent<QuestTile>().Quest;
 
             GameObject DirectionScreen = Instantiate(QuestDirectionsConstructor.GetDirectionsScreen(questToRender), tile.transform.root, false);
-            DirectionScreen.name = questToRender.Title + " Directions";
+            SetInfo(questToRender, DirectionScreen);
             DirectionScreen.SetActive(false);
 
             return DirectionScreen;
+
+    }
+
+    public static void SetInfo(Quest quest, GameObject screen){
+        screen.GetComponent<QuestDirectionsScreen>().RenderDirections(quest);
+        screen.name = quest.Title + " Directions";
 
     }
 

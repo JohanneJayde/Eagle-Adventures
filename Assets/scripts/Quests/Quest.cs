@@ -22,7 +22,7 @@ public int ExpRewards {get; set;}
 
 
 public override string ToString(){
-    return "QuestID: " + QuestID + ", Code: " + Code; 
+    return "QuestID: " + QuestID + ", Short Answer: " + ShortAnswer; 
 }
 
 }

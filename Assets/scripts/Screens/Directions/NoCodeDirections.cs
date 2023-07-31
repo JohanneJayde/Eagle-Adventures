@@ -7,5 +7,10 @@ using UnityEngine.UI;
 public class NoCodeDirections : QuestDirectionsScreen
 {
 
+    public override void HandlePress()
+    {
+        throw new System.NotImplementedException();
+    }
+
 
 }

@@ -14,6 +14,10 @@ public class QuestConstructor : MonoBehaviour
             {
                 GameObject IntroScreen = QuestIntroConstructor.SetIntroScreen(Tile);
                 GameObject DirectionScreen = QuestDirectionsConstructor.SetDirectionsScreen(Tile);
+
+                DirectionScreen.GetComponent<QuestDirectionsScreen>().SendScreen.onClick.AddListener(
+            () => { DirectionScreen.GetComponent<QuestDirectionsScreen>().HandlePress();}
+                );
                 
                 IntroScreen.GetComponent<QuestIntroScreen>().SetLinktoDirections(DirectionScreen);
 

@@ -6,5 +6,10 @@ using UnityEngine.UI;
 public class PhysicalCodeDirections : QuestDirectionsScreen
 {
 
+    public override void HandlePress()
+    {
+        throw new System.NotImplementedException();
+    }
+
 
 }
