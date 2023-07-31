@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestConstructor
+public class QuestConstructor : MonoBehaviour
 {
 
     public static GameObject ConstructQuest(Quest quest, GameObject parent){
         GameObject Tile = QuestTileConstructor.GetTile(quest, parent);
-        GameObject IntroScreen = QuestIntroConstructor.GetIntroScreen(quest);
-        GameObject DirectionScreen = QuestDirectionsConstructor.GetDirectionsScreen(quest);
+
         
-        Tile.GetComponent<QuestTile>().SetLinkToIntro(IntroScreen);
-        IntroScreen.GetComponent<QuestIntroScreen>().SetLinktoDirections(DirectionScreen);
+        Tile.GetComponent<QuestTile>().StartButton.onClick.AddListener(
+            () =>
+            {
+                GameObject IntroScreen = QuestIntroConstructor.SetIntroScreen(Tile);
+                GameObject DirectionScreen = QuestDirectionsConstructor.SetDirectionsScreen(Tile);
+                
+                IntroScreen.GetComponent<QuestIntroScreen>().SetLinktoDirections(DirectionScreen);
+
+            }
+            );
 
         return Tile;
     }

@@ -19,14 +19,17 @@ public class QuestIntroScreen : MonoBehaviour
     }
 
     public void SetLinktoDirections(GameObject directions){
+
         DirectionsScreenButton.onClick.AddListener
         ( 
         ()=> 
             {
-                gameObject.SetActive(false);
+                Debug.Log("creating quest");
+
                 directions.SetActive(true); 
+                Destroy(gameObject);
             }
         );
     }
-
+    
 }

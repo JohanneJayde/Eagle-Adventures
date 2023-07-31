@@ -34,8 +34,6 @@ public class QuestTile : MonoBehaviour
             () =>
             {
 
-                Instantiate(introScreen, gameObject.transform.root, false);
-                introScreen.SetActive(true);
             }
         );
     }
