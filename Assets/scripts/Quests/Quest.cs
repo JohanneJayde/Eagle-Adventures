@@ -11,6 +11,7 @@ public string Description {set; get;}
 public string Directions {set; get;}
 public int Level {set; get;}
 public string Session {set; get;}
+public string Question {get; set;}
 public string ShortAnswer {set; get;}
 public string Theme {set; get;}
 public string TimeCompletion {set; get;}
