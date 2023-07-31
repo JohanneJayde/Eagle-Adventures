@@ -13,12 +13,15 @@ public class CodeEntry : MonoBehaviour
     public TMP_Text Status;
     public Button BackButton;
 
+    public GameObject DirectionScreen;
+
     public void HandlePress()
     {
         if(CheckCode()){
             Status.text = "Correct Answer!";
             RewardsScreenConstructor.ChestFoundChainCodeEntry(gameObject);
             Destroy(gameObject);
+            Destroy(DirectionScreen);
         }
         else{
             Status.text = "Sorry! That answer was incorrect!";

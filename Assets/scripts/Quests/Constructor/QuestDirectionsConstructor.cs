@@ -21,6 +21,10 @@ public class QuestDirectionsConstructor : MonoBehaviour
             SetInfo(questToRender, DirectionScreen);
             DirectionScreen.SetActive(false);
 
+                DirectionScreen.GetComponent<QuestDirectionsScreen>().SendScreen.onClick.AddListener(
+                  () => { DirectionScreen.GetComponent<QuestDirectionsScreen>().HandlePress();}
+                );
+
             return DirectionScreen;
 
     }
