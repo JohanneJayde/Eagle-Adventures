@@ -25,7 +25,7 @@ public class CampaignOverviewScreen : MonoBehaviour
                     QuestScreen.GetComponent<QuestScreen>().SetQuests(child.gameObject.name);
                     QuestScreen.SetActive(true);
                     gameObject.SetActive(false);
-                    ClearFilter();
+                            ClearFilter();
                 }
             );
         }
@@ -35,6 +35,7 @@ public class CampaignOverviewScreen : MonoBehaviour
     }
     public void ClearFilter()
     {
+        SearchBar.text = "";
         TileParent.transform.DetachChildren();
         List<GameObject> campaignTiles = Tiles.OrderBy(c => c.name).ToList();
 
@@ -69,5 +70,12 @@ public class CampaignOverviewScreen : MonoBehaviour
             }
         }
     }
+
+    void onDisable(){
+        Debug.Log("Diasabled");
+        ClearFilter();
+        SearchBar.text = "";
+    }
+
 }
 

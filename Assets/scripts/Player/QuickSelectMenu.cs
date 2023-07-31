@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class QuickSelectMenu : MonoBehaviour
 {
 
     public GameObject ProfileScreen;
@@ -24,9 +24,14 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SendToOverview.onClick.AddListener( () => {SwapScreen(CampaignQuestScreen);});
+        SendToOverview.onClick.AddListener( () => {
+
+            SwapScreen(CampaignQuestScreen);
+            });
         SendToLastQuest.onClick.AddListener( () => {SwapScreen(LastQuestScreen);});
-        SendToCodeScreen.onClick.AddListener( () => {SwapScreen(CodeScreen);});
+        SendToCodeScreen.onClick.AddListener( () => {
+        Instantiate(CodeScreen, gameObject.transform.root, false);
+        SwapScreen(CodeScreen);});
                 
     }
 

@@ -1,0 +1,402 @@
+[
+  {
+    "Code": "SPEC-40B59",
+    "amount": 261
+  },
+  {
+    "Code": "SPEC-4CDDE",
+    "amount": 248
+  },
+  {
+    "Code": "SPEC-7D1B1",
+    "amount": 368
+  },
+  {
+    "Code": "SPEC-B4264",
+    "amount": 107
+  },
+  {
+    "Code": "SPEC-F9A70",
+    "amount": 52
+  },
+  {
+    "Code": "SPEC-6F679",
+    "amount": 67
+  },
+  {
+    "Code": "SPEC-1E624",
+    "amount": 142
+  },
+  {
+    "Code": "SPEC-503B7",
+    "amount": 158
+  },
+  {
+    "Code": "SPEC-40014",
+    "amount": 58
+  },
+  {
+    "Code": "SPEC-BB52D",
+    "amount": 257
+  },
+  {
+    "Code": "SPEC-CF9AD",
+    "amount": 67
+  },
+  {
+    "Code": "SPEC-561C2",
+    "amount": 224
+  },
+  {
+    "Code": "SPEC-6161B",
+    "amount": 114
+  },
+  {
+    "Code": "SPEC-7F7C0",
+    "amount": 58
+  },
+  {
+    "Code": "SPEC-291F",
+    "amount": 246
+  },
+  {
+    "Code": "SPEC-1CEBD",
+    "amount": 238
+  },
+  {
+    "Code": "SPEC-6B040",
+    "amount": 183
+  },
+  {
+    "Code": "SPEC-5D8E7",
+    "amount": 162
+  },
+  {
+    "Code": "SPEC-F3188",
+    "amount": 284
+  },
+  {
+    "Code": "SPEC-F50EC",
+    "amount": 77
+  },
+  {
+    "Code": "SPEC-DAEDA",
+    "amount": 136
+  },
+  {
+    "Code": "SPEC-F858C",
+    "amount": 189
+  },
+  {
+    "Code": "SPEC-5C10A",
+    "amount": 271
+  },
+  {
+    "Code": "SPEC-F6802",
+    "amount": 275
+  },
+  {
+    "Code": "SPEC-331D9",
+    "amount": 186
+  },
+  {
+    "Code": "SPEC-20657",
+    "amount": 177
+  },
+  {
+    "Code": "SPEC-CAFF0",
+    "amount": 70
+  },
+  {
+    "Code": "SPEC-51ECF",
+    "amount": 367
+  },
+  {
+    "Code": "SPEC-F7BFB",
+    "amount": 279
+  },
+  {
+    "Code": "SPEC-97D7A",
+    "amount": 215
+  },
+  {
+    "Code": "SPEC-3B20A",
+    "amount": 168
+  },
+  {
+    "Code": "SPEC-5D927",
+    "amount": 291
+  },
+  {
+    "Code": "SPEC-E1648",
+    "amount": 363
+  },
+  {
+    "Code": "SPEC-C68B7",
+    "amount": 143
+  },
+  {
+    "Code": "SPEC-E1044",
+    "amount": 110
+  },
+  {
+    "Code": "SPEC-D6E0D",
+    "amount": 124
+  },
+  {
+    "Code": "SPEC-4C3C9",
+    "amount": 375
+  },
+  {
+    "Code": "SPEC-F77A9",
+    "amount": 295
+  },
+  {
+    "Code": "SPEC-4FA83",
+    "amount": 376
+  },
+  {
+    "Code": "SPEC-11E18",
+    "amount": 247
+  },
+  {
+    "Code": "SPEC-2D582",
+    "amount": 261
+  },
+  {
+    "Code": "SPEC-F8650",
+    "amount": 117
+  },
+  {
+    "Code": "SPEC-601BA",
+    "amount": 395
+  },
+  {
+    "Code": "SPEC-F622",
+    "amount": 198
+  },
+  {
+    "Code": "SPEC-16EAA",
+    "amount": 118
+  },
+  {
+    "Code": "SPEC-34BD8",
+    "amount": 376
+  },
+  {
+    "Code": "SPEC-84A42",
+    "amount": 143
+  },
+  {
+    "Code": "SPEC-B2E2A",
+    "amount": 239
+  },
+  {
+    "Code": "SPEC-14926",
+    "amount": 238
+  },
+  {
+    "Code": "SPEC-A4D9F",
+    "amount": 348
+  },
+  {
+    "Code": "SPEC-70679",
+    "amount": 283
+  },
+  {
+    "Code": "SPEC-91482",
+    "amount": 207
+  },
+  {
+    "Code": "SPEC-68A41",
+    "amount": 269
+  },
+  {
+    "Code": "SPEC-2A684",
+    "amount": 94
+  },
+  {
+    "Code": "SPEC-3C995",
+    "amount": 68
+  },
+  {
+    "Code": "SPEC-11536",
+    "amount": 205
+  },
+  {
+    "Code": "SPEC-737A3",
+    "amount": 257
+  },
+  {
+    "Code": "SPEC-3326D",
+    "amount": 91
+  },
+  {
+    "Code": "SPEC-742C0",
+    "amount": 56
+  },
+  {
+    "Code": "SPEC-D6DB8",
+    "amount": 340
+  },
+  {
+    "Code": "SPEC-4DC8E",
+    "amount": 144
+  },
+  {
+    "Code": "SPEC-BAE0E",
+    "amount": 67
+  },
+  {
+    "Code": "SPEC-AF070",
+    "amount": 268
+  },
+  {
+    "Code": "SPEC-B1CC3",
+    "amount": 363
+  },
+  {
+    "Code": "SPEC-DEF52",
+    "amount": 324
+  },
+  {
+    "Code": "SPEC-5AF5",
+    "amount": 372
+  },
+  {
+    "Code": "SPEC-A5C00",
+    "amount": 307
+  },
+  {
+    "Code": "SPEC-89E89",
+    "amount": 128
+  },
+  {
+    "Code": "SPEC-7870C",
+    "amount": 342
+  },
+  {
+    "Code": "SPEC-AB7D4",
+    "amount": 193
+  },
+  {
+    "Code": "SPEC-E6D89",
+    "amount": 318
+  },
+  {
+    "Code": "SPEC-51B",
+    "amount": 113
+  },
+  {
+    "Code": "SPEC-3F199",
+    "amount": 281
+  },
+  {
+    "Code": "SPEC-CDD04",
+    "amount": 324
+  },
+  {
+    "Code": "SPEC-967FE",
+    "amount": 363
+  },
+  {
+    "Code": "SPEC-BFD12",
+    "amount": 320
+  },
+  {
+    "Code": "SPEC-EB9D3",
+    "amount": 342
+  },
+  {
+    "Code": "SPEC-90D56",
+    "amount": 53
+  },
+  {
+    "Code": "SPEC-E1D7E",
+    "amount": 68
+  },
+  {
+    "Code": "SPEC-B4E75",
+    "amount": 10
+  },
+  {
+    "Code": "SPEC-AAE08",
+    "amount": 173
+  },
+  {
+    "Code": "SPEC-30B15",
+    "amount": 100
+  },
+  {
+    "Code": "SPEC-EBF4",
+    "amount": 150
+  },
+  {
+    "Code": "SPEC-A69E6",
+    "amount": 316
+  },
+  {
+    "Code": "SPEC-276B6",
+    "amount": 293
+  },
+  {
+    "Code": "SPEC-4C154",
+    "amount": 80
+  },
+  {
+    "Code": "SPEC-40263",
+    "amount": 369
+  },
+  {
+    "Code": "SPEC-FF7B2",
+    "amount": 56
+  },
+  {
+    "Code": "SPEC-CFBBA",
+    "amount": 133
+  },
+  {
+    "Code": "SPEC-7F4F2",
+    "amount": 333
+  },
+  {
+    "Code": "SPEC-FD5EA",
+    "amount": 98
+  },
+  {
+    "Code": "SPEC-2AC75",
+    "amount": 168
+  },
+  {
+    "Code": "SPEC-39443",
+    "amount": 50
+  },
+  {
+    "Code": "SPEC-2AC7C",
+    "amount": 218
+  },
+  {
+    "Code": "SPEC-3852E",
+    "amount": 179
+  },
+  {
+    "Code": "SPEC-74117",
+    "amount": 347
+  },
+  {
+    "Code": "SPEC-AC626",
+    "amount": 118
+  },
+  {
+    "Code": "SPEC-DEF53",
+    "amount": 292
+  },
+  {
+    "Code": "SPEC-C289D",
+    "amount": 356
+  },
+  {
+    "Code": "SPEC-8D6E2",
+    "amount": 500
+  }
+]
