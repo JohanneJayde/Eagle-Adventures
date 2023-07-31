@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1264,9 +1264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc550ef028cb5485caabc63916ca5916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SendScreen: {fileID: 8576237082336263385}
   Directions: {fileID: 1771523542020170362}
   Title: {fileID: 296920658760635537}
+  SendScreen: {fileID: 8576237082336263385}
   QuestionInput: {fileID: 161562812599770969}
   Status: {fileID: 355206205761940310}
   Question: {fileID: 8758783907949872584}
@@ -1776,14 +1776,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

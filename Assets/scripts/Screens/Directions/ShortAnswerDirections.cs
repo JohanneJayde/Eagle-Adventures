@@ -14,16 +14,26 @@ public class ShortAnswerDirections : QuestDirectionsScreen
 
 
     public override void RenderDirections(Quest quest){
+
         base.RenderDirections(quest);
         Debug.Log(Quest);
         Question.text = Quest.Question;
 
-        SendScreen.onClick.AddListener(
-            () => 
-            {
-                Debug.Log("Hi");
-            }
-        );
+        if(PlayerManager.Instance.PlayerProgress[quest.QuestID]){
+            SendScreen.enabled = false;
+            QuestionInput.enabled = false;
+            QuestionInput.text = quest.ShortAnswer;
+        }
+
+        else{
+
+            SendScreen.onClick.AddListener(
+                () => 
+                {
+                    Debug.Log("Hi");
+                }
+            );
+        }
 
     }
 

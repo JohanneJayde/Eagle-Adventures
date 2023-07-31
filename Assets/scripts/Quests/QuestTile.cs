@@ -29,13 +29,4 @@ public class QuestTile : MonoBehaviour
         }
     }
 
-    public void SetLinkToIntro(GameObject introScreen){
-        StartButton.onClick.AddListener(
-            () =>
-            {
-
-            }
-        );
-    }
-
 }

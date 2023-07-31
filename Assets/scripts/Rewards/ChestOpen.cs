@@ -9,7 +9,7 @@ public class ChestOpen : MonoBehaviour
     }
 
     public void GetChestRewards(){
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 2);
     }
 
 }
