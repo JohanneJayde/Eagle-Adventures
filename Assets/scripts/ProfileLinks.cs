@@ -7,7 +7,7 @@ public class ProfileLinks : MonoBehaviour
 
 
     public void OpenStrengthTest(){
-        Application.OpenURL("https://www.ewu.edu/about/fast-facts/");
+        Application.OpenURL("https://richardstep.com/richardstep-strengths-weaknesses-aptitude-test/ d");
     }
 
     public void OpenEWUMissionStatement(){

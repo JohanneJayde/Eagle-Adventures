@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6557330491215482692}
   - component: {fileID: 5532167877237798767}
   - component: {fileID: 8162362879602851337}
-  - component: {fileID: 224687718057632201}
   m_Layer: 0
   m_Name: Redeem Special Code
   m_TagString: Untagged
@@ -206,19 +205,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &224687718057632201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898672487100996560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c769d7a55f9d408f86cb6f07f9b2b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TargetScreenNodeId: 2:2240
 --- !u!1 &2060145176290698245
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +412,6 @@ GameObject:
   - component: {fileID: 4885963119817821978}
   - component: {fileID: 720327191335701013}
   - component: {fileID: 2993985869459259965}
-  - component: {fileID: 7118102548924036320}
   m_Layer: 0
   m_Name: View All Campaigns
   m_TagString: Untagged
@@ -618,19 +603,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7118102548924036320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3763169222521248715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c769d7a55f9d408f86cb6f07f9b2b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TargetScreenNodeId: 2:2240
 --- !u!1 &4655109899120057998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1178,6 @@ GameObject:
   - component: {fileID: 1557982969361925905}
   - component: {fileID: 7764917803393113059}
   - component: {fileID: 2556919992243086611}
-  - component: {fileID: 5443441586042695431}
   m_Layer: 0
   m_Name: Resume Current Quest
   m_TagString: Untagged
@@ -1398,16 +1369,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5443441586042695431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7658847123052556366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c769d7a55f9d408f86cb6f07f9b2b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TargetScreenNodeId: 2:2240
