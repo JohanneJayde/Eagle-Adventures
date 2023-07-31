@@ -17,7 +17,7 @@ public class QuestScreen : MonoBehaviour
     }
 
     public void RenderQuestTiles(){
-        QuestConstructor.ConstructQuests(Quests, Tiles);
+        QuestConstructor.ConstructQuests(Quests, Tiles, gameObject);
     }
 
     // Update is called once per frame

@@ -12,12 +12,11 @@ public class CodeEntry : MonoBehaviour
     public Button EnterCode;
     public TMP_Text Status;
     public Button BackButton;
-
     public GameObject DirectionScreen;
 
     public void HandlePress()
     {
-        if(CheckCode()){
+       if(CheckCode()){
             Status.text = "Correct Answer!";
             RewardsScreenConstructor.ChestFoundChainCodeEntry(gameObject);
             Destroy(gameObject);
@@ -26,7 +25,6 @@ public class CodeEntry : MonoBehaviour
         else{
             Status.text = "Sorry! That answer was incorrect!";
         }
-
     } 
 
     public void BackToDirections(){
@@ -36,6 +34,17 @@ public class CodeEntry : MonoBehaviour
     public void SetCode(Quest quest){
         Quest = quest;
         Debug.Log(Quest);
+
+        if(CheckCompeted()){
+            EnterCode.enabled = false;
+            CodeField.enabled = false;
+            CodeField.text = Quest.Code;
+        }
+
+    }
+
+    public bool CheckCompeted(){
+        return PlayerManager.Instance.PlayerProgress[Quest.QuestID] ? true : false;
     }
 
 

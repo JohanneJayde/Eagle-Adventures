@@ -5,13 +5,13 @@ using UnityEngine;
 public class QuestConstructor : MonoBehaviour
 {
 
-    public static GameObject ConstructQuest(Quest quest, GameObject parent){
+    public static GameObject ConstructQuest(Quest quest, GameObject parent, GameObject highestScreen){
         GameObject Tile = QuestTileConstructor.GetTile(quest, parent);
         
         Tile.GetComponent<QuestTile>().StartButton.onClick.AddListener(
             () =>
             {
-  
+                highestScreen.SetActive(false);
                 GameObject IntroScreen = QuestIntroConstructor.SetIntroScreen(Tile);
                 GameObject DirectionScreen = QuestDirectionsConstructor.SetDirectionsScreen(Tile);
 
@@ -23,10 +23,10 @@ public class QuestConstructor : MonoBehaviour
         return Tile;
     }
 
-    public static void ConstructQuests(List<Quest> quests, GameObject parent){
+    public static void ConstructQuests(List<Quest> quests, GameObject parent, GameObject highestScreen){
 
         foreach(var quest in quests){
-            ConstructQuest(quest, parent);
+            ConstructQuest(quest, parent, highestScreen);
         }
 
     }
