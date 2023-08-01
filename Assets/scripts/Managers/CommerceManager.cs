@@ -10,7 +10,7 @@ public class CommerceManager : MonoBehaviour
     * Singleton logic
     */
     private static CommerceManager _instance;
-    public List<SpecCode> SpecialCodes {get; set;}
+    public Dictionary<string, int> SpecialCodes {get; set;}
     public List<string> UsedCodes {get; set;}
     public struct SpecCode{
         public string code;
@@ -32,14 +32,20 @@ public class CommerceManager : MonoBehaviour
 
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Loading Json");
         TextAsset json = Resources.Load("Data/SpecialCodes") as TextAsset;
         Debug.Log(json.text);
-        SpecialCodes = JsonConvert.DeserializeObject<List<SpecCode>>(json.text);
+        List<SpecCode> specCodes = new List<SpecCode>();
+        specCodes = JsonConvert.DeserializeObject<List<SpecCode>>(json.text);
+        SpecialCodes = new Dictionary<string, int>();
+        foreach(var code in specCodes){
+            SpecialCodes.Add(code.code, code.amount);
+            Debug.Log(code.code + " " + SpecialCodes[code.code]);
+        }
+        
     }
 
 

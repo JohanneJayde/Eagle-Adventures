@@ -274,7 +274,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateStats(Quest quest)
     {
         ExpEarned += quest.ExpRewards;
-        CoinCount += quest.CoinRewards;
+        UpdateCoins(quest.CoinRewards);
 
         if(CheckLevel(ExpEarned)){
             SetLevel(Level + 1);
@@ -285,6 +285,13 @@ public class PlayerManager : MonoBehaviour
         onStatUpdate?.Invoke();
 
     }
+
+    public void UpdateCoins(int coins){
+        CoinCount += coins;
+        onStatUpdate?.Invoke();
+
+    }
+
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */

@@ -19,16 +19,16 @@ public class SpecialCodeEntry : MonoBehaviour
         EnterCode.onClick.AddListener(
             () =>
             {
-                CheckCode();
+                HandlePress();
             }
         );
     }
 
-    public void CheckCode(){
-        if(CommerceManager.Instance.SpecialCodes.Any((code) => { return CodeField.text == code.code;})){
+    public void HandlePress(){
+        if(CheckCode()){
 
             Status.text = "Correct Answer!";
-            //RewardsScreenConstructor.ChestFoundSpecial();
+            RewardsScreenConstructor.ChestFoundSpecial(CodeField.text, gameObject);
             Destroy(gameObject);
         }
         else if(CodeField.text == "DELTEALLPLAYERDATA"){
@@ -37,6 +37,9 @@ public class SpecialCodeEntry : MonoBehaviour
         else{
             Status.text = "Sorry! That answer was incorrect!";
         }
+    }
 
+    public bool CheckCode(){
+        return CommerceManager.Instance.SpecialCodes.ContainsKey(CodeField.text);
     }
 }
