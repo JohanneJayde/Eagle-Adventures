@@ -77,9 +77,6 @@ public class QuestTileConstructor : MonoBehaviour
         QuestTile.GetComponent<QuestTile>().RenderTile(quest);
         QuestTile.name = quest.Title;
 
-        QuestBehaviours.AddBehaviour<ExitOnClickBehaviour>(QuestTile, parent);
-        //QuestBehaviours.AddBehaviour<SayHelloBehaviour>(QuestTile, parent);
-
         return QuestTile;
     }
 

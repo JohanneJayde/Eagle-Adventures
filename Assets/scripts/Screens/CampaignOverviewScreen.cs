@@ -25,9 +25,10 @@ public class CampaignOverviewScreen : MonoBehaviour
                     QuestScreen.GetComponent<QuestScreen>().SetQuests(child.gameObject.name);
                     QuestScreen.SetActive(true);
                     gameObject.SetActive(false);
-                            ClearFilter();
+                    ClearFilter();
                 }
             );
+            
         }
 
     SearchBar.onValueChanged.AddListener(delegate { SearchByTitle(); });

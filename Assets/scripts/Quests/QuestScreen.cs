@@ -10,6 +10,7 @@ public class QuestScreen : MonoBehaviour
     public List<Quest> Quests;
     public GameObject TilesContainer;
     public List<GameObject> Tiles;
+    public GameObject button;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,9 @@ public class QuestScreen : MonoBehaviour
 
     public void RenderQuestTiles(){
         Tiles = QuestConstructor.ConstructQuests(Quests, TilesContainer);
-        QuestBehaviours.AddBehaviourToTiles<ExitOnClickBehaviour>(Tiles, gameObject);
+        
+        ApplyTileBehaviours();
+
 
     }
 
@@ -27,6 +30,16 @@ public class QuestScreen : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ApplyTileBehaviours(){
+
+        BehaviourBuilder.AddBehaviourToTiles<ExitOnClickBehaviour>(Tiles, gameObject);
+
+        GameObject scrollview = gameObject.transform.GetChild(1).gameObject;
+        BehaviourBuilder.AddBehaviourToTiles<ResetScrollOnExitBehaviour>(Tiles, scrollview);
+
+        BehaviourBuilder.AddBehaviourToTiles<SayHelloBehaviour>(Tiles, gameObject);
     }
 
     public void SetQuests(string campaign){

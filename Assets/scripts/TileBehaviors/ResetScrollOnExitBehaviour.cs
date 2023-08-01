@@ -5,15 +5,19 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class AddResetScrollOnExitBehaviour : TileBehaviour
+public class ResetScrollOnExitBehaviour : TileBehaviour
 {
+    
 
 
     public override void AddBehaviour(){
 
         Button.onClick.AddListener(
 
-            () => {Screen.GetComponent<ScrollRect>().normalizedPosition = new Vector2(1,1);
+            () => 
+            {
+                Screen.name = "trest";
+                Screen.GetComponent<ScrollRect>().normalizedPosition = new Vector2(1,1);
             }
         );
 
