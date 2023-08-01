@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class AddResetScrollOnExitBehaviour : TileBehaviour
 {
 
+
     public override void AddBehaviour(){
 
         Button.onClick.AddListener(

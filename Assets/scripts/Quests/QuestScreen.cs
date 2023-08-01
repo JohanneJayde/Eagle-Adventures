@@ -8,7 +8,8 @@ public class QuestScreen : MonoBehaviour
 
 
     public List<Quest> Quests;
-    public GameObject Tiles;
+    public GameObject TilesContainer;
+    public List<GameObject> Tiles;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,9 @@ public class QuestScreen : MonoBehaviour
     }
 
     public void RenderQuestTiles(){
-        QuestConstructor.ConstructQuests(Quests, Tiles, gameObject);
+        Tiles = QuestConstructor.ConstructQuests(Quests, TilesContainer);
+        QuestBehaviours.AddBehaviourToTiles<ExitOnClickBehaviour>(Tiles, gameObject);
+
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class QuestScreen : MonoBehaviour
 
     public void SetQuests(string campaign){
 
-        ClearTiles(Tiles);
+        ClearTiles(TilesContainer);
 
         Quests = QuestManager.Instance.Quests.Where((quest) => {
 

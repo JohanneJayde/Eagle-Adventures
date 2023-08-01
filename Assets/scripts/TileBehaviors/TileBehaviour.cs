@@ -4,15 +4,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
-public abstract class TileBehaviour : Component
+public abstract class TileBehaviour : MonoBehaviour
 {
 
-    public Button Button {get; set;}
-    public GameObject Screen {get; set;}
+    public Button Button;
+    public GameObject Screen;
 
-    // public TileBehaviour(Button button, GameObject screen){
-    //     Button = button;
-    //     Screen = screen;
-    // }
+    public void SetComponents(Button button, GameObject screen){
+        Button = button;
+        Screen = screen;
+    }
+
     public abstract void AddBehaviour();
 }

@@ -75,6 +75,10 @@ public class QuestTileConstructor : MonoBehaviour
         GameObject QuestTile = Instantiate((GameObject)Resources.Load("Prefabs/Components/Quest Tile"), new Vector2(0, 0), new Quaternion(0, 0, 0, 0)) as GameObject;
         QuestTile.transform.SetParent(parent.transform, false);
         QuestTile.GetComponent<QuestTile>().RenderTile(quest);
+        QuestTile.name = quest.Title;
+
+        QuestBehaviours.AddBehaviour<ExitOnClickBehaviour>(QuestTile, parent);
+        //QuestBehaviours.AddBehaviour<SayHelloBehaviour>(QuestTile, parent);
 
         return QuestTile;
     }
