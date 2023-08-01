@@ -25,21 +25,33 @@ public class SpecialCodeEntry : MonoBehaviour
     }
 
     public void HandlePress(){
-        if(CheckCode()){
+        string code = CodeField.text;
+        if(CodeExists(code)){
 
-            Status.text = "Correct Answer!";
-            RewardsScreenConstructor.ChestFoundSpecial(CodeField.text, gameObject);
-            Destroy(gameObject);
+            if(CheckUsedCode(code)){
+                Status.text = "Sorry! That code has already been redeemed. Please ask for another one!";
+            }
+            else{
+                Status.text = "Correct Code! Distributing Rewards!";
+                RewardsScreenConstructor.ChestFoundSpecial(CodeField.text, gameObject);
+                Destroy(gameObject);
+            }
+
+
         }
         else if(CodeField.text == "DELTEALLPLAYERDATA"){
             PlayerManager.Instance.DeleteSaveData();
         }
         else{
-            Status.text = "Sorry! That answer was incorrect!";
+            Status.text = "ERROR! Invalid Code!";
         }
     }
 
-    public bool CheckCode(){
-        return CommerceManager.Instance.SpecialCodes.ContainsKey(CodeField.text);
+    public bool CodeExists(string code){
+        return CommerceManager.Instance.CodeExists(code);
+    }
+    public bool CheckUsedCode(string code){
+        return CommerceManager.Instance.CheckUsedCode(code);
+
     }
 }

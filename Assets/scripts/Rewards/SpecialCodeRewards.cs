@@ -12,6 +12,7 @@ public class SpecialCodeRewards : MonoBehaviour
         int coins = CommerceManager.Instance.SpecialCodes[code];
         Coins.text = coins.ToString() + "G";
         PlayerManager.Instance.UpdateCoins(coins);
+        CommerceManager.Instance.UpdateUsedCodes(code);
     }
 
     public void ReturnToProfilePage(){
