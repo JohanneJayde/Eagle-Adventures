@@ -274,7 +274,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateStats(Quest quest)
     {
         ExpEarned += quest.ExpRewards;
-        UpdateCoins(quest.CoinRewards);
+        CoinCount += quest.CoinRewards;
 
         if(CheckLevel(ExpEarned)){
             SetLevel(Level + 1);
@@ -289,6 +289,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateCoins(int coins){
         CoinCount += coins;
         onStatUpdate?.Invoke();
+        SavePlayerInfo();
 
     }
 

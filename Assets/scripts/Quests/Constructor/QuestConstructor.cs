@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class QuestConstructor : MonoBehaviour
 {
@@ -23,11 +24,15 @@ public class QuestConstructor : MonoBehaviour
         return Tile;
     }
 
-    public static void ConstructQuests(List<Quest> quests, GameObject parent, GameObject highestScreen){
+    public static List<GameObject> ConstructQuests(List<Quest> quests, GameObject parent, GameObject highestScreen){
+
+        List<GameObject> QuestTiles = new List<GameObject>();
 
         foreach(var quest in quests){
-            ConstructQuest(quest, parent, highestScreen);
+            QuestTiles.Add(ConstructQuest(quest, parent, highestScreen));
         }
+
+        return QuestTiles;
 
     }
 
