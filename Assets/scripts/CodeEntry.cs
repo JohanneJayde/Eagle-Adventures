@@ -18,7 +18,7 @@ public class CodeEntry : MonoBehaviour
     {
        if(CheckCode()){
             Status.text = "Correct Answer!";
-            RewardsScreenConstructor.ChestFoundChainCodeEntry(gameObject);
+            RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
             Destroy(gameObject);
             Destroy(DirectionScreen);
         }

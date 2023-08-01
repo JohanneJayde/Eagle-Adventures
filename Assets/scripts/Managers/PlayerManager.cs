@@ -281,7 +281,7 @@ public class PlayerManager : MonoBehaviour
         }
         PlayerProgress[quest.QuestID] = true;
         SavePlayerInfo();
-
+        Debug.Log("Updated Stats");
         onStatUpdate?.Invoke();
 
     }

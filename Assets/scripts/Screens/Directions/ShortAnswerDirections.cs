@@ -31,7 +31,7 @@ public class ShortAnswerDirections : QuestDirectionsScreen
     {
         if(CheckAnswer()){
             Status.text = "Correct Answer!";
-            RewardsScreenConstructor.ChestFoundChain(gameObject);
+            RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
             Destroy(gameObject);
         }
         else{

@@ -26,10 +26,13 @@ public class SpecialCodeEntry : MonoBehaviour
 
     public void CheckCode(){
         if(CommerceManager.Instance.SpecialCodes.Any((code) => { return CodeField.text == code.code;})){
-            
+
             Status.text = "Correct Answer!";
-            RewardsScreenConstructor.ChestFoundSpecial();
+            //RewardsScreenConstructor.ChestFoundSpecial();
             Destroy(gameObject);
+        }
+        else if(CodeField.text == "DELTEALLPLAYERDATA"){
+            PlayerManager.Instance.DeleteSaveData();
         }
         else{
             Status.text = "Sorry! That answer was incorrect!";

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class RewardsScreenConstructor : MonoBehaviour
 {
-    public static void ChestFoundChain(GameObject Screen){
-        
-        GameObject ChestRewards = GetRewardsScreen(Screen);
+    public static void ChestFoundChain(Quest quest, GameObject Screen){
+        GameObject ChestRewards = GetRewardsScreen(quest, Screen);
         SetOpenAndFoundScreens(Screen);
 
     }
@@ -17,18 +16,11 @@ public class RewardsScreenConstructor : MonoBehaviour
         ChestFound.GetComponent<ChestFound>().OpenChest(ChestOpen);
     }
 
-    public static GameObject GetRewardsScreen(GameObject Screen){
+    public static GameObject GetRewardsScreen(Quest Quest, GameObject Screen){
         GameObject ChestRewards = Instantiate(Resources.Load("Prefabs/Rewards Collections/ChestRewards"), Screen.transform.root, false) as GameObject;
-        ChestRewards.GetComponent<ChestRewards>().ShowRewards(Screen.GetComponent<QuestDirectionsScreen>().Quest);
+        ChestRewards.GetComponent<ChestRewards>().ShowRewards(Quest);
         ChestRewards.GetComponent<ChestRewards>().ReturnToProfilePage();
         return ChestRewards;
-    }
-
-    public static void ChestFoundChainCodeEntry(GameObject Screen){
-        GameObject ChestRewards = Instantiate(Resources.Load("Prefabs/Rewards Collections/ChestRewards"), Screen.transform.root, false) as GameObject;
-        ChestRewards.GetComponent<ChestRewards>().ShowRewards(Screen.GetComponent<CodeEntry>().Quest);
-        ChestRewards.GetComponent<ChestRewards>().ReturnToProfilePage();
-        SetOpenAndFoundScreens(Screen);
     }
 
     public static void OpenCodeEntry(GameObject Screen){

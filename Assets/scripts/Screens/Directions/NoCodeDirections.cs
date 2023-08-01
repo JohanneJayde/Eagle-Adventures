@@ -21,7 +21,7 @@ public class NoCodeDirections : QuestDirectionsScreen
 
     public override void HandlePress()
     {
-            RewardsScreenConstructor.ChestFoundChain(gameObject);
+            RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
             Destroy(gameObject);
     }
 
