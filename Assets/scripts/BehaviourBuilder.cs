@@ -7,23 +7,18 @@ using UnityEngine.Events;
 
 public class BehaviourBuilder : MonoBehaviour
 {
+    public static void AddBehaviour<T>(Button button, GameObject screen) where T : ButtonBehaviour, new() {
 
-    public static void AddBehaviour<T>(GameObject Tile, GameObject screen) where T : TileBehaviour, new() {
-        Button button = Tile.GetComponent<QuestTile>().StartButton;
-
-        Tile.AddComponent<T>();
-
-        Tile.GetComponent<T>().SetComponents(button, screen);
-        Tile.GetComponent<T>().AddBehaviour();
-
+        ButtonBehaviour behaviour = new T();
+        behaviour.AddBehaviour(button, screen);
 
     }
 
-    public static void AddBehaviourToTiles<T>(List<GameObject> Tiles, GameObject screen) where T : TileBehaviour, new(){
+    public static void AddBehaviourToTiles<T>(List<GameObject> Tiles, GameObject screen) where T : ButtonBehaviour, new(){
 
         foreach(var tile in Tiles){
-
-            AddBehaviour<T>(tile, screen);
+            Button button = tile.GetComponent<QuestTile>().StartButton;
+            AddBehaviour<T>(button, screen);
         }
 
     }

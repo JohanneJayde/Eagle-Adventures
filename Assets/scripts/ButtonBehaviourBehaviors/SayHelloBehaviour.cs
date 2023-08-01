@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class SayHelloBehaviour : TileBehaviour
+public class SayHelloBehaviour : ButtonBehaviour
 {
+    public void AddBehaviour(Button button, GameObject screen){
 
-    public override void AddBehaviour(){
-
-        Button.onClick.AddListener(
+        button.onClick.AddListener(
 
             () => 
             {
