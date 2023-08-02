@@ -20,6 +20,16 @@ public class CopyElement : MonoBehaviour
 
         //211.21
 
+        //OnBoard Element
+            //Text
+            //Skip Button
+            //Button -> Two Things: Goto next OnBoard element, delete itself and the arrow
+                //It also needs to unspotlight the spotlighted attribute
+                //DestroyOnClick
+                //MoveToScreen
+                //SpotLightNext
+                //Stort(Sportlight);
+            //Arrow
 
         GameObject ClonedObject = Instantiate(CloneObject, canvas.transform, false);
         CloneObject.SetActive(false);
