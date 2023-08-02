@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6599009324852525321}
   - component: {fileID: 4590710457741886176}
   - component: {fileID: -7806381471757123703}
+  - component: {fileID: 1250388958608283698}
   m_Layer: 0
   m_Name: ChestOpening
   m_TagString: Untagged
@@ -249,6 +250,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c62f67afcf143f1a2eed572f0ccca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &1250388958608283698
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925812068632849046}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 1
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &6334258370734449938
 GameObject:
   m_ObjectHideFlags: 0

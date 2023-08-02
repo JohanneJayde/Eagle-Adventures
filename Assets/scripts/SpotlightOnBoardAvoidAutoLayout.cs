@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SpotlightOnBoard : MonoBehaviour
+public class SpotLightOnBoardAvoidAutoLayout : SpotlightOnBoard
 {
-
-    public GameObject ObjToSpotlight;
-    public GameObject ClonedObject;
 
     public void Spotlight(){
 
@@ -19,7 +16,7 @@ public class SpotlightOnBoard : MonoBehaviour
         Vector3 pos = ObjToSpotlight.transform.position;
         ClonedObject = Instantiate(ObjToSpotlight, gameObject.transform.root, false) as GameObject;
 
-        ObjToSpotlight.SetActive(false);
+      //  ObjToSpotlight.SetActive(false);
   
         ClonedObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
         ClonedObject.transform.SetSiblingIndex(0);
@@ -34,7 +31,7 @@ public class SpotlightOnBoard : MonoBehaviour
         Debug.Log("Deleting: " + ClonedObject.name);
 
         Destroy(ClonedObject);
-        ObjToSpotlight.SetActive(true);
+       // ObjToSpotlight.SetActive(true);
     }
 
     public void Start(){

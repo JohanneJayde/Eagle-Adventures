@@ -12,4 +12,9 @@ public class ChestOpen : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
+    public void OnEnable(){
+        Destroy(gameObject, 2);
+
+    }
+
 }
