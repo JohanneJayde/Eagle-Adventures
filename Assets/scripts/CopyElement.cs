@@ -4,17 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 
 public class CopyElement : MonoBehaviour
 {
     public GameObject CloneObject;
 
+    public List<GameObject> OnBoardBlurbs;
+
     public GameObject canvas;
 
     public Button SendBack;
 
+    int currentOnBoardBlur = 0;
+
+
+
+    public void ActivateOnBoard(){
+        GameObject blurb = Instantiate(OnBoardBlurbs.ElementAt(currentOnBoardBlur));
+        blurb.transform.SetParent(canvas.transform, false);
+        currentOnBoardBlur++;
+    }
+
     public void ClickClone(){
        // GameObject ClonedObject = Instantiate(CloneObject, CloneObject.transform.position, CloneObject.transform.rotation);
+
+        foreach(var bord in OnBoardBlurbs){
+            Debug.Log("Hi");
+        }
 
         Debug.Log(CloneObject.transform.position);
 
