@@ -12,6 +12,8 @@ public class NewUserScreen : MonoBehaviour
     public TMP_InputField NameField;
     public TMP_Dropdown SummerBridge;
     public Button CreateUserButton;
+    public GameObject ProfileScreen;
+    public GameObject Onboarding;
 
     public void createUser(){
 
@@ -19,6 +21,16 @@ public class NewUserScreen : MonoBehaviour
         string groupLetter = group[group.Length - 1].ToString().ToUpper();
 
         PlayerManager.Instance.CreateNewPlayer(NameField.text, groupLetter);
+
+        TriggerOnboarding();
+    }
+
+
+    public void TriggerOnboarding(){
+        gameObject.SetActive(false);
+        ProfileScreen.SetActive(true);
+        Onboarding.SetActive(true);
+        Onboarding.GetComponent<TutorialFlow>().ActivateOnBoard();
     }
 
     void Start()

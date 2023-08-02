@@ -51,5 +51,4 @@ public class TutorialFlow : MonoBehaviour
        // QuestScreen.SetActive(false);
         profileScreen.SetActive(true);
     }
- 
 }

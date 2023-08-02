@@ -1663,7 +1663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9490196, g: 0.9490196, b: 0.9490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1741,6 +1741,8 @@ MonoBehaviour:
   NameField: {fileID: 5075882810662518031}
   SummerBridge: {fileID: 7323178662733038554}
   CreateUserButton: {fileID: 8687250959943878909}
+  ProfileScreen: {fileID: 0}
+  Onboarding: {fileID: 0}
 --- !u!1 &6676710373559443922
 GameObject:
   m_ObjectHideFlags: 0

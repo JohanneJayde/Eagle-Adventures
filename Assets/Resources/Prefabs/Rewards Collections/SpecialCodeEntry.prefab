@@ -859,6 +859,7 @@ MonoBehaviour:
   EnterCode: {fileID: 6441577931014548100}
   Status: {fileID: 886911591887084472}
   BackButton: {fileID: 8156697709331320226}
+  code: 
 --- !u!114 &8006829895890168751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
+  m_Color: {r: 0.9490196, g: 0.9490196, b: 0.9490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
