@@ -293,6 +293,17 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void UpdateCoinXP(int xp, int coins){
+        ExpEarned += xp;
+        CoinCount += coins;
+        if(CheckLevel(ExpEarned)){
+            SetLevel(Level + 1);
+        }
+        onStatUpdate?.Invoke();
+        SavePlayerInfo();
+
+    }
+
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */

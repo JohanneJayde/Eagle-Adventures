@@ -9,27 +9,17 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
 
-public class OnboardingProcess : MonoBehaviour
+public class TutorialFlow : MonoBehaviour
 {
-    public GameObject CloneObject;
-
     public List<GameObject> OnBoardBlurbs;
-
-    public GameObject finalscreen;
-
     public GameObject profileScreen;
-
     public GameObject TutorialScreens;
+    public GameObject QuestScreen;
+    public GameObject CampaignSceen;
 
     public Volume BlurEffect;
-
     public GameObject canvas;
-
-    public Button SendBack;
-
     public int currentOnBoardBlur = 0;
-
-
 
     public void ActivateOnBoard(){
 
@@ -39,8 +29,6 @@ public class OnboardingProcess : MonoBehaviour
             Debug.Log("end of tutorial");
             Destroy(gameObject);
             return; 
-
-
         }
 
         OnBoardBlurbs.ElementAt(currentOnBoardBlur).SetActive(true);
@@ -52,35 +40,16 @@ public class OnboardingProcess : MonoBehaviour
 
         }
 
-
-
         currentOnBoardBlur++;
     }
 
-    public void ClickClone(){
-       // GameObject ClonedObject = Instantiate(CloneObject, CloneObject.transform.position, CloneObject.transform.rotation);
-
-        foreach(var bord in OnBoardBlurbs){
-            Debug.Log("Hi");
-        }
-
-        Debug.Log(CloneObject.transform.position);
-
-        GameObject ClonedObject = Instantiate(CloneObject, canvas.transform, false);
-        CloneObject.SetActive(false);
-        Vector3 pos = CloneObject.transform.position;
-
-        ClonedObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
-        //ClonedObject.transform.SetParent(canvas.transform, false);
-        Debug.Log(ClonedObject.transform.position);
-
-        SendBack.onClick.AddListener(
-            () =>
-            {
-                CloneObject.SetActive(true);
-                Destroy(ClonedObject);
-            }
-        );
-
+    public void QuitTutorial(){
+        OnBoardBlurbs.ElementAt(currentOnBoardBlur - 1).GetComponent<SpotlightOnBoard>().OffSpotlight(); 
+        Destroy(canvas);
+        Destroy(TutorialScreens);
+        CampaignSceen.SetActive(false);
+       // QuestScreen.SetActive(false);
+        profileScreen.SetActive(true);
     }
+ 
 }
