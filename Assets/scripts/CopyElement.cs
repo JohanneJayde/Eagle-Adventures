@@ -16,13 +16,19 @@ public class CopyElement : MonoBehaviour
 
     public Button SendBack;
 
-    int currentOnBoardBlur = 0;
+    public int currentOnBoardBlur = 0;
 
 
 
     public void ActivateOnBoard(){
-        GameObject blurb = Instantiate(OnBoardBlurbs.ElementAt(currentOnBoardBlur));
-        blurb.transform.SetParent(canvas.transform, false);
+
+        OnBoardBlurbs.ElementAt(currentOnBoardBlur).SetActive(true);
+
+        if(currentOnBoardBlur != 0){
+            OnBoardBlurbs.ElementAt(currentOnBoardBlur - 1).SetActive(false);
+            OnBoardBlurbs.ElementAt(currentOnBoardBlur - 1).GetComponent<SpotlightOnBoard>().OffSpotlight(); 
+        }
+
         currentOnBoardBlur++;
     }
 
@@ -34,19 +40,6 @@ public class CopyElement : MonoBehaviour
         }
 
         Debug.Log(CloneObject.transform.position);
-
-        //211.21
-
-        //OnBoard Element
-            //Text
-            //Skip Button
-            //Button -> Two Things: Goto next OnBoard element, delete itself and the arrow
-                //It also needs to unspotlight the spotlighted attribute
-                //DestroyOnClick
-                //MoveToScreen
-                //SpotLightNext
-                //Stort(Sportlight);
-            //Arrow
 
         GameObject ClonedObject = Instantiate(CloneObject, canvas.transform, false);
         CloneObject.SetActive(false);
