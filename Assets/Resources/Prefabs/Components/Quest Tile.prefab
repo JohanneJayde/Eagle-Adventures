@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6265586465878344807}
   - component: {fileID: 4584669757471281072}
   - component: {fileID: 6258283019731159801}
+  - component: {fileID: 5000532627618583807}
   m_Layer: 0
   m_Name: Quest Tile
   m_TagString: Untagged
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 1, g: 1, b: 1, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 9, y: 9, z: 9, w: 9}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -166,6 +167,23 @@ MonoBehaviour:
   tagline: {fileID: 6584840926617523890}
   description: {fileID: 4415030808769651920}
   StartButton: {fileID: 358542961053144692}
+--- !u!114 &5000532627618583807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560278537373845223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321822fbfd6a74eebb10ec1ac0e24aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.36078432}
+  shadowDistance: {x: 0, y: -3}
+  m_UseGraphicAlpha: 1
+  iterations: 20
+  shadowSpread: {x: 0, y: 2}
 --- !u!1 &995024933333065435
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +196,8 @@ GameObject:
   - component: {fileID: 2123171333373719915}
   - component: {fileID: 8799120841431060961}
   - component: {fileID: 4512747494740980560}
-  - component: {fileID: 5565093546939414929}
   - component: {fileID: 358542961053144692}
+  - component: {fileID: 8495673249462347397}
   m_Layer: 0
   m_Name: Start Button
   m_TagString: Untagged
@@ -270,7 +288,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 0.7176471, g: 0.078431375, b: 0.18039216, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 6, y: 6, z: 6, w: 6}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -312,21 +330,6 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &5565093546939414929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995024933333065435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.11}
-  m_EffectDistance: {x: 0, y: -4}
-  m_UseGraphicAlpha: 1
 --- !u!114 &358542961053144692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +374,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8495673249462347397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995024933333065435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321822fbfd6a74eebb10ec1ac0e24aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.36078432}
+  shadowDistance: {x: 0, y: -3}
+  m_UseGraphicAlpha: 1
+  iterations: 5
+  shadowSpread: {x: 0, y: 5}
 --- !u!1 &3477533106717717425
 GameObject:
   m_ObjectHideFlags: 0

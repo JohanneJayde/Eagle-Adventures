@@ -1132,9 +1132,9 @@ GameObject:
   - component: {fileID: 7550437439304316655}
   - component: {fileID: 3218297646908058608}
   - component: {fileID: 7823270164596744971}
-  - component: {fileID: 957728354289295306}
   - component: {fileID: 6441577931014548100}
   - component: {fileID: 4583117701847244117}
+  - component: {fileID: 3160293690658672586}
   m_Layer: 0
   m_Name: Submit Code
   m_TagString: Untagged
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 0.7176471, g: 0.078431375, b: 0.18039216, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 6, y: 6, z: 6, w: 6}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -1267,21 +1267,6 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &957728354289295306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5860026819355004381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.12}
-  m_EffectDistance: {x: 0, y: -3}
-  m_UseGraphicAlpha: 1
 --- !u!114 &6441577931014548100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1324,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TargetScreenNodeId: 2:54
+--- !u!114 &3160293690658672586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860026819355004381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321822fbfd6a74eebb10ec1ac0e24aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.36078432}
+  shadowDistance: {x: 0, y: -3}
+  m_UseGraphicAlpha: 1
+  iterations: 5
+  shadowSpread: {x: 0, y: 5}
 --- !u!1 &6124850371404582648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,7 +1621,7 @@ GameObject:
   - component: {fileID: 7982607764730269451}
   - component: {fileID: 7391960238152816710}
   - component: {fileID: 5594830828867758039}
-  - component: {fileID: 5758823254816225710}
+  - component: {fileID: 8567409511791827270}
   m_Layer: 0
   m_Name: Enter Code Background
   m_TagString: Untagged
@@ -1712,7 +1714,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 1, g: 1, b: 1, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 8, y: 8, z: 8, w: 8}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -1754,7 +1756,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &5758823254816225710
+--- !u!114 &8567409511791827270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,12 +1765,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6444165776442149719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 321822fbfd6a74eebb10ec1ac0e24aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.06}
-  m_EffectDistance: {x: 0, y: -4}
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.36078432}
+  shadowDistance: {x: 0, y: -3}
   m_UseGraphicAlpha: 1
+  iterations: 20
+  shadowSpread: {x: 0, y: 2}
 --- !u!1 &6747624830498728648
 GameObject:
   m_ObjectHideFlags: 0

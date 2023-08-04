@@ -105,7 +105,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 1, g: 1, b: 1, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 15, y: 15, z: 15, w: 15}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -160,10 +160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
-  shadowDistance: {x: 1, y: -1}
+  shadowDistance: {x: 0, y: -5}
   m_UseGraphicAlpha: 1
-  iterations: 10
-  shadowSpread: {x: 0, y: 2}
+  iterations: 5
+  shadowSpread: {x: 0, y: 4}
 --- !u!1 &3847456119938420965
 GameObject:
   m_ObjectHideFlags: 0

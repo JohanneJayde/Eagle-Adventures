@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4550096628742575014}
   - component: {fileID: 73796398890376405}
   - component: {fileID: 8313225485463708216}
-  - component: {fileID: 2139247624690078718}
+  - component: {fileID: 243129139997333657}
   m_Layer: 0
   m_Name: Description Body
   m_TagString: Untagged
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 1, g: 1, b: 1, a: 1}
   m_StrokeWidth: 0
-  m_CornerRadius: {x: 8, y: 8, z: 8, w: 8}
+  m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
   m_StrokePosition: 0
   m_Fill: 0
   m_ImageScaleMode: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &2139247624690078718
+--- !u!114 &243129139997333657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,12 +351,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5073801525615341277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 321822fbfd6a74eebb10ec1ac0e24aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.06}
-  m_EffectDistance: {x: 0, y: -4}
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.36078432}
+  shadowDistance: {x: 0, y: -3}
   m_UseGraphicAlpha: 1
+  iterations: 20
+  shadowSpread: {x: 0, y: 2}
 --- !u!1 &7325582467912587487
 GameObject:
   m_ObjectHideFlags: 0
