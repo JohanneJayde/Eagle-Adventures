@@ -27,30 +27,6 @@ public class QuestManager : MonoBehaviour
      */
 
     public List<Quest> Quests { get; set; }
-    public IEnumerable<Quest> QuestsToUnlock { get; set; }
-
-    /*
-        QuestLevelSet organizes the quests into lists by level. This comes in handle when it comes to
-        unlocking quests. When the player loads in, their level will be read. Using their level,
-        we can unlock all the quest lower than or equal to it. Consequently, leveling happens by 1,
-        so when it's time to unlock on level up, we only need to look at the quests set at one level
-        upbove the user's level. There is no need to scan through the levels below or above that one.
-        So we retrieve the next level quests and unlock them without adding extra time scanning.
-        The prcoess will be as follows:
-        Scan entire CSV to serialize into master list of quests (scan 1)
-        Organize quests into QuestLevelSet object (scan 2)
-        Unlock quest that are lower or at current level
-        as you level up, access the current level + 1 and unlock them.
-
-        UpdateLevel -> set QuestsToUnlock => call update on all tiles
-        if tile level is at level, it will unlock itself and remove event listener.
-        Other than quests will keep themselves locked
-
-        on start, quests tiles containing quests below user level will not have listener applied to them.
-
-
-    */
-    public Dictionary<int, List<Quest>> QuestLevelSet {get; set;}
 
     public GameObject QuestScreen;
    
@@ -70,7 +46,6 @@ public class QuestManager : MonoBehaviour
 
     }
 
-
     /*
      * LoadQuests is used to load the acutal data from the CSV file into the application
      * It utilizes FileHelperEngine to parse csv rows and convert it into Quests list
@@ -87,17 +62,6 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    /*
-     * Contain a list of locked Quests. That way you do not have to constantly iterate over the unlocked quest t
-     * 
-     */
- 
-    // public void UpdateLockedQuest()
-    // {
-
-    //     QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
-
-    // }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
@@ -111,37 +75,17 @@ public class QuestManager : MonoBehaviour
         return (Quest)Quests.Single((quest) => quest.QuestID.Equals(QuestID));
     }
 
-    // public void CreateQuestSet(){
-        
-    //     foreach(Quest quest in Quests){
-    //         QuestLevelSet[quest.LevelRequirement].Add(quest);
-    //         Debug.Log($"KEY: {quest.LevelRequirement} - QuestID: {quest.QuestID}");
-
-    //     }
-
-    // }
-
-
-    
-
     private void Start()
     {
 
-        GoogleSheetsImporter google = new GoogleSheetsImporter();
+      LoadQuests();
+      FirebaseTester firebase = new FirebaseTester();
 
-        google.LoadSheet();
+      firebase.TestConnection();
 
-     //   QuestsToUnlock = new List<Quest>();
-   //     QuestLevelSet = new Dictionary<int, List<Quest>>();
-
-        // foreach(int key in LevelData.Levels.Keys){
-        //     QuestLevelSet.Add(key, new List<Quest>());
-        // }
-
-        LoadQuests();
-      //  CreateQuestSet();
-
-     //   QuestsToUnlock = QuestLevelSet[PlayerManager.Instance.Level + 1];
+    // GoogleSheetsImporter importer = new GoogleSheetsImporter();
+    //     importer.SetService();
+    //     importer.ReadSheet();
     }
 
     /*
@@ -150,6 +94,7 @@ public class QuestManager : MonoBehaviour
      * files using a platofrms native file path. This may be fixed in the future. This is also assuming that the
      * Quest.CSV is static when it will eventually become dynamic in later builds.
      */
+
     private void Awake()
     {
         if (_instance == null)
