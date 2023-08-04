@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class TutorialFinish : MonoBehaviour
 {
-
     public GameObject ProfileScreen;
-
 
     public void ReturnToNormalPlay(){
         Destroy(gameObject.transform.parent.gameObject);

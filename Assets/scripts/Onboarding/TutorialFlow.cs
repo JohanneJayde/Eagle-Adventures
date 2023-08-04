@@ -6,8 +6,6 @@ using TMPro;
 using System;
 using System.Linq;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
-
 
 public class TutorialFlow : MonoBehaviour
 {

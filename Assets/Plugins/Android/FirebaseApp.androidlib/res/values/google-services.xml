@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://eagle-adventures-147f1-default-rtdb.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">95245569657</string>
+  <string name="google_storage_bucket" translatable="false">eagle-adventures-147f1.appspot.com</string>
+  <string name="project_id" translatable="false">eagle-adventures-147f1</string>
+  <string name="google_api_key" translatable="false">AIzaSyCmmVRjciCWba880JC0d-BEMDODYSYMsbg</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCmmVRjciCWba880JC0d-BEMDODYSYMsbg</string>
+  <string name="google_app_id" translatable="false">1:95245569657:android:e3cdcb64f892afeaadcea8</string>
+  <string name="default_web_client_id" translatable="false">95245569657-lfa2n9nkad1jje87uj9jfvfvsvsclobg.apps.googleusercontent.com</string>
+</resources>

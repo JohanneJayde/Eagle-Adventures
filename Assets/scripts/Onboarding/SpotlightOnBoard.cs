@@ -10,7 +10,7 @@ public class SpotlightOnBoard : MonoBehaviour
     public GameObject ObjToSpotlight;
     public GameObject ClonedObject;
 
-    public void Spotlight(){
+    public virtual void Spotlight(){
 
         //nothing to spotlight;
         if(ObjToSpotlight == null){
@@ -26,7 +26,7 @@ public class SpotlightOnBoard : MonoBehaviour
 
     }
 
-    public void OffSpotlight(){
+    public virtual void OffSpotlight(){
         if(ObjToSpotlight == null){
             return;
         }
@@ -39,12 +39,6 @@ public class SpotlightOnBoard : MonoBehaviour
 
     public void Start(){
         Spotlight();
-    }
-
-    //If there is no continute button, then we we have to assign our spotlight's button
-    //so it can move the onboarding foward
-    public void AddActiveOnBoard(){
-
     }
 
 }

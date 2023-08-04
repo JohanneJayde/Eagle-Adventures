@@ -12,4 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Figma Document.unity
     guid: 1846ef56dcbef43f4853b803775c293b
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3a38147c981094db2b3991cd211dc341, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 718e9061f44174c389e299696646589a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: c6b030a63fc9cf1478b6847ae3de2807, type: 2}

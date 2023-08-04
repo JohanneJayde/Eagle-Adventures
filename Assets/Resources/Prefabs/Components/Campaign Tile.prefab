@@ -441,13 +441,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Description: The library''s purpose is to support the curricula of the
-    University and scholarly activities by providing access to information and to
-    works of the intellect and imagination. The Libraries are a shared utility for
-    the entire university community.'
+  m_text: 'Description: <font-weight=600> The library''s purpose is to support the
+    curricula of the University and scholarly activities by providing access to information
+    and to works of the intellect and imagination. The Libraries are a shared utility
+    for the entire university community.</font-weight>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c10d2421bea4a457dae5ae826598fb0d, type: 2}
-  m_sharedMaterial: {fileID: -4273579432006082768, guid: c10d2421bea4a457dae5ae826598fb0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8a949dc08c9684494830a02143ad856f, type: 2}
+  m_sharedMaterial: {fileID: 1867420261300903649, guid: 8a949dc08c9684494830a02143ad856f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

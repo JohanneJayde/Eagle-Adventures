@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Reflection;
 
 public class BehaviourBuilder : MonoBehaviour
 {

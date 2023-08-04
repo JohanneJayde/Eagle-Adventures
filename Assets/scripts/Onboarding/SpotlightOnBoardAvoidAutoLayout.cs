@@ -7,7 +7,7 @@ using TMPro;
 public class SpotLightOnBoardAvoidAutoLayout : SpotlightOnBoard
 {
 
-    public void Spotlight(){
+    public override void Spotlight(){
 
         //nothing to spotlight;
         if(ObjToSpotlight == null){
@@ -23,7 +23,7 @@ public class SpotLightOnBoardAvoidAutoLayout : SpotlightOnBoard
 
     }
 
-    public void OffSpotlight(){
+    public override void OffSpotlight(){
         if(ObjToSpotlight == null){
             return;
         }
@@ -33,15 +33,4 @@ public class SpotLightOnBoardAvoidAutoLayout : SpotlightOnBoard
         Destroy(ClonedObject);
        // ObjToSpotlight.SetActive(true);
     }
-
-    public void Start(){
-        Spotlight();
-    }
-
-    //If there is no continute button, then we we have to assign our spotlight's button
-    //so it can move the onboarding foward
-    public void AddActiveOnBoard(){
-
-    }
-
 }

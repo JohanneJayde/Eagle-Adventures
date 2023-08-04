@@ -293,6 +293,12 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void EmtyCoins(){
+        CoinCount = 0;
+        onStatUpdate?.Invoke();
+        SavePlayerInfo();
+    }
+
     public void UpdateCoinXP(int xp, int coins){
         ExpEarned += xp;
         CoinCount += coins;

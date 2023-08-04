@@ -1616,7 +1616,7 @@ GameObject:
   - component: {fileID: 5069519001988106558}
   - component: {fileID: 1416098430256071999}
   m_Layer: 0
-  m_Name: Lightbuilb SVG
+  m_Name: Lightbuilb Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

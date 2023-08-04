@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 1803604104831058635}
   - component: {fileID: 5558450509724119668}
   m_Layer: 0
-  m_Name: Compass Icon
+  m_Name: Lightbulb Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e62577441c49442288ac2e1ea384c8cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4903abb593ad4da7932e705bf706f3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
