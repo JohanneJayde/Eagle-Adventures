@@ -13,9 +13,9 @@ public class ShortAnswerDirections : QuestDirectionsScreen
 
 
 
-    public override void RenderDirections(Quest quest){
+    public override void RenderQuest(Quest quest){
 
-        base.RenderDirections(quest);
+        base.RenderQuest(quest);
         Debug.Log(Quest);
         Question.text = Quest.Question;
 
@@ -24,7 +24,7 @@ public class ShortAnswerDirections : QuestDirectionsScreen
             QuestionInput.enabled = false;
             QuestionInput.text = quest.ShortAnswer;
         }
-
+ 
     }
 
     public override void HandlePress()
@@ -32,7 +32,7 @@ public class ShortAnswerDirections : QuestDirectionsScreen
         if(CheckAnswer()){
             Status.text = "Correct Answer!";
             RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
-            Destroy(gameObject);
+            gameObject.transform.parent.gameObject.SetActive(false);
         }
         else{
             Status.text = "Sorry! That answer was incorrect!";

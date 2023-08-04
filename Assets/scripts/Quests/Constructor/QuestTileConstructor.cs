@@ -27,8 +27,6 @@ public class QuestTileConstructor : MonoBehaviour
     {
         GameObject QuestTile = SetTileDetails(quest, parent);
   
-     //   OpenDetailsScreen(QuestTile);
-
         return QuestTile;
     }
 

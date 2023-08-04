@@ -8,18 +8,7 @@ public class QuestConstructor : MonoBehaviour
 
     public static GameObject ConstructQuest(Quest quest, GameObject parent){
         GameObject Tile = QuestTileConstructor.GetTile(quest, parent);
-        
-        Tile.GetComponent<QuestTile>().StartButton.onClick.AddListener(
-            () =>
-            {
-                GameObject IntroScreen = QuestIntroConstructor.SetIntroScreen(Tile);
-                GameObject DirectionScreen = QuestDirectionsConstructor.SetDirectionsScreen(Tile);
-
-                IntroScreen.GetComponent<QuestIntroScreen>().SetLinktoDirections(DirectionScreen);
-
-            }
-            );
-
+   
         return Tile;
     }
 
@@ -34,6 +23,5 @@ public class QuestConstructor : MonoBehaviour
         return QuestTiles;
 
     }
-
 
 }

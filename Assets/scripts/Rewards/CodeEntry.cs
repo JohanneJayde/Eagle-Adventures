@@ -20,7 +20,7 @@ public class CodeEntry : MonoBehaviour
             Status.text = "Correct Answer!";
             RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
             Destroy(gameObject);
-            Destroy(DirectionScreen);
+            DirectionScreen.SetActive(false);
         }
         else{
             Status.text = "Sorry! That answer was incorrect!";

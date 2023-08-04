@@ -12,16 +12,20 @@ public abstract class QuestDirectionsScreen : MonoBehaviour
     public Quest Quest;
     public TMP_Text Directions;
     public TMP_Text Title;
-
     public Button SendScreen;
 
 
-    public virtual void RenderDirections(Quest quest){
+    public virtual void RenderQuest(Quest quest){
         Quest = quest;
         Directions.text = quest.Directions;
         Title.text = quest.Title;
 
-        
+        SendScreen.onClick.AddListener(
+            () =>
+            {
+                HandlePress();
+            }
+        );
 
 
     }

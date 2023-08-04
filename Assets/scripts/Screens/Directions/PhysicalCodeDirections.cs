@@ -8,7 +8,8 @@ public class PhysicalCodeDirections : QuestDirectionsScreen
 
     public override void HandlePress()
     {
-        RewardsScreenConstructor.OpenCodeEntry(gameObject);
+        RewardsScreenConstructor.OpenCodeEntry(gameObject.transform.parent.gameObject);
+
     }
 
 

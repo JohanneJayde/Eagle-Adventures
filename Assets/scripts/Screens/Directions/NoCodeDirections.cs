@@ -8,9 +8,9 @@ public class NoCodeDirections : QuestDirectionsScreen
 {
 
 
-    public override void RenderDirections(Quest quest){
+    public override void RenderQuest(Quest quest){
 
-        base.RenderDirections(quest);
+        base.RenderQuest(quest);
 
         if(PlayerManager.Instance.PlayerProgress[quest.QuestID]){
             SendScreen.enabled = false;
@@ -22,7 +22,7 @@ public class NoCodeDirections : QuestDirectionsScreen
     public override void HandlePress()
     {
             RewardsScreenConstructor.ChestFoundChain(Quest, gameObject);
-            Destroy(gameObject);
+            gameObject.transform.parent.gameObject.SetActive(false);
     }
 
 

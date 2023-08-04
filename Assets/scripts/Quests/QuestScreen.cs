@@ -19,7 +19,10 @@ public class QuestScreen : MonoBehaviour
     }
 
     public void RenderQuestTiles(){
-        Tiles = QuestConstructor.ConstructQuests(Quests, TilesContainer);
+
+          Tiles = QuestTileConstructor.CreateTiles(Quests, TilesContainer);
+          gameObject.GetComponent<QuestCreator>().AddListeners(Tiles);
+     //   Tiles = QuestConstructor.ConstructQuests(Quests, TilesContainer);
         
         ApplyTileBehaviours();
 
@@ -40,6 +43,10 @@ public class QuestScreen : MonoBehaviour
         BehaviourBuilder.AddBehaviourToTiles<ResetScrollOnExitBehaviour>(Tiles, scrollview);
 
         BehaviourBuilder.AddBehaviourToTiles<SayHelloBehaviour>(Tiles, gameObject);
+    }
+
+    public void AssignTiles(){
+        
     }
 
     public void SetQuests(string campaign){

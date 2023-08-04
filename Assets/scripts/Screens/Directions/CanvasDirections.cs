@@ -10,6 +10,7 @@ public class CanvasDirections : QuestDirectionsScreen
     public override void HandlePress()
     {
         RewardsScreenConstructor.OpenCodeEntry(gameObject);
+
     }
 
 

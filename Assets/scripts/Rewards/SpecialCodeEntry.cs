@@ -39,7 +39,7 @@ public class SpecialCodeEntry : MonoBehaviour
 
 
         }
-        else if(CodeField.text == "DELTEALLPLAYERDATA"){
+        else if(CodeField.text == "DELETEPLAYERDATA"){
             PlayerManager.Instance.DeleteSaveData();
         }
         else{
