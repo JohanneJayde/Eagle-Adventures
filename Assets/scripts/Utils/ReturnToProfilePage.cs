@@ -9,17 +9,11 @@ public class ReturnToProfilePage : MonoBehaviour
 
     public Button ReturnToProfileButton;
 
-    public GameObject scrollview;
-
     void Start()
     {
         ReturnToProfileButton.onClick.AddListener(
             () =>
                 {
-
-                    if(scrollview != null){
-                        scrollview.GetComponent<ScrollRect>().normalizedPosition = new Vector2(1,1);
-                    }
 
                     gameObject.SetActive(false);
                 }
