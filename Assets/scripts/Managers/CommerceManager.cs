@@ -60,7 +60,6 @@ public class CommerceManager : MonoBehaviour
     public void CreateSpecialCodesLookUp(){
         Debug.Log("Loading Json");
         TextAsset json = Resources.Load("Data/SpecialCodes") as TextAsset;
-        Debug.Log(json.text);
         List<SpecCode> specCodes = new List<SpecCode>();
         specCodes = JsonConvert.DeserializeObject<List<SpecCode>>(json.text);
         foreach(var code in specCodes){

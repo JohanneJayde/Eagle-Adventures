@@ -9,14 +9,12 @@ public class QuestIntroScreen : MonoBehaviour
 {
     public Quest Quest;
     public TMP_Text Description;
-    public TMP_Text Title;
     public Button DirectionsScreenButton;
     public GameObject directions;
 
     public void RenderQuest(Quest quest){
         Quest = quest;
         Description.text = quest.Description;
-        Title.text = quest.Title;
         SetLinktoDirections();
     }
 

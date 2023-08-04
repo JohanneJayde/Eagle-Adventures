@@ -40,7 +40,7 @@ public class SpecialCodeEntry : MonoBehaviour
 
         }
         else if(CodeField.text == "DELETEPLAYERDATA"){
-            Status.text = "DELTED ALL PLAYER DATA!";
+            Status.text = "DELETED ALL PLAYER DATA!";
             PlayerManager.Instance.DeleteSaveData();
         }
         else if(CodeField.text == "LEVELTONINE"){
