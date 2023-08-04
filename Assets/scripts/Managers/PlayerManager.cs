@@ -293,7 +293,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void EmtyCoins(){
+    public void EmptyCoins(){
         CoinCount = 0;
         onStatUpdate?.Invoke();
         SavePlayerInfo();
