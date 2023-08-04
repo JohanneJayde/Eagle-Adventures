@@ -11,7 +11,7 @@ public class ValidateCode : MonoBehaviour
     public TMP_Text Status;
     public GameObject nextScreen;
     public Button button;
-
+    public TMP_Text CoinsEarned;
 
     public void HandlePress(){
         string code = CodeField.text;
@@ -39,5 +39,6 @@ public class ValidateCode : MonoBehaviour
                 HandlePress();
             }
         );
+        CoinsEarned.text = PlayerManager.Instance.CoinCount.ToString() + "G";
     }
 }

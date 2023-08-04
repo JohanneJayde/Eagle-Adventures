@@ -20,13 +20,22 @@ public class QuestScreen : MonoBehaviour
 
     public void RenderQuestTiles(){
 
-          Tiles = QuestTileConstructor.CreateTiles(Quests, TilesContainer);
-          gameObject.GetComponent<QuestCreator>().AddListeners(Tiles);
-     //   Tiles = QuestConstructor.ConstructQuests(Quests, TilesContainer);
-        
-        ApplyTileBehaviours();
+        if(Quests.Count == 0){
+            RenderNoQuestWarning();
+        }
+        else{
+
+            Tiles = QuestTileConstructor.CreateTiles(Quests, TilesContainer);
+            gameObject.GetComponent<QuestCreator>().AddListeners(Tiles);
+            ApplyTileBehaviours();
+        }
 
 
+    }
+
+    public void RenderNoQuestWarning(){
+        Instantiate(Resources.Load("Prefabs/Quest Screens/No Quest Screen"),
+        TilesContainer.transform, false);
     }
 
     // Update is called once per frame
@@ -45,11 +54,8 @@ public class QuestScreen : MonoBehaviour
         BehaviourBuilder.AddBehaviourToTiles<SayHelloBehaviour>(Tiles, gameObject);
     }
 
-    public void AssignTiles(){
-        
-    }
-
     public void SetQuests(string campaign){
+
 
         ClearTiles(TilesContainer);
 

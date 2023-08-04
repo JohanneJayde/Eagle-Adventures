@@ -222,7 +222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Let's Go!
+  m_text: Let's go!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8acd8e723bd6341289f5c823c0a60e26, type: 2}
   m_sharedMaterial: {fileID: 372238544468199519, guid: 8acd8e723bd6341289f5c823c0a60e26, type: 2}
@@ -842,7 +842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnToProfileButton: {fileID: 2849375993086796014}
-  scrollview: {fileID: 0}
 --- !u!114 &1395297502561430280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,7 +1408,7 @@ GameObject:
   - component: {fileID: 8330738857693424291}
   - component: {fileID: 2933922082033485237}
   m_Layer: 0
-  m_Name: Enter Quest Button
+  m_Name: Enter Code Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter Code!
+  m_text: Enter code!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8acd8e723bd6341289f5c823c0a60e26, type: 2}
   m_sharedMaterial: {fileID: 372238544468199519, guid: 8acd8e723bd6341289f5c823c0a60e26, type: 2}

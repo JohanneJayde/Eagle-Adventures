@@ -4413,6 +4413,7 @@ MonoBehaviour:
   Description: {fileID: 1771523542020170362}
   Title: {fileID: 296920658760635537}
   DirectionsScreenButton: {fileID: 8576237082336263385}
+  directions: {fileID: 0}
 --- !u!114 &4721483733544731997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4426,7 +4427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnToProfileButton: {fileID: 2849375993086796014}
-  scrollview: {fileID: 0}
 --- !u!114 &5539344443490982742
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,7 +66,6 @@ public class CommerceManager : MonoBehaviour
         foreach(var code in specCodes){
             SpecialCodes.Add(code.code, code.amount);
             UsedCodes.Add(code.code, false);
-            Debug.Log(code.code + " " + SpecialCodes[code.code]);
         }
         File.WriteAllText(Application.persistentDataPath + "/specialCodes.json", JsonConvert.SerializeObject(SpecialCodes));
    
