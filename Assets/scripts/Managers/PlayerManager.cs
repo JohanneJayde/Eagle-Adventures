@@ -276,9 +276,7 @@ public class PlayerManager : MonoBehaviour
         ExpEarned += quest.ExpRewards;
         CoinCount += quest.CoinRewards;
 
-        if(CheckLevel(ExpEarned)){
-            SetLevel(Level + 1);
-        }
+        UpdateLevel();
         PlayerProgress[quest.QuestID] = true;
         SavePlayerInfo();
         Debug.Log("Updated Stats");
@@ -293,6 +291,13 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void UpdateLevel(){
+        if(CheckLevel(ExpEarned)){
+            int NewLevel = GetCorrectLevel(ExpEarned);
+            SetLevel(NewLevel);
+        }
+    }
+
     public void EmptyCoins(){
         CoinCount = 0;
         onStatUpdate?.Invoke();
@@ -302,11 +307,22 @@ public class PlayerManager : MonoBehaviour
     public void UpdateCoinXP(int xp, int coins){
         ExpEarned += xp;
         CoinCount += coins;
-        if(CheckLevel(ExpEarned)){
-            SetLevel(Level + 1);
-        }
+        UpdateLevel();
         onStatUpdate?.Invoke();
         SavePlayerInfo();
+
+    }
+
+    public int GetCorrectLevel(int totalXP){
+        int Level = 0;
+
+        foreach(var xp in GameData.PlayerLevels){
+            if(totalXP > xp.Value){
+                Level = xp.Key;
+            }
+        }
+
+        return Level;
 
     }
 

@@ -40,7 +40,12 @@ public class SpecialCodeEntry : MonoBehaviour
 
         }
         else if(CodeField.text == "DELETEPLAYERDATA"){
+            Status.text = "DELTED ALL PLAYER DATA!";
             PlayerManager.Instance.DeleteSaveData();
+        }
+        else if(CodeField.text == "LEVELTONINE"){
+            Status.text = "Level Bar should show 9 nine!";
+            PlayerManager.Instance.UpdateCoinXP(2200, 5000);
         }
         else{
             Status.text = "ERROR! Invalid Code!";

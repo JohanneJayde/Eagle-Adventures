@@ -24,14 +24,20 @@ public class GameData : MonoBehaviour
         {2, 250 },
         {3, 400 },
         {4, 500 },
-        {5, 1000 } };
+        {5, 700 },
+        {6, 1000 },
+        {7, 1500 },
+        {8, 2000 },
+        {9, 2200 },
+        {10, 10000 },
+        };
 
     public static Dictionary<int, LevelRewards> Rewards = new Dictionary<int, LevelRewards>{
-        {1,new LevelRewards{Exp = 25, Coins = 25}},
-        {2,new LevelRewards{Exp = 50, Coins = 50}},
-        {3,new LevelRewards{Exp = 75, Coins = 75}},
-        {4,new LevelRewards{Exp = 100, Coins = 100}},
-        {5,new LevelRewards{Exp = 125, Coins = 125}},
+        {1,new LevelRewards{Exp = 20, Coins = 10}},
+        {2,new LevelRewards{Exp = 50, Coins = 25}},
+        {3,new LevelRewards{Exp = 75, Coins = 50}},
+        {4,new LevelRewards{Exp = 100, Coins = 75}},
+        {5,new LevelRewards{Exp = 125, Coins = 100}},
         {6,new LevelRewards{Exp = 150, Coins = 150}},
     };
 
