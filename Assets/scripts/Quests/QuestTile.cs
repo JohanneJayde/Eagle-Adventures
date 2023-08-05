@@ -7,84 +7,26 @@ using UnityEngine.UI;
 public class QuestTile : MonoBehaviour
 {
 
+    public Quest Quest {get; set;}
+    public TMP_Text title;
+    public TMP_Text tagline;
+    public TMP_Text description;
 
-    public Quest Quest { get; set; }
-    public GameObject QuestScreen;
-    public void SetQuest(Quest q) {
-        Quest = q;
-        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = Quest.Title;
-        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().text = Quest.ShortDescription;
-        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "Coins: " + Quest.CoinsReward.ToString();
-        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "Level Requirement: " + Quest.LevelRequirement.ToString();
-        gameObject.name = Quest.Title;
+    public Button StartButton;
 
-        gameObject.GetComponent<Button>().onClick.AddListener(() => RenderDetails(Quest));
 
-        SetLockStatus();
+    public void RenderTile(Quest quest){
+        Quest = quest;
+        title.text = Quest.Title;
+        tagline.text =  "Level: " + Quest.Level.ToString() + " | " + Quest.Theme;
 
-    }
-
-    public void Unlock()
-    {
-
-        gameObject.GetComponent<Button>().enabled = true;
-        gameObject.GetComponent<Image>().color = new Color32(255,189,189,255);
-
-        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
-        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().color = Color.black;
-        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().color = Color.black;
-        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().color = Color.black;
-
-    }
-
-    public void Lock()
-    {
-
-        PlayerManager.Instance.onLevelUp.AddListener(gameObject.GetComponent<QuestTile>().SetLockStatus);
-
-        gameObject.GetComponent<Button>().enabled = false;
-        gameObject.GetComponent<Image>().color = new Color32(255,97,97,255);
-
-        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
-        gameObject.transform.GetChild(1).GetComponent<TMP_Text>().color = Color.white;
-        gameObject.transform.GetChild(2).GetComponent<TMP_Text>().color = Color.white;
-        gameObject.transform.GetChild(3).GetComponent<TMP_Text>().color = Color.white;
-    }
-
-    public void SetLockStatus(){
-        if(PlayerManager.Instance.Level >= Quest.LevelRequirement)
-        {
-            Unlock();
+        if( Quest.Description.Length > 256){
+            description.text = Quest.Description.Substring(0,250) + "...";
         }
-        else
-        {
-            Lock();
+        else{
+            description.text = Quest.Description;
+
         }
-
     }
 
-
-    /*
-    * Once a Quest has been rendered, it must be able to be tapped and link to a screen that shows off its full information
-    * This is done by first setting the details script's Quest Property to the Quest that we want to render info for.
-    * It calls SetScreenDetails on the QuestScren to display it's info and activates the screen to show off the info.
-    */
-    public void RenderDetails(Quest quest)
-    {
-
-        QuestScreen.GetComponent<QuestScreen>().SetScreenDetails(quest);
-        QuestScreen.SetActive(true);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        QuestScreen = QuestManager.Instance.QuestScreen;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

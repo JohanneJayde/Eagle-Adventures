@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Data;
 using UnityEngine.Events;
+using System.Linq;
 
 /*
  * PlayerMangager stores information regarding the player's info.
@@ -22,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     public class PlayerData
     {
         public string name;
-        public string house;
+        public string group;
         public int level;
         public int coinCount;
         public int expEarned;
@@ -33,7 +34,7 @@ public class PlayerManager : MonoBehaviour
         public PlayerData(PlayerManager p)
         {
             name = p.Name;
-            house = p.House;
+            group = p.Group;
             level = p.Level;
             coinCount = p.CoinCount;
             expEarned = p.ExpEarned;
@@ -53,7 +54,7 @@ public class PlayerManager : MonoBehaviour
      */
 
     public string Name { get; set; }
-    public string House { get; set; }
+    public string Group { get; set; }
     public int Level { get; set; }
     public int CoinCount { get; set; }
     public int ExpEarned { get; set; }
@@ -93,7 +94,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     /*
-     * createNewPlayer sets the PlayerManager properties to default values except for name and house
+     * createNewPlayer sets the PlayerManager properties to default values except for name and group
      * which can be set by the user inputs. If the user doesn't put any input, there are default values
      * for them.
      * Once the data has been created, it will be stored as a JSON file and saved into the persistent storage.
@@ -101,10 +102,10 @@ public class PlayerManager : MonoBehaviour
      * 
      * Also calls CreateStats() which loads in the user's quest progress
      */
-    public void CreateNewPlayer(string name="Eagle Scout",string house="Explorer")
+    public void CreateNewPlayer(string name="Eagle Scout",string group="A")
     {
         this.Name = name;
-        this.House = house;
+        this.Group = group;
         this.Level = 0;
         this.CoinCount = 0;
         this.ExpEarned = 0;
@@ -119,9 +120,37 @@ public class PlayerManager : MonoBehaviour
      */
     public void LoadExistingPlayer()
     {
+
         PlayerData data = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(Application.persistentDataPath + "/playerInfo.json"));
         PlayerProgress = JsonConvert.DeserializeObject<Dictionary<string, bool>>(File.ReadAllText(Application.persistentDataPath + "/playerProgress.json"));
         SendDataToPlayerManager(data);
+        Debug.Log(PlayerManager.Instance);
+    }
+
+
+    /*
+     * Updates the new Quest if it doesn't exist within the existing quests 
+     */
+    public void UpdateQuests(){
+        List<Quest> newQuests = QuestManager.Instance.Quests.Where(quest =>
+            {
+            return PlayerProgress.ContainsKey(quest.QuestID) == false;
+            }
+        ).ToList();
+
+        if(newQuests.Count == 0){
+            Debug.Log("No New Quests Found");
+
+            return;
+        }
+
+        newQuests.ForEach(quest => {
+            Debug.Log("New Quest Found: " + quest.QuestID);
+            PlayerProgress.Add(quest.QuestID, false);
+        });
+
+        SavePlayerInfo();
+
     }
 
     /*
@@ -130,7 +159,7 @@ public class PlayerManager : MonoBehaviour
     public void SendDataToPlayerManager(PlayerData pData)
     {
         this.Name = pData.name;
-        this.House = pData.house;
+        this.Group = pData.group;
         this.Level = pData.level;
         this.CoinCount = pData.coinCount;
         this.ExpEarned = pData.expEarned;
@@ -157,11 +186,12 @@ public class PlayerManager : MonoBehaviour
      */
     void Start()
     {
-        if(CheckPlayerData())
-        {
-            Debug.Log("Player Loaded");
+        if(CheckPlayerData()){
             LoadExistingPlayer();
-            Debug.Log(PlayerManager.Instance);
+            Debug.Log("Player Loaded");
+        }
+        else{
+            Debug.Log("Player Data not loaded");
         }
     }
 
@@ -182,7 +212,7 @@ public class PlayerManager : MonoBehaviour
     public string ToString()
     {
 
-        return "Name: " + this.Name + "\nHouse: " + this.House
+        return "Name: " + this.Name + "\nGroup: " + this.Group
         + "\nLevel: " + this.Level + "\nCoin Count: " + this.CoinCount
         + "\nExp Earned: " + this.ExpEarned;
     }
@@ -224,7 +254,7 @@ public class PlayerManager : MonoBehaviour
         File.Delete(Application.persistentDataPath + "/playerInfo.json");
         File.Delete(Application.persistentDataPath + "/playerProgress.json");
         Name = null;
-        House = null;
+        Group = null;
         Level = 0;
         CoinCount = 0;
         ExpEarned = 0;
@@ -243,24 +273,65 @@ public class PlayerManager : MonoBehaviour
      */
     public void UpdateStats(Quest quest)
     {
-        ExpEarned += quest.ExpEarned;
-        CoinCount += quest.CoinsReward;
+        ExpEarned += quest.ExpRewards;
+        CoinCount += quest.CoinRewards;
 
-        if(CheckLevel(ExpEarned)){
-            SetLevel(Level + 1);
-        }
+        UpdateLevel();
         PlayerProgress[quest.QuestID] = true;
         SavePlayerInfo();
-
+        Debug.Log("Updated Stats");
         onStatUpdate?.Invoke();
 
     }
+
+    public void UpdateCoins(int coins){
+        CoinCount += coins;
+        onStatUpdate?.Invoke();
+        SavePlayerInfo();
+
+    }
+
+    public void UpdateLevel(){
+        if(CheckLevel(ExpEarned)){
+            int NewLevel = GetCorrectLevel(ExpEarned);
+            SetLevel(NewLevel);
+        }
+    }
+
+    public void EmptyCoins(){
+        CoinCount = 0;
+        onStatUpdate?.Invoke();
+        SavePlayerInfo();
+    }
+
+    public void UpdateCoinXP(int xp, int coins){
+        ExpEarned += xp;
+        CoinCount += coins;
+        UpdateLevel();
+        onStatUpdate?.Invoke();
+        SavePlayerInfo();
+
+    }
+
+    public int GetCorrectLevel(int totalXP){
+        int Level = 0;
+
+        foreach(var xp in GameData.PlayerLevels){
+            if(totalXP > xp.Value){
+                Level = xp.Key;
+            }
+        }
+
+        return Level;
+
+    }
+
     /**
      * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
      */
     public bool CheckLevel(int totalXP)
     {
-        if (totalXP >= LevelData.Levels[Instance.Level + 1])
+        if (totalXP >= GameData.PlayerLevels[Instance.Level + 1])
             return true;
         
         return false;

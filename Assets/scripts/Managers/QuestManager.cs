@@ -28,7 +28,6 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> Quests { get; set; }
 
-    public GameObject QuestScreen;
    
     /*
      * Singleton logic
@@ -54,14 +53,20 @@ public class QuestManager : MonoBehaviour
      * persistent data path instead of from the Assets/Data directory or from the Assets/Resources folder
      */
 
-    public void LoadQuests()
+    public void LoadQuests(List<Quest> quests)
     {
-
-        var engine = new FileHelperEngine<Quest>();
-        Quests = engine.ReadFileAsList(Application.persistentDataPath + "/Quests.csv").ToList();
-
+        this.Quests = quests;
     }
 
+    public void SetRewards(){
+
+        Quests.ForEach(quest => {
+                quest.CoinRewards = GameData.Rewards[quest.Level].Coins;
+                quest.ExpRewards = GameData.Rewards[quest.Level].Exp;
+
+        });
+
+    }
 
     /*
      * Given a QuestID, FetchQuestInfo returns the associated Quest object containing all of its
@@ -78,14 +83,6 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
 
-      LoadQuests();
-      FirebaseTester firebase = new FirebaseTester();
-
-      firebase.TestConnection();
-
-    // GoogleSheetsImporter importer = new GoogleSheetsImporter();
-    //     importer.SetService();
-    //     importer.ReadSheet();
     }
 
     /*
@@ -103,9 +100,6 @@ public class QuestManager : MonoBehaviour
             Destroy(this);
 
         DontDestroyOnLoad(this);
-
-        TextAsset file = Resources.Load("Data/Quests") as TextAsset;
-        File.WriteAllText(Application.persistentDataPath + "/Quests.csv", file.text);
 
     }
 }
