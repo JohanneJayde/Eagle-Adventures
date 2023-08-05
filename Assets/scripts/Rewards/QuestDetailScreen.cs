@@ -16,5 +16,10 @@ public class QuestDetailScreen : MonoBehaviour
         intro.GetComponent<QuestIntroScreen>().RenderQuest(q);
         directions.GetComponent<QuestDirectionsScreen>().RenderQuest(q);
     }
+    
+    public void ResetScreen(){
+        intro.SetActive(true);
+        directions.SetActive(false);
+    }
 
 }

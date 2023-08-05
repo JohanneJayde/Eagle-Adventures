@@ -46,7 +46,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: shadowDistance.y
-    value: -5
+    value: -3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_UseGraphicAlpha
@@ -54,7 +54,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: iterations
-    value: 5
+    value: 20
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: shadowSpread.x
@@ -62,6 +62,6 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: shadowSpread.y
-    value: 4
+    value: 2
     objectReference: {fileID: 0}
   m_ExcludedProperties: []

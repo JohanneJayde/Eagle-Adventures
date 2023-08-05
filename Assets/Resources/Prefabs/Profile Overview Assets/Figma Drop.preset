@@ -54,7 +54,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: iterations
-    value: 5
+    value: 20
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: shadowSpread.x
@@ -62,6 +62,6 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: shadowSpread.y
-    value: 5
+    value: 2
     objectReference: {fileID: 0}
   m_ExcludedProperties: []

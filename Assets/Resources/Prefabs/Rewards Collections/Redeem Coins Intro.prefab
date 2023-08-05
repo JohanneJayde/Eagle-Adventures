@@ -4257,9 +4257,7 @@ GameObject:
   - component: {fileID: 4097788952768664671}
   - component: {fileID: 2295616402821421556}
   - component: {fileID: 5915932116821282008}
-  - component: {fileID: 2146378938179384342}
   - component: {fileID: 4721483733544731997}
-  - component: {fileID: 5539344443490982742}
   m_Layer: 0
   m_Name: Redeem Coins Intro
   m_TagString: Untagged
@@ -4398,22 +4396,6 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 0}
---- !u!114 &2146378938179384342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652582475716526958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a941fe29ffd487796b634c9035b809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Description: {fileID: 1771523542020170362}
-  Title: {fileID: 296920658760635537}
-  DirectionsScreenButton: {fileID: 8576237082336263385}
-  directions: {fileID: 0}
 --- !u!114 &4721483733544731997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4424,19 +4406,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b19d30baa0c74827b282006507c0c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReturnToProfileButton: {fileID: 2849375993086796014}
---- !u!114 &5539344443490982742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3652582475716526958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a8bdc852d644abab442bf88410c9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnToProfileButton: {fileID: 2849375993086796014}
@@ -6683,6 +6652,7 @@ MonoBehaviour:
   Status: {fileID: 4483697650751992090}
   nextScreen: {fileID: 249454311138196774}
   button: {fileID: 2904646051814189077}
+  CoinsEarned: {fileID: 0}
 --- !u!1 &6308534012874205127
 GameObject:
   m_ObjectHideFlags: 0
