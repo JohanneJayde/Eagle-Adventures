@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        **ARTIFACTORYREPOSITORY**
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+include ':launcher', ':unityLibrary'
+**INCLUDES**
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        **ARTIFACTORYREPOSITORY**
+        google()
+        mavenCentral()
+// Android Resolver Repos Start
+        maven {
+            url "file:////Users/johannemcclenahan/Eagle-Adventures/Assets/GeneratedLocalRepo/Firebase/m2repository" // Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/AuthDependencies.xml:20, Assets/Firebase/Editor/DatabaseDependencies.xml:22
+        }
+        mavenLocal()
+// Android Resolver Repos End
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+    }
+}

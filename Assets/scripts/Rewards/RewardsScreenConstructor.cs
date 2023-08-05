@@ -25,7 +25,7 @@ public class RewardsScreenConstructor : MonoBehaviour
 
     public static void OpenCodeEntry(GameObject Screen){
         GameObject CodeEntry = Instantiate(Resources.Load("Prefabs/Rewards Collections/CodeEntry"), Screen.transform.root, false) as GameObject;
-        CodeEntry.GetComponent<CodeEntry>().SetCode(Screen.GetComponent<QuestDirectionsScreen>().Quest);
+        CodeEntry.GetComponent<CodeEntry>().SetCode(Screen.GetComponent<QuestDetailScreen>().Quest);
         CodeEntry.GetComponent<CodeEntry>().DirectionScreen = Screen;
         CodeEntry.GetComponent<CodeEntry>().EnterCode.onClick.AddListener(
             () =>
