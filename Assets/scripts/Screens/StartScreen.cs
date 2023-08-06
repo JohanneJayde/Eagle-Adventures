@@ -8,20 +8,21 @@ public class StartScreen : MonoBehaviour
 
     public Button StartButton;
     public GameObject NewPlayerScreen;
-
+    public GameObject TutorialScreen;
     public GameObject ProfileScreen;
 
     void Start()
     {
         Debug.Log("This should happen after quests have finished");
         QuestManager.Instance.SetRewards();
-        StartButton = gameObject.GetComponentInChildren<Button>();
+        StartButton = GetComponentInChildren<Button>();
 
 
         if(PlayerManager.Instance.CheckPlayerData()){
             StartButton.onClick.AddListener(() => {
                 ProfileScreen.SetActive(true);
                 PlayerManager.Instance.UpdateQuests();
+                TutorialScreen.SetActive(false);
             });
         }
         else{
