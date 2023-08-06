@@ -14,7 +14,7 @@ using UnityEngine.Events;
 public class StatManager : MonoBehaviour
 {
 
-    public UnityEvent UpdateRenders;
+    public UnityEvent onStatUpdate;
 /*
  * Singleton logic
  */
@@ -31,16 +31,32 @@ public class StatManager : MonoBehaviour
 
     }
 
+    public void UpdateCoins(int coins){
 
-    public void UpdateProgress(Quest quest)
-    {
-
-        //PlayerManager.Instance.UpdateStats(quest);
-        Debug.Log("Player Info Updated");
-  
     }
 
+    public void UpadteExp(int extp){
 
+    }
+
+    public void UpdateQuestDone(string questID){
+
+    }
+
+    public void UpateLevel(int exp){
+
+    }
+
+    public void UpdateProgress(Quest quest){
+        PlayerManager.Instance.UpdateCoins(quest.CoinRewards);
+        PlayerManager.Instance.UpdateExp(quest.ExpRewards);
+        PlayerManager.Instance.UpdateQuestDone(quest.QuestID);
+
+    }
+
+    public void UpdateCoinsAndExp(int coins, int exp){
+
+    }
 
     // Start is called before the first frame update
     void Start()

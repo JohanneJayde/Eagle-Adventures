@@ -291,6 +291,14 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void UpdateExp(int exp){
+
+    }
+
+    public void UpdateQuestDone(string QuestID){
+        
+    }
+
     public void UpdateLevel(){
         if(CheckLevel(ExpEarned)){
             int NewLevel = GetCorrectLevel(ExpEarned);
