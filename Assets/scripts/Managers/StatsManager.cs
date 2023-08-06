@@ -11,18 +11,18 @@ using UnityEngine.Events;
  * it will depend on how much the PlayerManager script changes when dynamic quests are added.
  */
 
-public class StatManager : MonoBehaviour
+public class StatsManager : MonoBehaviour
 {
 
     public UnityEvent onStatUpdate;
 /*
  * Singleton logic
  */
-    private static StatManager _instance;
+    private static StatsManager _instance;
 
-    public static StatManager Instance
+    public static StatsManager Instance
     {
-        get
+       get
         {
             if (_instance == null)
                 Debug.Log("Cannot exist");
@@ -31,8 +31,13 @@ public class StatManager : MonoBehaviour
     }
 
     public void UpdateCoins(int coins){
-        PlayerManager.Instance.UpdateCoins(coins);
+        Debug.Log("emptying coins");
+        PlayerManager.Instance.UpdateCoins(GetNewCoinCount(coins));
         onStatUpdate?.Invoke();
+    }
+
+    public int GetNewCoinCount(int coins){
+        return PlayerManager.Instance.CoinCount += coins;
     }
 
     public void UpdateExp(int exp){
@@ -85,7 +90,8 @@ public class StatManager : MonoBehaviour
     }
 
     public void EmptyCoins(){
-        UpdateCoins(0);
+        PlayerManager.Instance.UpdateCoins(0);
+        onStatUpdate?.Invoke();
     }
 
     public void UpdateCoinsAndExp(int coins, int exp){
@@ -107,5 +113,6 @@ public class StatManager : MonoBehaviour
             Destroy(this);
 
         DontDestroyOnLoad(this);
+
     }
 }

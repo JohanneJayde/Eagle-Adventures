@@ -66,18 +66,6 @@ public class PlayerManager : MonoBehaviour
     public Dictionary<string, bool> PlayerProgress { set; get; }
 
     /*
-     * onLevelUp is an event that will invoke all of the methods subscribed to it when it is invoked. This is used for when its time to update the quest
-     * tiles so they unlock and lock at the correct times (see QuestTileSupplier for more info on the logic).
-     */
-    public UnityEvent onLevelUp;
-
-    /*
-     * onStatUpdate triggers events that need to happen when a Player's stats chanage.
-     *
-     */
-    public UnityEvent onStatUpdate;
-
-    /*
      * Singleton logic
      */
     private static PlayerManager _instance;
@@ -280,23 +268,26 @@ public class PlayerManager : MonoBehaviour
         PlayerProgress[quest.QuestID] = true;
         SavePlayerInfo();
         Debug.Log("Updated Stats");
-        onStatUpdate?.Invoke();
 
     }
 
     public void UpdateCoins(int coins){
-        CoinCount += coins;
-        onStatUpdate?.Invoke();
+        Debug.Log("emptying coins in PlayerManager");
+
+        CoinCount = coins;
         SavePlayerInfo();
 
     }
 
     public void UpdateExp(int exp){
         ExpEarned += exp;
+        SavePlayerInfo();
+
     }
 
     public void UpdateQuestDone(string questID){
         PlayerProgress[questID] = true;
+        SavePlayerInfo();
     }
 
     public void UpdateLevel(){
@@ -306,23 +297,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void EmptyCoins(){
-        CoinCount = 0;
-        onStatUpdate?.Invoke();
-        SavePlayerInfo();
-    }
-
     public void UpdateCoinXP(int xp, int coins){
         ExpEarned += xp;
         CoinCount += coins;
         UpdateLevel();
-        onStatUpdate?.Invoke();
         SavePlayerInfo();
 
     }
 
     public void UpdateLevel(int level){
         Level = level;
+                SavePlayerInfo();
+
     }
 
     public int GetCorrectLevel(int totalXP){
@@ -354,8 +340,6 @@ public class PlayerManager : MonoBehaviour
      */
     public void SetLevel(int level){
             Level = level;
-            onLevelUp?.Invoke();
-
             Debug.Log("LEVEL UP!");
     }
 }

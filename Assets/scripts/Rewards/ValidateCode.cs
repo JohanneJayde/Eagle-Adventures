@@ -28,7 +28,7 @@ public class ValidateCode : MonoBehaviour
     }
 
     public void DoAction(){
-        PlayerManager.Instance.EmptyCoins();
+        StatsManager.Instance.EmptyCoins();
         gameObject.SetActive(false);
         nextScreen.SetActive(true);
     }
