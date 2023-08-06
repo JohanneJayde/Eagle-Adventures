@@ -11,16 +11,16 @@ using UnityEngine.Events;
  * it will depend on how much the PlayerManager script changes when dynamic quests are added.
  */
 
-public class PlayerProgressManager : MonoBehaviour
+public class StatManager : MonoBehaviour
 {
 
     public UnityEvent UpdateRenders;
 /*
  * Singleton logic
  */
-    private static PlayerProgressManager _instance;
+    private static StatManager _instance;
 
-    public static PlayerProgressManager Instance
+    public static StatManager Instance
     {
         get
         {
