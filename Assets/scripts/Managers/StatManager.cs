@@ -28,22 +28,25 @@ public class StatManager : MonoBehaviour
                 Debug.Log("Cannot exist");
             return _instance;
         }
-
     }
 
     public void UpdateCoins(int coins){
-
+        PlayerManager.Instance.UpdateCoins(coins);
+        onStatUpdate?.Invoke();
     }
 
-    public void UpadteExp(int extp){
+    public void UpdateExp(int exp){
+        PlayerManager.Instance.UpdateExp(exp);
 
+        if(CheckForLevelUp()){
+            UpdateLevel();
+        }
+
+        onStatUpdate?.Invoke();
     }
 
     public void UpdateQuestDone(string questID){
-
-    }
-
-    public void UpateLevel(int exp){
+        PlayerManager.Instance.UpdateQuestDone(questID);
 
     }
 
@@ -54,8 +57,40 @@ public class StatManager : MonoBehaviour
 
     }
 
-    public void UpdateCoinsAndExp(int coins, int exp){
+    public bool CheckForLevelUp(){
 
+        int level = PlayerManager.Instance.Level;
+        int totalExp = PlayerManager.Instance.ExpEarned;
+
+        return totalExp > GameData.PlayerLevels[level + 1];
+    }
+
+    public int GetUpdatedLevel(int totalExp){
+        int newLevel = 0;
+
+        foreach(var xp in GameData.PlayerLevels){
+            if(totalExp > xp.Value){
+                newLevel = xp.Key;
+            }
+        }
+
+        return newLevel;
+    }
+
+    public void UpdateLevel(){
+        int newLevel = GetUpdatedLevel(PlayerManager.Instance.ExpEarned);
+        PlayerManager.Instance.UpdateLevel(newLevel);
+        onStatUpdate?.Invoke();
+
+    }
+
+    public void EmptyCoins(){
+        UpdateCoins(0);
+    }
+
+    public void UpdateCoinsAndExp(int coins, int exp){
+        UpdateCoins(coins);
+        UpdateExp(exp);
     }
 
     // Start is called before the first frame update
@@ -63,7 +98,6 @@ public class StatManager : MonoBehaviour
     {
 
     }
-
 
     private void Awake()
     {

@@ -292,11 +292,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void UpdateExp(int exp){
-
+        ExpEarned += exp;
     }
 
-    public void UpdateQuestDone(string QuestID){
-        
+    public void UpdateQuestDone(string questID){
+        PlayerProgress[questID] = true;
     }
 
     public void UpdateLevel(){
@@ -319,6 +319,10 @@ public class PlayerManager : MonoBehaviour
         onStatUpdate?.Invoke();
         SavePlayerInfo();
 
+    }
+
+    public void UpdateLevel(int level){
+        Level = level;
     }
 
     public int GetCorrectLevel(int totalXP){

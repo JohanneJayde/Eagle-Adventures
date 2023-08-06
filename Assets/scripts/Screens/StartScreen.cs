@@ -31,9 +31,6 @@ public class StartScreen : MonoBehaviour
 
             StartButton.onClick.AddListener(() => {gameObject.SetActive(false);});
 
-
-
-
     }
 
     // Update is called once per frame
