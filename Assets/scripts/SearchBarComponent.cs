@@ -67,7 +67,6 @@ public class SearchBarComponent : MonoBehaviour
     }
 
     void OnDisable(){
-        Debug.Log("Diasabled");
         ClearFilter();
         SearchBar.text = "";
     }

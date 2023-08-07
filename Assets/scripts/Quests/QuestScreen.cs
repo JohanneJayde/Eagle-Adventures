@@ -51,7 +51,6 @@ public class QuestScreen : MonoBehaviour
         GameObject scrollview = gameObject.transform.GetChild(1).gameObject;
         BehaviourBuilder.AddBehaviourToTiles<ResetScrollOnExitBehaviour>(Tiles, scrollview);
 
-        BehaviourBuilder.AddBehaviourToTiles<SayHelloBehaviour>(Tiles, gameObject);
     }
 
     public void SetQuests(string campaign){

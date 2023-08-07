@@ -12,7 +12,6 @@ public class QuestCreator : MonoBehaviour
 
     public void AddListeners(List<GameObject> tiles){
         foreach(var tile in tiles){
-            Debug.Log("Screen assigned");
             AssignScreen(tile);
         }
     }

@@ -57,9 +57,9 @@ public class StatsManager : MonoBehaviour
     }
 
     public void UpdateProgress(Quest quest){
-        PlayerManager.Instance.UpdateCoins(quest.CoinRewards);
-        PlayerManager.Instance.UpdateExp(quest.ExpRewards);
-        PlayerManager.Instance.UpdateQuestDone(quest.QuestID);
+        UpdateCoins(quest.CoinRewards);
+        UpdateExp(quest.ExpRewards);
+        UpdateQuestDone(quest.QuestID);
 
     }
 
@@ -75,7 +75,7 @@ public class StatsManager : MonoBehaviour
         int newLevel = 0;
 
         foreach(var xp in GameData.PlayerLevels){
-            if(totalExp > xp.Value){
+            if(totalExp >= xp.Value){
                 newLevel = xp.Key;
             }
         }

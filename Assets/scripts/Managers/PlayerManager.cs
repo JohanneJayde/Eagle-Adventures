@@ -15,39 +15,6 @@ using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
-    /*
-     * PlayerData class is used as a intermediary step between loading and storing User data onto disk
-     * It has the same fields that are used for player data storage. The reason for it existence can be found
-     * in the savePlayerData() method
-     */
-    public class PlayerData
-    {
-        public string name;
-        public string group;
-        public int level;
-        public int coinCount;
-        public int expEarned;
-
-        /*
-         * PlayerData EVC takes in a PlayerManger and reflects all of its properties into the fields of PlayerData 
-         */
-        public PlayerData(PlayerManager p)
-        {
-            name = p.Name;
-            group = p.Group;
-            level = p.Level;
-            coinCount = p.CoinCount;
-            expEarned = p.ExpEarned;
-        }
-        /*
-         * Empty contructor is needed due to how LoadExistingPlayer() is done. A PlayerData object cannot
-         * be created using the Json deserialization unless there is an empty constuctor. Without this,
-         * it will try and call the constructor with @param PlayerManager will cause NullPointerException.
-         */
-        public PlayerData() {}
-
-    }
-
 
     /*
      * Properties for the user that we want to keep track of throughout the app.
@@ -255,12 +222,15 @@ public class PlayerManager : MonoBehaviour
     public void UpdateCoins(int coins){
 
         CoinCount = coins;
+        Debug.Log("Coins updated: " + CoinCount.ToString());
         SavePlayerInfo();
 
     }
 
     public void UpdateExp(int exp){
         ExpEarned += exp;
+        Debug.Log("Exp updated: " + ExpEarned.ToString());
+
         SavePlayerInfo();
 
     }
@@ -270,56 +240,10 @@ public class PlayerManager : MonoBehaviour
         SavePlayerInfo();
     }
 
-    public void UpdateLevel(){
-        if(CheckLevel(ExpEarned)){
-            int NewLevel = GetCorrectLevel(ExpEarned);
-            SetLevel(NewLevel);
-        }
-    }
-
-    public void UpdateCoinXP(int xp, int coins){
-        ExpEarned += xp;
-        CoinCount += coins;
-        UpdateLevel();
-        SavePlayerInfo();
-
-    }
-
     public void UpdateLevel(int level){
         Level = level;
                 SavePlayerInfo();
 
     }
 
-    public int GetCorrectLevel(int totalXP){
-        int Level = 0;
-
-        foreach(var xp in GameData.PlayerLevels){
-            if(totalXP > xp.Value){
-                Level = xp.Key;
-            }
-        }
-
-        return Level;
-
-    }
-
-    /**
-     * CheckLevel returns true if a player has reached the Exp amount of the level that is 1 above the one the player is at.
-     */
-    public bool CheckLevel(int totalXP)
-    {
-        if (totalXP >= GameData.PlayerLevels[Instance.Level + 1])
-            return true;
-        
-        return false;
-    }
-    /*
-     * Setlevel sets the Player's level to the level specified by the level param. It will also invoke the onLevelUp event which notifies all the subscribers
-     * to run.
-     */
-    public void SetLevel(int level){
-            Level = level;
-            Debug.Log("LEVEL UP!");
-    }
 }
