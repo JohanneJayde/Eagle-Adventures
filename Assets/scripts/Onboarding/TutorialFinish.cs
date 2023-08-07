@@ -8,7 +8,7 @@ public class TutorialFinish : MonoBehaviour
 
     public void ReturnToNormalPlay(){
         Destroy(gameObject.transform.parent.gameObject);
-        PlayerManager.Instance.UpdateCoinXP(50,50);
+        StatsManager.Instance.UpdateCoinsAndExp(50,50);
         ProfileScreen.SetActive(true);
     }
 

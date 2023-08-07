@@ -32,9 +32,9 @@ public class FirebaseReader : MonoBehaviour {
 
             QuestManager.Instance.LoadQuests(quests);
 
-            foreach(var quest in QuestManager.Instance.Quests){
-                Debug.Log(quest.Title);
-            }
+            // foreach(var quest in QuestManager.Instance.Quests){
+            //     Debug.Log(quest.Title);
+            // }
             gameObject.SetActive(false);
             titleScreen.SetActive(true);
 

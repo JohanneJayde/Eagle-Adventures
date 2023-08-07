@@ -15,7 +15,7 @@ public class ChestRewards : MonoBehaviour
     public void ShowRewards(Quest quest){
         Coins.text = quest.CoinRewards.ToString() + "G";
         Exp.text = quest.ExpRewards.ToString() + " XP";
-        PlayerManager.Instance.UpdateStats(quest);
+        StatsManager.Instance.UpdateProgress(quest);
     }
 
     public void ReturnToProfilePage(){

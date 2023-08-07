@@ -31,7 +31,6 @@ public class StatsManager : MonoBehaviour
     }
 
     public void UpdateCoins(int coins){
-        Debug.Log("emptying coins");
         PlayerManager.Instance.UpdateCoins(GetNewCoinCount(coins));
         onStatUpdate?.Invoke();
     }
@@ -44,8 +43,10 @@ public class StatsManager : MonoBehaviour
         PlayerManager.Instance.UpdateExp(exp);
 
         if(CheckForLevelUp()){
+            Debug.Log("Level up time!");
             UpdateLevel();
         }
+            Debug.Log("No Level up time!");
 
         onStatUpdate?.Invoke();
     }
@@ -67,7 +68,7 @@ public class StatsManager : MonoBehaviour
         int level = PlayerManager.Instance.Level;
         int totalExp = PlayerManager.Instance.ExpEarned;
 
-        return totalExp > GameData.PlayerLevels[level + 1];
+        return totalExp >= GameData.PlayerLevels[level + 1];
     }
 
     public int GetUpdatedLevel(int totalExp){
@@ -84,6 +85,7 @@ public class StatsManager : MonoBehaviour
 
     public void UpdateLevel(){
         int newLevel = GetUpdatedLevel(PlayerManager.Instance.ExpEarned);
+        Debug.Log("New Level unlcoked");
         PlayerManager.Instance.UpdateLevel(newLevel);
         onStatUpdate?.Invoke();
 

@@ -5,16 +5,25 @@ using UnityEngine;
 public class ChestOpen : MonoBehaviour
 {
  
+
+    public void Start(){
+    }
+
+    IEnumerator DeactivateScreen(){
+
+        yield return new WaitForSeconds(2);
+
+        Destroy(gameObject);
+
+    }
+
     public void CheckChest(){
     }
 
     public void GetChestRewards(){
-        Destroy(gameObject, 2);
-    }
 
-    public void OnEnable(){
-        Destroy(gameObject, 2);
+        StartCoroutine(DeactivateScreen());   
+     }
 
-    }
 
 }

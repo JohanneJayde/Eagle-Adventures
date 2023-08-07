@@ -252,27 +252,7 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Successfully deleted user player data");
     }
     
-    /*
-     * UpdateStats updates the stats the given Quest and does the following:
-     * Adds the ExpEarned and CoinRewards to the Player's respective properties
-     * Levels up the player if they have enought Exp
-     * Updates PlayerProgres to make the Quest key's value true
-     * Saves the updated stats to disk so won't be lost if app is closed
-     */
-    public void UpdateStats(Quest quest)
-    {
-        ExpEarned += quest.ExpRewards;
-        CoinCount += quest.CoinRewards;
-
-        UpdateLevel();
-        PlayerProgress[quest.QuestID] = true;
-        SavePlayerInfo();
-        Debug.Log("Updated Stats");
-
-    }
-
     public void UpdateCoins(int coins){
-        Debug.Log("emptying coins in PlayerManager");
 
         CoinCount = coins;
         SavePlayerInfo();
