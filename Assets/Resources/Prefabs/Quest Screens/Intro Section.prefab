@@ -420,7 +420,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
       propertyPath: m_fontSize
-      value: 44.7
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
       propertyPath: m_fontSizeBase
