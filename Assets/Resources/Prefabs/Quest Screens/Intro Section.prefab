@@ -408,7 +408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Description: {fileID: 2653922988572151133}
-  Title: {fileID: 0}
   DirectionsScreenButton: {fileID: 5424020134717281278}
   directions: {fileID: 0}
 --- !u!1001 &391457117324058015
@@ -421,11 +420,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
       propertyPath: m_fontSize
-      value: 35
+      value: 44.7
       objectReference: {fileID: 0}
     - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
       propertyPath: m_fontSizeBase
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430286599438733506, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4034288341573462951, guid: 3aa2260c0fd454418a9eab352b12b5fe, type: 3}
       propertyPath: m_Name

@@ -24,8 +24,6 @@ public abstract class QuestDirectionsScreen : MonoBehaviour
                 HandlePress();
             }
         );
-
-
     }
 
 /// <summary>
