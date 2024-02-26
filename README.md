@@ -1,6 +1,10 @@
 # Eagle Adventures Mobile Application
 #### Created by Morgan Whapeles, Jessica Doner, and Johanne McClenahan
 
+<div align="center">
+<img height = 300px src="docs/assets/title-screen.png">
+</div>
+
 #### Table of Contents  
 [Team Members and Roles](#team-members-and-roles)  
 [Background](#background)  
@@ -9,7 +13,8 @@
 [Technologies Used](#technologies-used)  
 [Hardships](#hardships)   
 [Achievements](#achievements)  
-[Conclusion](#conclusion)
+[Conclusion](#conclusion)   
+[Media](#media)
 
 ## Team Members and Roles
 1. Jessica Doner: Idea Person
@@ -101,7 +106,7 @@ One of the interesting parts of this project was learning C#. Although it is sim
 
 I also experimented with using lambda expressions and generics. One of the coolest things that I did was create a simplistic deserializer. I did this when I was reading about reflection and also about how the `Newtonsoft` JSON library worked. I made it so that the method `DeserializeObject<T>()` would take in a generic of type `T`. It would get a list of properties of the type `T` and then iterate through them and create a list of `T` of deserialized objects. Although it wasn't perfect, it was very interesting to try and replicate already existing code to see how it really worked.
 
-As I have not gotten more exposure to C#, it's cool to see how much I've changed when it's come to coding in it.
+As I have gotten more exposure to C#, it's cool to see how much I've changed when it's come to coding in it.
 
 #### Improving Object-Oriented Programming knowledge.
 This project helped me get better at my understanding of OOP. Because I didn't know if this project was going to be picked up again, I tried to make sure that I programmed it well. The most important thing I learned was to figure out how to slim the code down. 
@@ -118,3 +123,17 @@ I also think I improved with communicating with sponsors. Having to work with no
 
 ### Conclusion
 I am reading this write-up in February 2024, which means it's been around half a year since I did this project. I would say it was one of the hardest projects I've ever worked on, but I'm very proud of what I was able to do within the two months. I am still upset that we couldn't get it fully there at the end, but it was amazing to have it running on my own phone.
+
+### Media
+
+#### Screenshots
+
+Here are sreenshots of the app running via the built-in player in Unity:
+
+<div align="center">
+<img src="docs//assets//homepage.png" width="165px"/>
+<img src="docs//assets//onboarding-screenshot.png"width="165px"> 
+<img src="docs//assets/Campaign-screen.png" width="165px"/> 
+<img src="docs//assets/coin-shop.png" width="165px"/> 
+<img src="docs//assets//no-quest-screen.png" width="165px"/> <img src="docs//assets//quest-screen-canvas.png" width="165px"/>
+</div>
