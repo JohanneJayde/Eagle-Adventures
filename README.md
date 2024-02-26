@@ -53,10 +53,10 @@ This is the game engine in which I made the app.
 Unity's language that is used is C#, so I coded all of the script files within it.
 
 #### HTML / CSS
-HTML and CSS were used to format the automated emails that were sent out to EWU faculty confirming their quests have made it into the app and giving them the confirmation code.
+HTML and CSS were used to format the automated emails that were sent out to EWU faculty confirming their quests had made it into the app and giving them the confirmation code.
 
 #### Google AppScript
-In order to send data from the Google Form to Firebase, I used AppScript to retrieve the form submissions and used a Firebase library to send the data to the Firebase Realtime database that stored all the quest details.
+To send data from the Google Form to Firebase, I used AppScript to retrieve the form submissions and used a Firebase library to send the data to the Firebase Realtime database that stored all the quest details.
 
 Sending emails was also done using AppScript where I created functions that would send emails out to involved parties when a given quest was submitted.
 
@@ -75,7 +75,7 @@ As stated before, this project has been tested to work on iOS, Android, and Desk
 
 ![Starting project screen](docs/assets/starting_project_screen.png)
 
-4. Due to size limitations, the Firebase SDK was not supplied in this repo and will instead have to be manually added to the project. In order to do this, you must go to [Firebase's Instructional Guide](https://firebase.google.com/docs/unity/setup) on adding the Firebase SDK packages to this project. You can verify your installation when by loading the app. An error saying you are missing a DLL file will appear in place of `Player Data not loaded` within the Console.
+4. Due to size limitations, the Firebase SDK was not supplied in this repo and will instead have to be manually added to the project. In order to do this, you must go to [Firebase's Instructional Guide](https://firebase.google.com/docs/unity/setup) to add the Firebase SDK packages to this project. You can verify your installation when by loading the app. An error saying you are missing a DLL file will appear in place of `Player Data not loaded` within the Console.
 
 ![Successful load of application](docs/assets/successful_load_console_image.png)
 5. From there, enjoy using the App!
@@ -83,13 +83,15 @@ As stated before, this project has been tested to work on iOS, Android, and Desk
 #### Testing Features Out
 Here are some notes for testing the app:
 1. Codes to test for quest completion can be found in [Quests.json](/docs/quests.json). That way you can check how completion works for each question.
-2. Use the code `DELETEPLAYERDATA` to reset the player data stored within the game to check out onboarding part again.
+2. Use the code `DELETEPLAYERDATA` to reset the player data stored within the game to check out the onboarding part again.
 3. Use the code `LEVELTONINE` to check out the level-up system leveling the player up to Level 9.
+
+<b>Please reach out to jmcclenahan@ewu.edu if you have issues with running the program</b>
 
 ### Hardships
 
 #### Time Constraint
-As I was the only one who was coding this app, it became very draining. This was originally supposed to be a Senior Capstone project done by four computer science students over the span of 7 months. Instead, it was done by one student in 3 months. This wasn't helped by the fact that I had to learn Unity and C# as well as Firebase within the same time
+As I was the only one who was coding this app, it became very draining. This was originally supposed to be a Senior Capstone project done by four computer science students over the span of 7 months. Instead, it was done by one student in 3 months. This wasn't helped by the fact that I had to learn Unity and C# as well as Firebase at the same time
 
  span.
 
@@ -97,16 +99,16 @@ As I was the only one who was coding this app, it became very draining. This was
 The client of this project had a hard time figuring out what the direction of the project was. As a result, it became a lot of the team having to constantly retool the app to include or exclude features and ideas. This removed time from making sure the app was bug-free.
 
 #### No Testing
-This is a major issue that I wish I could've addressed. There is not testing at all for this project. The majority of it was testing using Console debugging and live testing. I should have done more research into how to test C# and Unity as it would've made my life 100% easier.
+This is a major issue that I wish I could've addressed. There is no testing at all for this project. The majority of it was testing using Console debugging and live testing. I should have done more research into how to test C# and Unity as it would've made my life 100% easier.
 
 ### Achievements
 
 #### Learning C#
 One of the interesting parts of this project was learning C#. Although it is similar to Java, it has a lot of differences. I found it enjoyable but also difficult. Concepts such as Properties and LINQ were very interesting to learn about and use.
 
-I also experimented with using lambda expressions and generics. One of the coolest things that I did was create a simplistic deserializer. I did this when I was reading about reflection and also about how the `Newtonsoft` JSON library worked. I made it so that the method `DeserializeObject<T>()` would take in a generic of type `T`. It would get a list of properties of the type `T` and then iterate through them and create a list of `T` of deserialized objects. Although it wasn't perfect, it was very interesting to try and replicate already existing code to see how it really worked.
+I also experimented with using lambda expressions and generics. One of the coolest things that I did was create a simplistic deserializer. I did this when I was reading about reflection and also about how the `Newtonsoft` JSON library worked. I made it so that the method `DeserializeObject<T>()` would take in a generic type `T`. It would get a list of properties of the type `T` and then iterate through them and create a list of `T` of deserialized objects. Although it wasn't perfect, it was very interesting to try and replicate already existing code to see how it really worked.
 
-As I have gotten more exposure to C#, it's cool to see how much I've changed when it's come to coding in it.
+As I have gotten more exposure to C#, it's cool to see how much I've changed when it comes to coding in it.
 
 #### Improving Object-Oriented Programming knowledge.
 This project helped me get better at my understanding of OOP. Because I didn't know if this project was going to be picked up again, I tried to make sure that I programmed it well. The most important thing I learned was to figure out how to slim the code down. 
@@ -114,12 +116,12 @@ This project helped me get better at my understanding of OOP. Because I didn't k
 An example within the project is the Quest Tiles. The original quest tile design made it so that the `QuestManager` had to create a single list of tiles that would be displayed to the user. This was bad because it relied on `QuestManager` to create its tiles for the UI when it shouldn't. As a result, I slowly reworked the code to where tile creation was designated to its own class. I also tried to make it so that all a user had to do was call `QuestTileConstructor.CreateTiles()` with a list of quests and a parent game object and it would create fully functional quest tiles without any extra setup.
 
 #### Documentation
-This project really showed me how important it was to document progress whether that be through commits in GitHub or code comments. I tried my best to leave comments explaining how things worked so that Jessica or Morgan could look at my code and understand what was happening with it. 7 months later and having these comments help with updating the `README.md` file.
+This project really showed me how important it was to document progress whether that be through commits in GitHub or code comments. I tried my best to leave comments explaining how things worked so that Jessica or Morgan could look at my code and understand what was happening with it. 7 months later having these comments help with updating the `README.md` file.
 
 #### Team Communication and Managing Requirements
 This was my first real project working with a team and despite the hiccups, I feel like I did a good job trying to communicate and work with the team. Morgan and I met up almost every week during the project to make sure that I was making your design as close to the mock-ups as I could.
 
-I also think I improved with communicating with sponsors. Having to work with non-computer science people made me realize how hard it is to create a product that the sponsor will like. I wasn't good at working to maintain good requirements at the start. But I do feel like I got better by the end of the project in trying to work with the sponsor to create realistic features and goals for the team.
+I also think I improved in communicating with sponsors. Having to work with non-computer science people made me realize how hard it is to create a product that the sponsor will like. I wasn't good at working to maintain good requirements at the start. However, I do feel like I got better by the end of the project in trying to work with the sponsor to create realistic features and goals for the team.
 
 ### Conclusion
 I am reading this write-up in February 2024, which means it's been around half a year since I did this project. I would say it was one of the hardest projects I've ever worked on, but I'm very proud of what I was able to do within the two months. I am still upset that we couldn't get it fully there at the end, but it was amazing to have it running on my own phone.
@@ -128,7 +130,7 @@ I am reading this write-up in February 2024, which means it's been around half a
 
 #### Screenshots
 
-Here are sreenshots of the app running via the built-in player in Unity:
+Here are screenshots of the app running via the built-in player in Unity:
 
 <div align="center">
 <img src="docs//assets//homepage.png" width="165px"/>
