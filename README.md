@@ -19,7 +19,7 @@
 ## Team Members and Roles
 1. Jessica Doner: Idea Person
 2. Morgan Whapeles: Graphics / UX Designer
-3. Johanne McClenahan: Developer? (Not comfortable saying that I am one but...)
+3. Johanne McClenahan: Develope
 
 ### Background
 In June 2023, I was contacted by Jessica to work on a project called *Eagle Adventures*. The main idea of the project was to create a mobile application for students participating in Eastern Washington University's Summer Bridge 2023 Camp.
