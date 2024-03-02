@@ -9,7 +9,7 @@
 [Team Members and Roles](#team-members-and-roles)  
 [Background](#background)  
 [Features](#features)  
-[How to Run](#running-this-project) 
+[How to Run](#running-this-project)   
 [Technologies Used](#technologies-used)  
 [Hardships](#hardships)   
 [Achievements](#achievements)  
